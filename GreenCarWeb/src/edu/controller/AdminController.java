@@ -32,5 +32,20 @@ public class AdminController {
 		System.out.println("right passwd");
 		return "company/index.html";
 	}
+	
+	@RequestMapping(value = "/changePassword.action", method = RequestMethod.POST)
+	public String changePassword(String userName, String oldPass,String newPass) {
+		
+		//System.out.println("username " + username + "\npasswd " + passwd);
+		Administrator administrator = adminservice.verifyAdmin(userName, oldPass);
+		if(administrator == null) {
+			System.out.println("鏃у瘑鐮侀敊璇?");
+			return "company/changePasswode.jsp";
+		}
+		//put in session
+		adminservice.changePassword_s(userName, newPass);
+		return "company/login.html";
+	}
+
 
 }

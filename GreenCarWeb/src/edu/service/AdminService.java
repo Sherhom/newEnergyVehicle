@@ -15,7 +15,7 @@ public class AdminService {
 	 * 
 	 * @param username
 	 * @param password
-	 * @return ÓÃ»§ÃûÃÜÂëÕıÈ·Ê±·µ»ØÏàÓ¦ÓÃ»§¶ÔÏó,ÑéÖ¤´íÎóÊ±·µ»Ønull
+	 * @return ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È·Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½null
 	 */
 	public Administrator verifyAdmin(String username,String password) {
 		if("".equals(username) || username == null) {
@@ -30,5 +30,10 @@ public class AdminService {
 		}
 		return administrator;
 	}
+	
+	public void changePassword_s(String userName,String newPass){
+		adminMapper.changePassword_m(userName, newPass);
+	}
+
 	
 }
