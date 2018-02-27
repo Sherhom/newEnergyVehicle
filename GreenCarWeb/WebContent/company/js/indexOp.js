@@ -9,7 +9,7 @@
 
     const contentFrame = document.querySelector('#myContent');
     const mangagecarLi = document.querySelector('#sysManagecar');
-    mangagecarLi.addEventListener('click',()=>{changeContent('/GreenCarWeb/company/sysManagecar.html',mangagecarLi)});
+    mangagecarLi.addEventListener('click',()=>{changeContent('/GreenCarWeb/company/sysManagecar.html','mangagecarLi')});
 
 
     /**
