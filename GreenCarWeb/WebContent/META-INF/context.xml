@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context> 
+	<Resource
+		 name="jdbc/nev"
+		 type="javax.sql.DataSource"
+		 driverClassName="com.mysql.jdbc.Driver"
+		 maxIdle="2"
+		 maxWait="5000"
+		 username="root"
+		 password="root"
+		 url="jdbc:mysql://127.0.0.1/nev?useUnicode=true&amp;characterEncoding=utf-8"
+		 maxActive="4"/>
+ </Context>
