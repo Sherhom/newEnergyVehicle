@@ -7,6 +7,7 @@
 		select * from admininfo where adminAccount = #{0}
 	</select>
 	
-
-
+    <update id="changePassword_m">
+    	update admininfo set adminPass=#{1} where adminAccount=#{0}
+    </update>
 </mapper>

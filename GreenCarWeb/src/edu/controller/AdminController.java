@@ -2,6 +2,7 @@ package edu.controller;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
@@ -34,13 +35,19 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/changePassword.action", method = RequestMethod.POST)
-	public String changePassword(String userName, String oldPass,String newPass) {
-		
+	public String changePassword(String oldPass,String newPass) {
+		HttpSession session=req.getSession();
+		Administrator temp=(Administrator)session.getAttribute(GreenCarExp.ADMIN_IN_SESSION);
+		if(temp==null){
+			System.out.println("no such admin");
+		}
+		String userName=temp.getAdminAccount();
+		System.out.println("hhh"+userName+" pass: "+oldPass);
 		//System.out.println("username " + username + "\npasswd " + passwd);
 		Administrator administrator = adminservice.verifyAdmin(userName, oldPass);
 		if(administrator == null) {
-			System.out.println("鏃у瘑鐮侀敊璇?");
-			return "company/changePasswode.jsp";
+			System.out.println("wrong password");
+			return "company/changePassword.jsp";
 		}
 		//put in session
 		adminservice.changePassword_s(userName, newPass);

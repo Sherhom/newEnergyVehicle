@@ -16,7 +16,6 @@ use nev;
 
 DROP TABLE IF EXISTS `carInfo`;
 CREATE TABLE `carInfo`(
-  `carId` int(11) PRIMARY KEY auto_increment,
   `carNum` varchar(11) PRIMARY KEY NOT NULL,
   `carBrand` varchar(20) NOT NULL,
   `carryingCapacity` double(5,2) default 0.00,
@@ -26,12 +25,10 @@ CREATE TABLE `carInfo`(
 
 DROP TABLE IF EXISTS `batteryInfo`;
 CREATE TABLE `batteryInfo`(
-  `batteryId` int(11) PRIMARY KEY auto_increment,
-  `batteryNum` varchar(11) PRIMARY KEY NOT NULL,
+  `batteryNum`  varchar(11) PRIMARY KEY NOT NULL,
   `batteryBrand` varchar(20) NOT NULL,
   `batteryVersion` varchar(20) NOT NULL,
-  `carNum` varchar(11) NOT NULL,
-  
+  `carNum` varchar(11) NOT NULL
 )DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `carStatus`;
@@ -41,7 +38,7 @@ CREATE TABLE `carStatus`(
   `carLoca` varchar(100) NOT NULL,
   `times` timestamp NOT NULL,
   `task` varchar(200) NOT NULL,
-  `isBreakdown` int NOT NULL,		-- 0为正常,1为故障
+  `isBreakdown` int NOT NULL,
   FOREIGN KEY(carNum) REFERENCES carInfo(carNum)
 )DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
@@ -58,10 +55,10 @@ DROP TABLE IF EXISTS `carMile`;
 CREATE TABLE `carMile`(
   `carMId` int(11) PRIMARY KEY auto_increment,
   `totalMile` double(8,2) default 0.00,
-  `isCarLock` int NOT NULL,		-- 0为关,1为开
-  `isSeatLock` int NOT NULL,		-- 0为关,1为开
-  `isSafetyBelt` int NOT NULL,		-- 0为关,1为开
-  `isHandBraking` int NOT NULL,		-- 0为关,1为开
+  `isCarLock` int NOT NULL,
+  `isSeatLock` int NOT NULL,
+  `isSafetyBelt` int NOT NULL,
+  `isHandBraking` int NOT NULL,
   `times` timestamp NOT NULL,
   `carNum` varchar(11) NOT NULL,
   FOREIGN KEY(carNum) REFERENCES carInfo(carNum)
@@ -84,7 +81,7 @@ DROP TABLE IF EXISTS `carWarning`;
 CREATE TABLE `carWarning`(
   `carWId` int(11) PRIMARY KEY auto_increment,
   `carNum` varchar(11) NOT NULL,
-  `isAlarm` int NOT NULL,		-- 0为无,1为有
+  `isAlarm` int NOT NULL,
   `alarmDes` varchar(1000),
   `times` timestamp NOT NULL,
   FOREIGN KEY(carNum) REFERENCES carInfo(carNum)
@@ -94,7 +91,7 @@ DROP TABLE IF EXISTS `batteryWarning`;
 CREATE TABLE `batteryWarning`(
   `batteryId` int(11) PRIMARY KEY auto_increment,
   `batteryNum` varchar(11) NOT NULL,
-  `bmsWarn` int NOT NULL,		-- 0为无,1为有
+  `bmsWarn` int NOT NULL,
   `warnDes` varchar(1000),
   `times` timestamp NOT NULL,
   FOREIGN KEY(batteryNum) REFERENCES batteryInfo(batteryNum)
@@ -106,8 +103,8 @@ CREATE TABLE `batteryStatus`(
   `batteryNum` varchar(11) NOT NULL,
   `batteryTem` double(5,2) default 0.00,
   `totalVoltage` double(5,2) default 0.00,
-  `levelAlarm` int NOT NULL,		-- 0为无,1为有
-  `isUse` int NOT NULL,		-- 0为无,1为有
+  `levelAlarm` int NOT NULL,
+  `isUse` int NOT NULL,
   `current` double(5,2) default 0.00,
   `soc` double(5,2) default 0.00,
   `extremeData` double(5,2) default 0.00,
@@ -201,7 +198,7 @@ CREATE TABLE `taskInfo`(
   `commitTime` timestamp NOT NULL,
   `endTime` timestamp NOT NULL,
   `finishTime` timestamp NOT NULL,
-  `finishStatus` int NOT NULL, --0未完成 1完成
+  `finishStatus` int NOT NULL,
   `taskDes` varchar(1000)
 )DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
@@ -212,7 +209,7 @@ CREATE TABLE `driverInfo`(
   `motorcadeNum` varchar(11) NOT NULL,
   `carNum` varchar(11) NOT NULL,
   `driverName` varchar(20) NOT NULL,
-  `driverSex` int NOT NULL,  --0女 1男
+  `driverSex` int NOT NULL,
   `driverPhone` varchar(20) NOT NULL,
   `driverPosition` varchar(50) NOT NULL,
   FOREIGN KEY(carNum) REFERENCES carInfo(carNum)

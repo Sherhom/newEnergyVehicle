@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form name="myform" method="post" action="changePassword.action">
+<form name="myform" method="post" action="/GreenCarWeb/admin/changePassword.action">
 	    旧密码:<input type="password" name="oldPass">
 	    新密码:<input type="password" id="newPass" name="newPass">
 	    确认新密码:<input type="password" id="conNewPass">
