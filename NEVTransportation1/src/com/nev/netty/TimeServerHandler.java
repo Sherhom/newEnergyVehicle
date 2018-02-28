@@ -28,6 +28,7 @@ public class TimeServerHandler extends ChannelInboundHandlerAdapter{
 		String currentTime = "Success";
 		System.out.println(message[0]);
 		System.out.println(message[1]);
+		
 		new LocationDao().addDevice(message[0], message[1]);
 		ByteBuf resp = Unpooled.copiedBuffer(currentTime.getBytes());
 		ctx.writeAndFlush(resp);
