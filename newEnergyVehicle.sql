@@ -175,8 +175,8 @@ CREATE TABLE `carGuarantee`(
   FOREIGN KEY(carNum) REFERENCES carInfo(carNum)
 )DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
-DROP TABLE IF EXISTS `carGuarantee`;
-CREATE TABLE `carGuarantee`(
+DROP TABLE IF EXISTS `carSoc`;
+CREATE TABLE `carSoc`(
   `carId` int(11) PRIMARY KEY auto_increment,
   `carNum` varchar(11) NOT NULL,
   `limitValue` double(5,2) default 0.00,

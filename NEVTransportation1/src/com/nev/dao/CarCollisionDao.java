@@ -8,13 +8,14 @@ import java.sql.Timestamp;
 import com.nev.utils.DBUtil;
 
 
-public class CarCollisionDao {
+public class CarCollisionDao extends Dao{
 	
 	private static final String CARCOLLISION = "carCollision";
-	
-	public void addCarCollision(String carNum, int collRank, double limitValue, 
+	/*
+	public static void add(String carNum, int collRank, double limitValue, 
 								double actualValue, double collAngle, Timestamp times){
-		
+	*/	
+	public static void add(String []message, Timestamp times){
 		String sql = "insert into " + CARCOLLISION + "(carNum, collRank, limitValue, actualValue, collAngle, times)"
 				+ "values(?,?,?,?,?,?)";
 		
@@ -23,11 +24,11 @@ public class CarCollisionDao {
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
-			ps.setString(1, carNum);
-			ps.setInt(2, collRank);
-			ps.setDouble(3, limitValue);
-			ps.setDouble(4, actualValue);
-			ps.setDouble(5, collAngle);
+			ps.setString(1, message[1]);
+			ps.setInt(2, Integer.parseInt(message[2]));
+			ps.setDouble(3, Double.parseDouble(message[3]));
+			ps.setDouble(4, Double.parseDouble(message[4]));
+			ps.setDouble(5, Double.parseDouble(message[5]));
 			ps.setTimestamp(6, times);
 			ps.executeUpdate();
 		} catch (SQLException e) {
