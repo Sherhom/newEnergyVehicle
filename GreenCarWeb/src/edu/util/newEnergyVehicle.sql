@@ -168,8 +168,8 @@ CREATE TABLE `carGuarantee`(
   FOREIGN KEY(carNum) REFERENCES carInfo(carNum)
 )DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
-DROP TABLE IF EXISTS `carGuarantee`;
-CREATE TABLE `carGuarantee`(
+DROP TABLE IF EXISTS `carSoc`;
+CREATE TABLE `carSoc`(
   `carId` int(11) PRIMARY KEY auto_increment,
   `carNum` varchar(11) NOT NULL,
   `limitValue` double(5,2) default 0.00,
@@ -244,3 +244,11 @@ CREATE TABLE `companyInfo`(
 
 insert into adminInfo(adminNum,adminName,adminAccount,adminPass,adminPhone) values(001,'yefei','admin','admin','12345678912');
 insert into adminInfo(adminNum,adminName,adminAccount,adminPass,adminPhone) values(002,'yefei2','admin1','admin1','12345678910');
+
+insert into carInfo values('car001','大众',20.00,'2010-01-05',1);
+insert into driverInfo values(1,1,'carTeam001','car001','jack01',1,'123456','hefei');
+insert into batteryInfo values('battery001','南孚','ab01','car001');
+insert into carGuarantee values(1,'car001',6.00,'在桃花镇男子职业技术学院进行保养','2018-02-28');
+insert into carMile values(1,500.00,1,1,0,1,'2018-02-28','car001');
+
+

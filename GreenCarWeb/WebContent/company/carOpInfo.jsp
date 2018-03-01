@@ -6,9 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script>
+<script type="text/javascript" src="/GreenCarWeb/company/js_yk/js/jquery-1.6.2.min.js"></script>
+<script >
+
 function getOpInfo() {
-    window.location="GreenCarWeb/getOpInfo?carKeyword="+$("#carKeyword").val()+"&carTeamKeyword="+$("#carTeamKeyword").val();
+    window.location="/GreenCarWeb/getOpInfo?carKeyword="+$("#carKeyword").val()+"&carTeamKeyword="+$("#carTeamKeyword").val();
     
 	}
 </script>
@@ -17,13 +19,14 @@ function getOpInfo() {
 	<table>
 	    <tr>
 			<td >
-			   车辆号:<input type="text" id="carKeyword"  name="carKeyword"/> 
-			   车队号:<input type="text" id="carTeamKeyword"  name="carTeamKeyword"/> 
-			   <input type="submit" value="查询" onclick="getOpInfo()" />
+			        车辆号:<input type="text" id="carKeyword"  name="carKeyword"/>    
 			</td>
-			
 			<td>
-			     <input type="button" value="作业信息" onclick=""/>
+			        车队号:<input type="text" id="carTeamKeyword"  name="carTeamKeyword"/> 
+			</td>
+			<td><input type="submit" value="查询" onclick="getOpInfo()" /></td>
+			<td>
+			     <input type="button" value="作业信息" onclick="getOpInfo()"/>
 			</td>
 			    
 			<td>
@@ -31,11 +34,11 @@ function getOpInfo() {
 			</td>
 			
 		</tr>
-		<c:set var="#" value="${#}" scope="page" />
+		<c:set var="allOpInfo" value="${allOpInfo}" scope="page" />
 		
-	    <c:if test="${not empty #}">
+	     <c:if test="${not empty pageScope.allOpInfo}">
 	    <tr>
-	       <th>序号</th>
+	       <th width="5%">序号</th>
 	       <th><input type="checkbox"></th>
 	       <th>车辆号</th>
 	       <th>车队号</th>
@@ -47,15 +50,21 @@ function getOpInfo() {
 	       <th>保养时间</th>
 	       <th>行驶里程</th>
 	    </tr>
-	    
-	    <c:forEach items="${#}" var="#">
+	   
+	    <c:forEach items="${pageScope.allOpInfo}" var="opInfo">
 	       <tr style="text-align: center;">
-					<td width="5%;">${#.tid }</td>
-					<td width="25%;"></td>
-					<td width="12%;"></td>
-					<td width="8%;"></td>
-					<td width="8%;"></td>
-					<td width="8%;"></td>
+	                <td></td>
+	                <td><input type="checkbox"></td>
+					<td >${opInfo.carNum}</td>
+					<td >${opInfo.motorcadeNum}</td>
+					<td >${opInfo.driverName}</td>
+					<td >${opInfo.carBrand}</td>
+					<td >${opInfo.carryingCapacity}</td>
+					<td >${opInfo.dataManu}</td>
+					<td >${opInfo.batteryNum}</td>
+					<td >${opInfo.times}</td>
+					<td >${opInfo.totalMile}</td>
+		  </tr>
 		
 	    </c:forEach>
 	    </c:if>
