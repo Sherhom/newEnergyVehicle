@@ -1,8 +1,9 @@
 package com.nev.netty;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
-import com.nev.dao.LocationDao;
+import com.nev.dao.*;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -16,19 +17,18 @@ public class TimeServerHandler extends ChannelInboundHandlerAdapter{
 	
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception{
-		//ByteBuf buf = (ByteBuf)msg;
-		//byte[] req = new byte[buf.readableBytes()];                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-		//buf.readBytes(req);
+
 		String body = (String)msg;
 		String[]message =  body.split("-");
 		
-		//System.out.println("The time server receive order:"+ body + " ;the counter is:"+ ++counter);
-		//String currentTime = "QUERY TIME ORDER".equalsIgnoreCase(body)?new Date(System.currentTimeMillis()).toString():"BAD ORDER";
-		//currentTime = currentTime + System.getProperty("line.separator");
+		
 		String currentTime = "Success";
 		System.out.println(message[0]);
 		System.out.println(message[1]);
-		new LocationDao().addDevice(message[0], message[1]);
+		
+		Dao dao = (Dao) Class.forName(message[0]).newInstance();
+		dao.add(message, new Timestamp(System.currentTimeMillis()));
+		
 		ByteBuf resp = Unpooled.copiedBuffer(currentTime.getBytes());
 		ctx.writeAndFlush(resp);
 	}

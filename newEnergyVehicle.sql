@@ -23,6 +23,7 @@ CREATE TABLE `carInfo`(
   `dateManu` timestamp NOT NULL,
   `driverNum` int(11) NOT NULL
 )DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+insert into carInfo(carNum,carBrand,carryingCapacity,dateManu,driverNum)values('a','a',0.2,'2012-02-03 00:00:00',111);
 
 DROP TABLE IF EXISTS `batteryInfo`;
 CREATE TABLE `batteryInfo`(
@@ -49,10 +50,13 @@ DROP TABLE IF EXISTS `carLocation`;
 CREATE TABLE `carLocation`(
   `carLId` int(11) PRIMARY KEY auto_increment,
   `carNum` varchar(11) NOT NULL,
-  `carLoca` varchar(100) NOT NULL,
+  `carLng` double NOT NULL,
+  `carLat` double NOT NULL,
   `times` timestamp NOT NULL,
   FOREIGN KEY(carNum) REFERENCES carInfo(carNum)
 )DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+insert into carLocation(carNum,carLng,carLat,times)values("a",22.3,22.54,'2012-02-03 00:00:00');
 
 DROP TABLE IF EXISTS `carMile`;
 CREATE TABLE `carMile`(
@@ -171,8 +175,8 @@ CREATE TABLE `carGuarantee`(
   FOREIGN KEY(carNum) REFERENCES carInfo(carNum)
 )DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
-DROP TABLE IF EXISTS `carGuarantee`;
-CREATE TABLE `carGuarantee`(
+DROP TABLE IF EXISTS `carSoc`;
+CREATE TABLE `carSoc`(
   `carId` int(11) PRIMARY KEY auto_increment,
   `carNum` varchar(11) NOT NULL,
   `limitValue` double(5,2) default 0.00,
