@@ -69,4 +69,6 @@
         };
         return oTableInit;
     };
+
+    var oButtonInit;
 })();

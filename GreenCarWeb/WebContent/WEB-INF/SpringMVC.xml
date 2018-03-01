@@ -25,7 +25,8 @@
 		<property name="prefix" value="/"/>
 
 	</bean>	
-
+	
+	<mvc:annotation-driven/>
 
 </beans>
 
