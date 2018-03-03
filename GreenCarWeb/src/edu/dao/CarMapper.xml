@@ -3,10 +3,8 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3.dtd">
 <mapper namespace = "edu.dao.CarMapper">
-	<select id="getAdminByAccount" resultType="administrator">
-		select * from admininfo where adminAccount = #{0}
+	<select id="getCarByDriverNum" resultType="car">
+		select * from carinfo where driverNum = #{0}
 	</select>
 	
-
-
 </mapper>

@@ -15,7 +15,7 @@ public class AdminService {
 	 * 
 	 * @param username
 	 * @param password
-	 * @return �û���������ȷʱ������Ӧ�û�����,��֤����ʱ����null
+	 * @return 
 	 */
 	public Administrator verifyAdmin(String username,String password) {
 		if("".equals(username) || username == null) {

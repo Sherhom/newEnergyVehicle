@@ -6,15 +6,27 @@
 
     const carinfoTable = document.querySelector('#tableCarinfo');
     //1.初始化Table
-    var oTable = new TableInit();
+    let oTable = TableInit();
     oTable.Init();
 
-    //2.初始化Button的点击事件
-    var oButtonInit = new ButtonInit();
-    oButtonInit.Init();
+    var button = new oButtonInit();
+    button.Init();
+    
+    alert(button);
+    var oButtonInit = function(){
+        let obuttonInit = new Object();
+        obuttonInit.Init() = function(){
+            const allList = document.querySelectorAll("#carteamList > li");
+            alert(allList);
+            for(const eachLi of allList){
+                eachLi.addEventListener("click",()=>{alert(eachLi.value)});
+            }
+        }
+        return obuttonInit;
+    }
     
     
-    var TableInit = function () {
+    function TableInit() {
         var oTableInit = new Object();
         //初始化Table
         oTableInit.Init = function () {
@@ -69,4 +81,6 @@
         };
         return oTableInit;
     };
+
+    
 })();

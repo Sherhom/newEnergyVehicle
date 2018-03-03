@@ -1,5 +1,9 @@
 package edu.dao;
 
-public interface CarMapper {
+import java.util.List;
 
+import edu.domain.Car;
+
+public interface CarMapper {
+	Car getCarByDriverNum(String driverNum);
 }
