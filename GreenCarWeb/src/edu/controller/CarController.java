@@ -22,6 +22,7 @@ public class CarController {
 	@RequestMapping(value="/getCarinfo", method = RequestMethod.POST)
 	@ResponseBody
 	public List getCarInfo(int limit, int offset, String motorcade) {
+		System.out.println("in controller");
 		List<Car> cars = carService.getCarByTeamNum(motorcade);
 		return cars;
 	}

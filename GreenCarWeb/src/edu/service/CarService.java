@@ -5,11 +5,13 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
+
 import edu.dao.CarMapper;
 import edu.dao.DriverMapper;
 import edu.domain.Car;
 import edu.domain.Driver;
-
+@Service
 public class CarService {
 	@Resource
 	CarMapper carMapper;
@@ -17,13 +19,11 @@ public class CarService {
 	DriverMapper driverMapper;
 	/**
 	 * 
-	 * @param teamNum ³µ¶Ó±àºÅ
-	 * @return Í¬Ò»³µ¶ÓµÄ³µÁ¾ĞÅÏ¢
+	 * @param teamNum è½¦é˜Ÿç¼–å·
+	 * @return åŒä¸€è½¦é˜Ÿçš„è½¦è¾†ä¿¡æ¯
 	 */
 	public List<Car> getCarByTeamNum(String teamNum){
-		//»ñÈ¡¶ÔÓ¦³µ¶ÓµÄË¾»ú
 		List<Driver> drivers = driverMapper.getDriverByTeamNum(teamNum);
-		//½«Ë¾»ú¶ÔÓ¦µÄ³µÁ¾·ÅÈëcarsÖĞ
 		List<Car> cars = new LinkedList<Car>();
 		for(Driver d:drivers) {
 			cars.add(carMapper.getCarByDriverNum(d.getDriverNum()));			
