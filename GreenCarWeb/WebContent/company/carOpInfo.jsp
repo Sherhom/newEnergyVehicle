@@ -6,16 +6,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="/GreenCarWeb/company/js_yk/js/jquery-1.6.2.min.js"></script>
-<script >
 
+<link href="/GreenCarWeb/company/bootstrap-dist/css/bootstrap.css" rel="stylesheet">
+
+
+<script>
 function getOpInfo() {
     window.location="/GreenCarWeb/getOpInfo?carKeyword="+$("#carKeyword").val()+"&carTeamKeyword="+$("#carTeamKeyword").val();
     
 	}
 </script>
 </head>
+
 <body>
+
 	<table>
 	    <tr>
 			<td >
@@ -25,15 +29,22 @@ function getOpInfo() {
 			        车队号:<input type="text" id="carTeamKeyword"  name="carTeamKeyword"/> 
 			</td>
 			<td><input type="submit" value="查询" onclick="getOpInfo()" /></td>
+			
 			<td>
-			     <input type="button" value="作业信息" onclick="getOpInfo()"/>
+			<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+	                        作业信息
+			</button>
 			</td>
-			    
+			 
 			<td>
-			      <input type="button" value="保养信息" onclick=""/>
-			</td>
+			<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">
+				保养信息
+            </button>
+            </td>
+            
 			
 		</tr>
+		
 		<c:set var="allOpInfo" value="${allOpInfo}" scope="page" />
 		
 	     <c:if test="${not empty pageScope.allOpInfo}">
@@ -70,5 +81,63 @@ function getOpInfo() {
 	    </c:if>
 	
 	</table>
+	
+	<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					模态框（Modal）1
+				</h4>
+			</div>
+			<div class="modal-body">
+				在这里添加一些文本
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+				<button type="button" class="btn btn-primary">
+					提交更改
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+
+<!-- 模态框（Modal） -->
+
+
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					模态框（Modal）2
+				</h4>
+			</div>
+			<div class="modal-body">
+				在这里添加一些文本
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+				<button type="button" class="btn btn-primary">
+					提交更改
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 </body>
+
+<script type="text/javascript" src="/GreenCarWeb/company/js_yk/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="/GreenCarWeb/company/bootstrap-dist/js/bootstrap.js"></script>
 </html>

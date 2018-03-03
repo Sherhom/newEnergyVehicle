@@ -19,4 +19,14 @@ public class CarManageService {
 		return temp;
 		
 	}
+	
+	public List<CarOpDataBean> getOpDataByCarNum(String carNum){
+		List<CarOpDataBean> temp=carManageMapper.getOpDataByCarNum_mapper(carNum);
+		return temp;
+	}
+	
+	public List<CarOpDataBean> getOpDataByMotorcadeNum(String motorcadeNum){
+		List<CarOpDataBean> temp=carManageMapper.getOpDataByMotorcadeNum_mapper(motorcadeNum);
+		return temp;
+	}
 }

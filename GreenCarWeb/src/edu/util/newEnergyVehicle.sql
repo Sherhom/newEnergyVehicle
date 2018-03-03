@@ -251,4 +251,8 @@ insert into batteryInfo values('battery001','南孚','ab01','car001');
 insert into carGuarantee values(1,'car001',6.00,'在桃花镇男子职业技术学院进行保养','2018-02-28');
 insert into carMile values(1,500.00,1,1,0,1,'2018-02-28','car001');
 
-
+insert into carInfo values('car002','奇瑞',50.00,'2010-10-11',2);
+insert into driverInfo values(2,2,'carTeam002','car002','tom01',1,'4548123','hefei');
+insert into batteryInfo values('battery002','快电','ab01','car002');
+insert into carGuarantee values(2,'car002',6.00,'在合肥货车维修站进行保养','2018-03-03');
+insert into carMile values(2,340.55,1,1,0,1,'2018-03-03','car002');

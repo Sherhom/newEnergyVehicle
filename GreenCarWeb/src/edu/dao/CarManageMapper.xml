@@ -10,19 +10,32 @@
 		<result column="driverInfo.driverName" property="driverName"/>
 		<result column="carInfo.carBrand" property="carBrand"/>
 		<result column="carInfo.carryingCapacity" property="carryingCapacity"/>
-		<result column="carInfo.dataManu" property="dataManu"/>
+		<result column="carInfo.dateManu" property="dateManu"/>
 		<result column="batteryInfo.batteryNum" property="batteryNum"/>
 		<result column="carGuarantee.times" property="times"/>
 		<result column="carMile.totalMile" property="totalMile"/>
-		
 	</resultMap>
 	
 	
-	<!-- 根据订单时间分页查询订单 -->
+	<!-- 查询所有运维信息 -->
 	<select id="getAllOpData_mapper" resultMap="codp_map">
 		SELECT * FROM carInfo ,driverInfo,batteryInfo,carGuarantee ,carMile 
 		WHERE carInfo.driverNum=driverInfo.driverNum and carInfo.carNum=batteryInfo.carNum and 
 		carInfo.carNum=carGuarantee.carNum and carInfo.carNum=carMile.carNum	
+	</select>
+	
+		<!-- 根据车辆号查询运维信息 -->
+	<select id="getOpDataByCarNum_mapper" parameterType="String" resultMap="codp_map">
+		SELECT * FROM carInfo ,driverInfo,batteryInfo,carGuarantee ,carMile 
+		WHERE carInfo.driverNum=driverInfo.driverNum and carInfo.carNum=batteryInfo.carNum and 
+		carInfo.carNum=carGuarantee.carNum and carInfo.carNum=carMile.carNum and carInfo.carNum=#{0}
+	</select>
+	
+	<!-- 根据车队号查询运维信息 -->
+	<select id="getOpDataByMotorcadeNum_mapper" parameterType="String" resultMap="codp_map">
+		SELECT * FROM carInfo ,driverInfo,batteryInfo,carGuarantee ,carMile 
+		WHERE carInfo.driverNum=driverInfo.driverNum and carInfo.carNum=batteryInfo.carNum and 
+		carInfo.carNum=carGuarantee.carNum and carInfo.carNum=carMile.carNum and driverInfo.motorcadeNum=#{0}
 	</select>
 	
     

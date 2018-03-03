@@ -83,7 +83,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
  * ======================================================================== */
 
 
-+function ($) { "use strict";
+/*+function ($) { "use strict";
 
   // ALERT CLASS DEFINITION
   // ======================
@@ -161,6 +161,7 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
   $(document).on('click.bs.alert.data-api', dismiss, Alert.prototype.close)
 
 }(jQuery);
+*/
 
 /* ========================================================================
  * Bootstrap: button.js v3.0.3
