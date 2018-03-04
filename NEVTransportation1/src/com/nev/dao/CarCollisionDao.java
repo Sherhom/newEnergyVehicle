@@ -15,7 +15,9 @@ public class CarCollisionDao extends Dao{
 	public static void add(String carNum, int collRank, double limitValue, 
 								double actualValue, double collAngle, Timestamp times){
 	*/	
-	public static void add(String []message, Timestamp times){
+	
+	@Override
+	public void add(String []message, Timestamp times){
 		String sql = "insert into " + CARCOLLISION + "(carNum, collRank, limitValue, actualValue, collAngle, times)"
 				+ "values(?,?,?,?,?,?)";
 		

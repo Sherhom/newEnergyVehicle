@@ -29,7 +29,7 @@ public class DBUtil {
 		//password = prop.getProperty("password");
 		
 		dbdriver = "com.mysql.jdbc.Driver";
-		dburl = "jdbc:mysql://localhost:3306/nevtest?characterEncoding=utf8&useSSL=false";
+		dburl = "jdbc:mysql://localhost:3306/nev?characterEncoding=utf8&useSSL=false";
 		username = "root";
 		password = "root";
 	}

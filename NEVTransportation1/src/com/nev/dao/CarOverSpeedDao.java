@@ -14,7 +14,9 @@ public class CarOverSpeedDao extends Dao{
 	public static void add(String carNum, double limitSpeed, double maxSpeed,
 								int statusIdent, Timestamp times){
 	*/
-	public static void add(String[] message ,Timestamp times){
+	
+	@Override
+	public void add(String[] message ,Timestamp times){
 		
 		String sql = "insert into " + CAROVERSPEED + "(carNum, limitSpeed, maxSpeed, statusIdent, times) values"
 					+ "(?,?,?,?,?)";

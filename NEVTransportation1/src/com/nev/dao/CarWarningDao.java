@@ -16,7 +16,9 @@ public class CarWarningDao extends Dao{
 	/*
 	public static void add(String carNum, int isAlarm, String alarmDes, Timestamp times){
 	*/	
-	public static void add(String[] message ,Timestamp times){
+	
+	@Override
+	public void add(String[] message ,Timestamp times){
 		
 		String sql = "insert into " + CARWARNING + "(carNum, isAlarm, alarmDes, times) values(?,?,?,?)";
 		

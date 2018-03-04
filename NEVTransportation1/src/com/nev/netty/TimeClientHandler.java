@@ -19,7 +19,8 @@ public class TimeClientHandler extends ChannelInboundHandlerAdapter{
 	
 	public TimeClientHandler(){
 		//req = ("QUERY TIME ORDER"+System.getProperty("line.separator")).getBytes();
-		req = ("22222-3333"+System.getProperty("line.separator")).getBytes();
+		//req = ("22222-3333"+System.getProperty("line.separator")).getBytes();
+		req = ("batteryStatus-a-0.5-3-0-0-0.50-0.79-0.8-0.4-0.3"+System.getProperty("line.separator")).getBytes();
 		//firstMessage = Unpooled.buffer(req.length);
 		//firstMessage.writeBytes(req);
 	}
