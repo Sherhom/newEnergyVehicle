@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import edu.dao.CarManageMapper;
 import edu.domain.CarOpDataBean;
+import edu.domain.GuaInfoBean;
 
 @Service
 public class CarManageService {
@@ -27,6 +28,11 @@ public class CarManageService {
 	
 	public List<CarOpDataBean> getOpDataByMotorcadeNum(String motorcadeNum){
 		List<CarOpDataBean> temp=carManageMapper.getOpDataByMotorcadeNum_mapper(motorcadeNum);
+		return temp;
+	}
+	
+	public List<GuaInfoBean> getGuaInfo_service(String carNum){
+		List<GuaInfoBean> temp=carManageMapper.getGuaInfo_mapper(carNum);
 		return temp;
 	}
 }

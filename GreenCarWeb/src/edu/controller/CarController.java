@@ -14,7 +14,7 @@ import edu.domain.Car;
 import edu.service.CarService;
 
 @Controller
-@RequestMapping(value = "/car")
+@RequestMapping//(value = "/car")
 public class CarController {
 	@Resource
 	CarService carService;

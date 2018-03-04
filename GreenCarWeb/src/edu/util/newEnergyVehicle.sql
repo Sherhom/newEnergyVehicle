@@ -242,6 +242,7 @@ CREATE TABLE `companyInfo`(
   `compantPhone` varchar(20) NOT NULL
 )DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
+--yukang test data
 insert into adminInfo(adminNum,adminName,adminAccount,adminPass,adminPhone) values(001,'yefei','admin','admin','12345678912');
 insert into adminInfo(adminNum,adminName,adminAccount,adminPass,adminPhone) values(002,'yefei2','admin1','admin1','12345678910');
 
