@@ -15,7 +15,9 @@ public class BatteryWarningDao extends Dao{
 	/*
 	public static void add(String batteryNum, int bmsWarn, String warnDes, Timestamp times){
 	*/	
-	public static void add(String[] message, Timestamp times){
+	
+	@Override
+	public void add(String[] message, Timestamp times){
 		String sql = "insert into " + BATTERYWARNING + "(batteryNum,"
 					+ " bmsWarn, warnDes, times) values(?,?,?,?)";
 		

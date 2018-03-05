@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import edu.domain.CarOpDataBean;
+import edu.domain.GuaInfoBean;
 import edu.service.CarManageService;
 
 @Controller
@@ -48,7 +49,19 @@ public class CarManageController {
 		return mv;
 		
 	}
-    
+	
+	
+	@RequestMapping(value = "/getGuaInfo_InOp")
+	public ModelAndView getGuaInfo(HttpServletRequest req) {
+		String carNum=req.getParameter("carNum");
+		List<GuaInfoBean> temp=carManageService.getGuaInfo_service(carNum);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("guaInfo",temp);
+		mv.setViewName("/company/carOpInfo.jsp");
+		return mv;
+		
+	}
 	
 
 }

@@ -16,7 +16,9 @@ public class CarMileDao extends Dao{
 							int isSafetyBelt, int isHandBraking,
 							Timestamp times, String carNum){
 	*/
-	public static void add(String[] message ,Timestamp times){
+	
+	@Override
+	public void add(String[] message ,Timestamp times){
 		String sql = "insert into " + CARMILE + "(totalMile,isCarLock,"
 				     + "isSeatLock,isSafetyBelt,isHandBraking,times,carNum) values(?,?,?,?,?,?,?)";
 		Connection conn = DBUtil.getConnection();

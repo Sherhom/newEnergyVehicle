@@ -38,5 +38,8 @@
 		carInfo.carNum=carGuarantee.carNum and carInfo.carNum=carMile.carNum and driverInfo.motorcadeNum=#{0}
 	</select>
 	
-    
+	<!-- 根据车辆号查询保养信息 -->
+    <select id="getGuaInfo_mapper" parameterType="String" resultType="GuaInfoBean">
+		select * from carGuarantee where carNum = #{0}
+	</select>
 </mapper>

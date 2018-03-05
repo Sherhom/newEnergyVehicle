@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import com.nev.utils.DBUtil;
 
@@ -16,11 +19,14 @@ public class BatteryStatusDao extends Dao{
 								int levelAlarm, int isUse, double current, double soc,
 								double extremeData, double temData, double MonomerV, Timestamp times){
 	*/
-	public static void add(String []message,  Timestamp times){
-		String sql = "insert into " + BATTERYSTATUS + "(batteryNum, batteryNum, totalVoltage,levelAlarm,"
+	@Override
+	public  void add(String []message,  Timestamp times){
+		String sql = "insert into " + BATTERYSTATUS + "(batteryNum, batteryTem, totalVoltage,levelAlarm,"
 				+ "	 isUse,current,soc,extremeData,temData,MonomerV,times) values(?,?,?,?,?,?,?,?,?,?,?)";
-		
+		System.out.println("batteryStatus执行成功1");
 		Connection conn = DBUtil.getConnection();
+		
+		System.out.println(times.toString());
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -48,7 +54,7 @@ public class BatteryStatusDao extends Dao{
 			ps.setDouble(9, Double.parseDouble(message[9]));
 			ps.setDouble(10, Double.parseDouble(message[10]));
 			ps.setTimestamp(11, times);
-			
+			System.out.println("batteryStatus执行成功2");
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -15,7 +15,10 @@ public class CarSocDao extends Dao{
 	public static void add(String carNum, double limitValue, double soc, 
 						  int statusIdent, Timestamp times, String batteryNum){
 	*/
-	public static void add(String[] message ,Timestamp times){
+	
+	
+	@Override
+	public void add(String[] message ,Timestamp times){
 		
 		String sql = "insert into " + CARSOC + "(carNum, limitValue, soc, statusIdent, "
 					 + "times, batteryNum)values(?,?,?,?,?,?)";

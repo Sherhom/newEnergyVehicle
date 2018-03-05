@@ -15,7 +15,8 @@ public class LocationDao extends Dao{
 	public static void add(String carNum, double carLng,double carLat, Timestamp times) {
 	*/
 	
-	public static void add(String[] message ,Timestamp times){	
+	@Override
+	public void add(String[] message ,Timestamp times){	
 	
 		String sql = "insert into " + LOCATION + " (carNum,carLng,carLat,times) values(?,?,?,?)";
 		Connection conn = DBUtil.getConnection();

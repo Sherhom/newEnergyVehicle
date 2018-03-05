@@ -9,12 +9,43 @@
 
 <link href="/GreenCarWeb/company/bootstrap-dist/css/bootstrap.css" rel="stylesheet">
 
-
+<script type="text/javascript" src="/GreenCarWeb/company/js_yk/js/jquery-2.0.3.min.js"></script>
 <script>
 function getOpInfo() {
     window.location="/GreenCarWeb/getOpInfo.action?carKeyword="+$("#carKeyword").val()+"&carTeamKeyword="+$("#carTeamKeyword").val();
     
+
+}
+
+function searching(carNum) {
+				$.ajax({  
+					  url: "/GreenCarWeb/getGuaInfo_InOp",  
+					  type:'post',
+					  dataType:'text',
+					  async:true,
+					  data:{  
+					  	carNum:carNum
+						},  
+					success:function(data){  
+						
+					}
+				}); 
+}
+</script>
+
+<script>
+function getCarNum(){
+	var t=document.getElementsByTagName("table")[0];
+	var carNum;
+	for(var i=0;i<t.rows.length;i++){
+		if(t.rows(i).cells(1).firstChild.checked){
+			carNum=t.rows(i).cell(2).innerText;
+			break;
+		}
+
 	}
+	searching(carNum);
+}
 </script>
 </head>
 
@@ -95,14 +126,16 @@ function getOpInfo() {
 				</h4>
 			</div>
 			<div class="modal-body">
-				在这里添加一些文本
+				      
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
 				</button>
+				<!-- 
 				<button type="button" class="btn btn-primary">
 					提交更改
 				</button>
+				 -->
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
@@ -119,7 +152,36 @@ function getOpInfo() {
 					&times;
 				</button>
 				<h4 class="modal-title" id="myModalLabel">
-					模态框（Modal）2
+					 <table>
+		
+		<c:set var="guaInfo" value="${guaInfo}" scope="page" />
+		
+	     <c:if test="${not empty pageScope.guaInfo}">
+	    <tr>
+	       <th width="5%">序号</th>
+	     
+	       <th>车牌号</th>
+	       <th>保养周期</th>
+	       <th>保养信息</th>
+	       <th>时间</th>
+	       
+	    </tr>
+	   
+	    <c:forEach items="${pageScope.guaInfo}" var="soleGuaInfo">
+	       <tr style="text-align: center;">
+	                <td></td>
+	              
+					<td >${soleGuaInfo.carNum}</td>
+					<td >${soleGuaInfo.mainPeriod}</td>
+					<td >${soleGuaInfo.mainDes}</td>
+					<td >${soleGuaInfo.times}</td>
+					
+		  </tr>
+		
+	    </c:forEach>
+	    </c:if>
+	
+	</table>
 				</h4>
 			</div>
 			<div class="modal-body">
@@ -136,8 +198,30 @@ function getOpInfo() {
 	</div>
 </div>
 
+<script>
+$(function () { $('#myModal').modal('hide')});
+</script>
+
+<script>
+   $(function () { $('#myModal').on('show.bs.modal', function () {
+      getCarNum();
+   })});
+</script>
+
+<script>
+$(function () { $('#myModal2').modal('hide')});
+</script>
+
+<script>
+   $(function () { $('#myModal2').on('show.bs.modal', function () {
+      getCarNum();
+   })});
+</script>
+
 </body>
 
-<script type="text/javascript" src="/GreenCarWeb/company/js_yk/js/jquery-2.0.3.min.js"></script>
+
+
+
 <script type="text/javascript" src="/GreenCarWeb/company/bootstrap-dist/js/bootstrap.js"></script>
 </html>
