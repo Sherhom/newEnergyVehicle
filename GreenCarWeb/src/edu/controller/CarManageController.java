@@ -1,18 +1,26 @@
 package edu.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.lang.reflect.Field;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import edu.domain.CarOpDataBean;
 import edu.domain.GuaInfoBean;
 import edu.service.CarManageService;
+import net.sf.json.JSONObject;
 
 @Controller
 public class CarManageController {
@@ -50,17 +58,19 @@ public class CarManageController {
 		
 	}
 	
-	
-	@RequestMapping(value = "/getGuaInfo_InOp")
-	public ModelAndView getGuaInfo(HttpServletRequest req) {
+	 @ResponseBody
+	@RequestMapping(value = "/getGuaInfo_InOp.action")
+	public JSONObject getGuaInfo(HttpServletRequest req,HttpServletResponse response) {
+		System.out.println("进来了！");
 		String carNum=req.getParameter("carNum");
 		List<GuaInfoBean> temp=carManageService.getGuaInfo_service(carNum);
+		System.out.println(temp);
 		
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("guaInfo",temp);
-		mv.setViewName("/company/carOpInfo.jsp");
-		return mv;
+		JSONObject jsonObject = new JSONObject();
 		
+		jsonObject.put(, temp.)
+        return jsonObject;
+        	
 	}
 	
 

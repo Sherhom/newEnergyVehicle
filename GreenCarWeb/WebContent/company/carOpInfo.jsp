@@ -19,15 +19,16 @@ function getOpInfo() {
 
 function searching(carNum) {
 				$.ajax({  
-					  url: "/GreenCarWeb/getGuaInfo_InOp",  
+					  url: "/GreenCarWeb/getGuaInfo_InOp.action",  
 					  type:'post',
-					  dataType:'text',
+					  dataType:'json',
 					  async:true,
 					  data:{  
 					  	carNum:carNum
 						},  
 					success:function(data){  
-						
+						var result= $.parseJSON(data);
+						alert(result);
 					}
 				}); 
 }
@@ -38,8 +39,8 @@ function getCarNum(){
 	var t=document.getElementsByTagName("table")[0];
 	var carNum;
 	for(var i=0;i<t.rows.length;i++){
-		if(t.rows(i).cells(1).firstChild.checked){
-			carNum=t.rows(i).cell(2).innerText;
+		if(t.rows[i].cells[1].firstChild.checked){
+			carNum=t.rows[i].cells[2].innerText;
 			break;
 		}
 
@@ -152,11 +153,13 @@ function getCarNum(){
 					&times;
 				</button>
 				<h4 class="modal-title" id="myModalLabel">
-					 <table>
+	
+				</h4>
+			</div>
+			<div class="modal-body">
+								 <table>
 		
-		<c:set var="guaInfo" value="${guaInfo}" scope="page" />
 		
-	     <c:if test="${not empty pageScope.guaInfo}">
 	    <tr>
 	       <th width="5%">序号</th>
 	     
@@ -167,6 +170,10 @@ function getCarNum(){
 	       
 	    </tr>
 	   
+	   <c:set var="guaInfo" value="${guaInfo}" scope="page" />
+		
+	     <c:if test="${not empty pageScope.guaInfo}">
+	     
 	    <c:forEach items="${pageScope.guaInfo}" var="soleGuaInfo">
 	       <tr style="text-align: center;">
 	                <td></td>
@@ -182,10 +189,6 @@ function getCarNum(){
 	    </c:if>
 	
 	</table>
-				</h4>
-			</div>
-			<div class="modal-body">
-				在这里添加一些文本
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
