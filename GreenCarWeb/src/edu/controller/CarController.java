@@ -14,12 +14,12 @@ import edu.domain.Car;
 import edu.service.CarService;
 
 @Controller
-@RequestMapping(value = "/car")
+@RequestMapping(value="/car")
 public class CarController {
 	@Resource
 	CarService carService;
 	
-	@RequestMapping(value="/getCarinfo", method = RequestMethod.POST)
+	@RequestMapping(value="/sysgetCarinfo.do", method = RequestMethod.POST)
 	@ResponseBody
 	public List getCarInfo(int limit, int offset, String motorcade) {
 		System.out.println("in controller");

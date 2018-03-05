@@ -12,7 +12,7 @@
 
 <script>
 function getOpInfo() {
-    window.location="/GreenCarWeb/getOpInfo?carKeyword="+$("#carKeyword").val()+"&carTeamKeyword="+$("#carTeamKeyword").val();
+    window.location="/GreenCarWeb/getOpInfo.action?carKeyword="+$("#carKeyword").val()+"&carTeamKeyword="+$("#carTeamKeyword").val();
     
 	}
 </script>

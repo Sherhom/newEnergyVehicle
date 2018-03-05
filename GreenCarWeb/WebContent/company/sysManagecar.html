@@ -14,13 +14,15 @@
 	id="skin-switcher">
 <link rel="stylesheet" type="text/css" href="/GreenCarWeb/company/css/responsive.css">
 
-<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
 <!-- DATE RANGE PICKER -->
 <link rel="stylesheet" type="text/css"
 	href="/GreenCarWeb/company/js/bootstrap-daterangepicker/daterangepicker-bs3.css" />
 <!-- TABLE CLOTH -->
 <link rel="stylesheet" type="text/css"
 	href="/GreenCarWeb/company/js/tablecloth/css/tablecloth.min.css" />
+<link rel="stylesheet" href="/GreenCarWeb/company/css/bootstrap-table.css">
+<link rel="stylesheet" href="/GreenCarWeb/company/css/bootstrap.min.css">
 <!-- FONTS -->
 </head>
 <body>
@@ -127,7 +129,8 @@
 							</div>
 						</div>
 						<div class="box-body">
-							<table class="table table-striped">
+							<table class="table table-striped" id="tableCarinfo">
+                                <!--
 								<thead>
 									<tr>
 										<th>#</th>
@@ -175,6 +178,7 @@
 									</tr>
 
 								</tbody>
+                            -->
 							</table>
 						</div>
 						<div class='text-center'>
@@ -229,7 +233,10 @@
 		src="/GreenCarWeb/company/js/jQuery-Cookie/jquery.cookie.min.js"></script>
 	<!-- CUSTOM SCRIPT -->
 	<script src="/GreenCarWeb/company/js/script.js"></script>
+	<script src="/GreenCarWeb/company/js/bootstrap.min.js"></script>
+	<script src="/GreenCarWeb/company/js/bootstrap-table/bootstrap-table.js"></script>
+	<script src="/GreenCarWeb/company/js/bootstrap-table/bootstrap-table-zh-CN.js"></script>
 	<script src="/GreenCarWeb/company/js/sysmanagecar.js"></script>
-
+	
 </body>
 </html>

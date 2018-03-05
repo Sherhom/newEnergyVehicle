@@ -49,6 +49,7 @@
   		<url-pattern>/*</url-pattern>
   </filter-mapping>
   
+  
   <!-- 配置SpringMVC前端控制器 -->
   <servlet>
   		<servlet-name>SpringMVC</servlet-name>
@@ -65,7 +66,7 @@
   		<servlet-name>SpringMVC</servlet-name>
   		<!-- / 会响应所有的请求。注意：会拦截静态资源(html,css,js,img)
   			后期需要进行放行静态资源的配置。-->
-  		<url-pattern>/</url-pattern>
+  		<url-pattern>*.action</url-pattern>
   </servlet-mapping>
   
   <!-- 　                                   配置log4j路径                                       　 -->  
@@ -79,5 +80,8 @@
             org.springframework.web.util.Log4jConfigListener  
         </listener-class>  
     </listener>  
+    
+    
+    
     
 </web-app>

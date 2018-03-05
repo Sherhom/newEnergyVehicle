@@ -9,20 +9,18 @@
     let oTable = TableInit();
     oTable.Init();
 
-    var button = new oButtonInit();
+    let button = oButtonInit();
     button.Init();
     
-    alert(button);
-    var oButtonInit = function(){
-        let obuttonInit = new Object();
-        obuttonInit.Init() = function(){
+    function oButtonInit(){
+        var btnInit = new Object();
+        btnInit.Init = function(){
             const allList = document.querySelectorAll("#carteamList > li");
-            alert(allList);
             for(const eachLi of allList){
-                eachLi.addEventListener("click",()=>{alert(eachLi.value)});
+                eachLi.addEventListener("click",()=>{oTable.queryParams(eachLi.value)});
             }
         }
-        return obuttonInit;
+        return btnInit;
     }
     
     
@@ -31,7 +29,7 @@
         //初始化Table
         oTableInit.Init = function () {
             $('#tableCarinfo').bootstrapTable({
-                url: '/GreenCarWeb/car/getCarinfo',         //请求后台的URL（*）
+                url: 'car/sysgetCarinfo.do',         //请求后台的URL（*）
                 method: 'post',                      //请求方式（*）
                 toolbar: '#toolbar',                //工具按钮用哪个容器
                 striped: true,                      //是否显示行间隔色
@@ -75,7 +73,7 @@
             var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
                 limit: params.limit,   //页面大小
                 offset: params.offset,  //页码
-                motorcade:$().val()
+                motorcade:1
             };
             return temp;
         };

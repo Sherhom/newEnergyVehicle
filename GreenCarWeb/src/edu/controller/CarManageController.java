@@ -20,7 +20,7 @@ public class CarManageController {
 	@Resource
 	HttpServletRequest req;
 	
-	@RequestMapping(value = "/getOpInfo")
+	@RequestMapping(value = "/getOpInfo.action")
 	public ModelAndView getOpInfoByKey(HttpServletRequest req) {
 		String carKeyword=req.getParameter("carKeyword");
 		String carTeamKeyword=req.getParameter("carTeamKeyword");
