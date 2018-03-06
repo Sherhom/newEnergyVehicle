@@ -17,9 +17,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+
 import edu.domain.CarOpDataBean;
 import edu.domain.GuaInfoBean;
+import edu.domain.TaskInfoBean;
 import edu.service.CarManageService;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 @Controller
@@ -60,18 +64,51 @@ public class CarManageController {
 	
 	 @ResponseBody
 	@RequestMapping(value = "/getGuaInfo_InOp.action")
-	public JSONObject getGuaInfo(HttpServletRequest req,HttpServletResponse response) {
+	public void getGuaInfo(HttpServletRequest req,HttpServletResponse response) {
 		System.out.println("进来了！");
 		String carNum=req.getParameter("carNum");
 		List<GuaInfoBean> temp=carManageService.getGuaInfo_service(carNum);
-		System.out.println(temp);
 		
-		JSONObject jsonObject = new JSONObject();
 		
-		jsonObject.put(, temp.)
-        return jsonObject;
+		Gson gson=new Gson();
+		String json=gson.toJson(temp);
+		System.out.println(json);
+		
+		try {
+			PrintWriter out=response.getWriter();
+			out.write(json);
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
         	
 	}
 	
-
+    
+	 @ResponseBody
+		@RequestMapping(value = "/getTaskInfo_InOp.action")
+		public void getTaskInfo(HttpServletRequest req,HttpServletResponse response) {
+			System.out.println("作业进来了！");
+			String motorcadeNum=req.getParameter("motorcadeNum");
+			List<TaskInfoBean> temp=carManageService.getTaskInfo_service(motorcadeNum);
+			
+			Gson gson=new Gson();
+			String json=gson.toJson(temp);
+			System.out.println(json);
+			
+			try {
+				PrintWriter out=response.getWriter();
+				out.write(json);
+				out.flush();
+				out.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+	        	
+		}
 }

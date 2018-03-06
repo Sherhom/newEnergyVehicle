@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import edu.dao.CarManageMapper;
 import edu.domain.CarOpDataBean;
 import edu.domain.GuaInfoBean;
+import edu.domain.TaskInfoBean;
 
 @Service
 public class CarManageService {
@@ -33,6 +34,11 @@ public class CarManageService {
 	
 	public List<GuaInfoBean> getGuaInfo_service(String carNum){
 		List<GuaInfoBean> temp=carManageMapper.getGuaInfo_mapper(carNum);
+		return temp;
+	}
+	
+	public List<TaskInfoBean> getTaskInfo_service(String motorcadeNum){
+		List<TaskInfoBean> temp=carManageMapper.getTaskInfo_mapper(motorcadeNum);
 		return temp;
 	}
 }

@@ -27,10 +27,69 @@ function searching(carNum) {
 					  	carNum:carNum
 						},  
 					success:function(data){  
-						var result= $.parseJSON(data);
-						alert(result);
+						var result=data
+						var html = "";
+						var tdHead = "<td>";
+						var tdFoot = "</td>";
+						$("#t1 tr:gt(0)").remove();//第一行是table的表格头不需清除。
+						for(var i=0;i<result.length;i++){
+							var guaInfo = result[i];
+							
+							var carNum=guaInfo.carNum;
+							var mainPeriod=guaInfo.mainPeriod;
+							var mainDes=guaInfo.mainDes;
+							var times=guaInfo.times;
+							
+							html += "<tr>" + tdHead + (i + 1) + tdFoot + 
+							tdHead + carNum + tdFoot +
+							tdHead + mainPeriod + tdFoot + 
+							tdHead + mainDes + tdFoot +
+							tdHead + times + tdFoot + "</tr>";
+						}
+						$("#t1").append(html);//将新数据填充到table
 					}
 				}); 
+}
+
+function searchingByMotNum(motorcadeNum) {
+	$.ajax({  
+		  url: "/GreenCarWeb/getTaskInfo_InOp.action",  
+		  type:'post',
+		  dataType:'json',
+		  async:true,
+		  data:{  
+		  	motorcadeNum:motorcadeNum
+			},  
+		success:function(data){  
+			var result=data
+			var html = "";
+			var tdHead = "<td>";
+			var tdFoot = "</td>";
+			$("#t2 tr:gt(0)").remove();//第一行是table的表格头不需清除。
+			for(var i=0;i<result.length;i++){
+				var taskInfo = result[i];
+				
+				var motorcadeNum=taskInfo.motorcadeNum;
+				var taskNum=taskInfo.taskNum;
+				var commitTime=taskInfo.commitTime;
+				var endTime=taskInfo.endTime;
+				var finishTime=taskInfo.finishTime;
+				var finishStatus=taskInfo.finishStatus;
+				var taskDes=taskInfo.taskDes;
+				
+				html += "<tr>" + tdHead + (i + 1) + tdFoot + 
+				tdHead + motorcadeNum + tdFoot +
+				tdHead + taskNum + tdFoot + 
+				tdHead + commitTime + tdFoot +
+				tdHead + endTime + tdFoot + 
+				tdHead + finishTime + tdFoot + 
+				tdHead + finishStatus + tdFoot +
+				tdHead + taskDes + tdFoot + 
+				"</tr>";
+			}
+			$("#t2").append(html);//将新数据填充到table
+		}
+	}); 
 }
 </script>
 
@@ -46,6 +105,19 @@ function getCarNum(){
 
 	}
 	searching(carNum);
+}
+
+function getMotorcadeNum(){
+	var t=document.getElementsByTagName("table")[0];
+	var motorcadeNum;
+	for(var i=0;i<t.rows.length;i++){
+		if(t.rows[i].cells[1].firstChild.checked){
+			motorcadeNum=t.rows[i].cells[3].innerText;
+			break;
+		}
+
+	}
+	searchingByMotNum(motorcadeNum);
 }
 </script>
 </head>
@@ -123,11 +195,26 @@ function getCarNum(){
 					&times;
 				</button>
 				<h4 class="modal-title" id="myModalLabel">
-					模态框（Modal）1
+					作业信息
 				</h4>
 			</div>
 			<div class="modal-body">
-				      
+				    <table id="t2">
+			
+	    <tr>
+	       <th width="5%">序号</th>
+	     
+	       <th>车队编号</th>
+	       <th>任务编号</th>
+	       <th>发布时间</th>
+	       <th>截止时间</th>
+	       <th>实际完成时间</th>
+	       <th>完成状态</th>
+	       <th>任务描述</th>
+	       
+	    </tr>
+	   
+	</table>  
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
@@ -153,13 +240,12 @@ function getCarNum(){
 					&times;
 				</button>
 				<h4 class="modal-title" id="myModalLabel">
-	
+	                                 保养信息
 				</h4>
 			</div>
 			<div class="modal-body">
-								 <table>
-		
-		
+		<table id="t1">
+			
 	    <tr>
 	       <th width="5%">序号</th>
 	     
@@ -170,32 +256,12 @@ function getCarNum(){
 	       
 	    </tr>
 	   
-	   <c:set var="guaInfo" value="${guaInfo}" scope="page" />
-		
-	     <c:if test="${not empty pageScope.guaInfo}">
-	     
-	    <c:forEach items="${pageScope.guaInfo}" var="soleGuaInfo">
-	       <tr style="text-align: center;">
-	                <td></td>
-	              
-					<td >${soleGuaInfo.carNum}</td>
-					<td >${soleGuaInfo.mainPeriod}</td>
-					<td >${soleGuaInfo.mainDes}</td>
-					<td >${soleGuaInfo.times}</td>
-					
-		  </tr>
-		
-	    </c:forEach>
-	    </c:if>
-	
 	</table>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
 				</button>
-				<button type="button" class="btn btn-primary">
-					提交更改
-				</button>
+				
 			</div>
 		</div>
 	</div>
@@ -207,7 +273,7 @@ $(function () { $('#myModal').modal('hide')});
 
 <script>
    $(function () { $('#myModal').on('show.bs.modal', function () {
-      getCarNum();
+      getMotorcadeNum();
    })});
 </script>
 

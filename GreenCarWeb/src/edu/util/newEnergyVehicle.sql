@@ -256,6 +256,10 @@ insert into driverInfo values(2,2,'carTeam002','car002','tom01',1,'4548123','hef
 insert into batteryInfo values('battery002','快电','ab01','car002');
 insert into carGuarantee values(2,'car002',6.00,'在合肥货车维修站进行保养','2018-03-03');
 insert into carMile values(2,340.55,1,1,0,1,'2018-03-03','car002');
+
+insert into taskInfo values(1,'carTeam001','task001','2018-3-6 20:00:00','2018-3-13 20:00:00','2018-3-12 15:36:25',1,'为合肥工地大学运货');
+insert into taskInfo values(2,'carTeam002','task002','2018-3-7 00:00:00','2018-3-15 20:00:00','2018-3-13 07:25:16',1,'为合肥女子学院的运货');
+
 --hushuxiang test data
 desc carinfo;
 desc carteaminfo;

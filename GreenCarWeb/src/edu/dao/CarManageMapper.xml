@@ -42,4 +42,9 @@
     <select id="getGuaInfo_mapper" parameterType="String" resultType="GuaInfoBean">
 		select * from carGuarantee where carNum = #{0}
 	</select>
+	
+	<!-- 根据车队号查询作业信息 -->
+    <select id="getTaskInfo_mapper" parameterType="String" resultType="TaskInfoBean">
+		select * from taskInfo where motorcadeNum = #{0}
+	</select>
 </mapper>
