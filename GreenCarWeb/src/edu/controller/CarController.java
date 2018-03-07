@@ -19,7 +19,7 @@ public class CarController {
 	@Resource
 	CarService carService;
 	
-	@RequestMapping(value="/sysgetCarinfo.do", method = RequestMethod.POST)
+	@RequestMapping(value="/sysgetCarinfo.action", method = RequestMethod.POST)
 	@ResponseBody
 	public List getCarInfo(int limit, int offset, String motorcade) {
 		System.out.println("in controller");
