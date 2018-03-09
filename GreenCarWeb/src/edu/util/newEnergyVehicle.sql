@@ -261,6 +261,8 @@ insert into taskInfo values(1,'carTeam001','task001','2018-3-6 20:00:00','2018-3
 insert into taskInfo values(2,'carTeam002','task002','2018-3-7 00:00:00','2018-3-15 20:00:00','2018-3-13 07:25:16',1,'为合肥女子学院的运货');
 
 --hushuxiang test data
+insert into adminInfo(adminNum,adminName,adminAccount,adminPass,adminPhone) values(001,'yefei','admin','admin','12345678912');
+insert into adminInfo(adminNum,adminName,adminAccount,adminPass,adminPhone) values(002,'yefei2','admin1','admin1','12345678910');
 desc carinfo;
 desc carteaminfo;
 DESC driverinfo;
