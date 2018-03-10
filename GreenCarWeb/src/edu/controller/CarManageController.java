@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 
+import edu.domain.CarLocationBean;
 import edu.domain.CarOpDataBean;
 import edu.domain.GuaInfoBean;
 import edu.domain.TaskInfoBean;
@@ -88,7 +89,7 @@ public class CarManageController {
 	}
 	
     
-	 @ResponseBody
+	    @ResponseBody
 		@RequestMapping(value = "/getTaskInfo_InOp.action")
 		public void getTaskInfo(HttpServletRequest req,HttpServletResponse response) {
 			System.out.println("作业进来了！");
@@ -97,6 +98,30 @@ public class CarManageController {
 			
 			Gson gson=new Gson();
 			String json=gson.toJson(temp);
+			System.out.println(json);
+			
+			try {
+				PrintWriter out=response.getWriter();
+				out.write(json);
+				out.flush();
+				out.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+	        	
+		}
+	 
+	    @ResponseBody
+		@RequestMapping(value = "/getPosInfo.action")
+		public void getLocationInfo(HttpServletRequest req,HttpServletResponse response) {
+			
+			String carNum=req.getParameter("carNum");
+			List<CarLocationBean> temp=carManageService.getLocationInfo_service(carNum);
+			
+			Gson gson=new Gson();
+			String json=gson.toJson(temp.get(0));
 			System.out.println(json);
 			
 			try {

@@ -46,7 +46,8 @@ DROP TABLE IF EXISTS `carLocation`;
 CREATE TABLE `carLocation`(
   `carLId` int(11) PRIMARY KEY auto_increment,
   `carNum` varchar(11) NOT NULL,
-  `carLoca` varchar(100) NOT NULL,
+  `longtitude` double(8,3) default 0.00,
+  `latitude` double(8,3) default 0.00,
   `times` timestamp NOT NULL,
   FOREIGN KEY(carNum) REFERENCES carInfo(carNum)
 )DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
@@ -260,6 +261,8 @@ insert into carMile values(2,340.55,1,1,0,1,'2018-03-03','car002');
 insert into taskInfo values(1,'carTeam001','task001','2018-3-6 20:00:00','2018-3-13 20:00:00','2018-3-12 15:36:25',1,'为合肥工地大学运货');
 insert into taskInfo values(2,'carTeam002','task002','2018-3-7 00:00:00','2018-3-15 20:00:00','2018-3-13 07:25:16',1,'为合肥女子学院的运货');
 
+insert into carLocation values(1,'car001',116.364,39.993,'2018-3-10 12:50:05');
+insert into carLocation values(2,'car002',115.000,38.000,'2018-3-10 13:16:17');
 --hushuxiang test data
 insert into adminInfo(adminNum,adminName,adminAccount,adminPass,adminPhone) values(001,'yefei','admin','admin','12345678912');
 insert into adminInfo(adminNum,adminName,adminAccount,adminPass,adminPhone) values(002,'yefei2','admin1','admin1','12345678910');

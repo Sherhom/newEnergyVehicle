@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 
 import edu.dao.CarManageMapper;
+import edu.domain.CarLocationBean;
 import edu.domain.CarOpDataBean;
 import edu.domain.GuaInfoBean;
 import edu.domain.TaskInfoBean;
@@ -39,6 +40,11 @@ public class CarManageService {
 	
 	public List<TaskInfoBean> getTaskInfo_service(String motorcadeNum){
 		List<TaskInfoBean> temp=carManageMapper.getTaskInfo_mapper(motorcadeNum);
+		return temp;
+	}
+	
+	public List<CarLocationBean> getLocationInfo_service(String carNum){
+		List<CarLocationBean> temp=carManageMapper.getLocationInfo_mapper(carNum);
 		return temp;
 	}
 }

@@ -47,4 +47,9 @@
     <select id="getTaskInfo_mapper" parameterType="String" resultType="TaskInfoBean">
 		select * from taskInfo where motorcadeNum = #{0}
 	</select>
+	
+	<!-- 根据车队号查询位置信息 -->
+    <select id="getLocationInfo_mapper" parameterType="String" resultType="CarLocationBean">
+		select * from carLocation where carNum = #{0} order by times desc
+	</select>
 </mapper>
