@@ -13,14 +13,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 
 import edu.domain.Car;
+import edu.domain.CarTeam;
 import edu.model.Page;
 import edu.service.CarService;
+import edu.service.CarTeamService;
 
 @Controller
 @RequestMapping(value="/car")
-public class CarController {
+public class SysCarTeamController {
 	@Resource
 	CarService carService;
+	@Resource
+	CarTeamService carTeamService;
 	
 	@RequestMapping(value="/sysgetCarinfo.action", method = RequestMethod.POST)
 	@ResponseBody
@@ -36,5 +40,27 @@ public class CarController {
 		return jsonResult;
 	}
 	
+	@RequestMapping(value="/initCarTeamTree.action")
+	@ResponseBody
+	public String getTeamTree() {
+		List carTeams = carTeamService.getCarTeamAll();
+		StringBuffer result = new StringBuffer("[");
+		for(CarTeam each:(List<CarTeam>) carTeams) {
+			result.append("{ \"text\" : \"Team").append(each.getMotorcadeNum()).append("\" },");
+		}
+		result.replace(result.length() - 1, result.length(), "");
+		result.append("]");
+		System.out.println(result);
+		return result.toString();
+	}
+	
+	@RequestMapping(value="/modifyCarInfo.action")
+	@ResponseBody
+	public String result(String carryingCapacity, String carBrand ) {
+		System.out.println("carryingC" + carryingCapacity);
+		System.out.println("carBrand " + carBrand);
+		
+		return "succ";
+	}
 
 }

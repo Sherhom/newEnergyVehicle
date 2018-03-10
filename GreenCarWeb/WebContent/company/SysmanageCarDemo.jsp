@@ -58,17 +58,17 @@
 				<div class="modal-body">
 					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon1">车辆品牌</span>
-						<input type="text" class="form-control" placeholder="请输入车辆编号" aria-describedby="basic-addon1">
+						<input type="text" id="sys-carteam-mofify-carBrand" class="form-control" placeholder="请输入车辆编号" aria-describedby="basic-addon1">
 					</div>
 					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon1">承载能力</span>
-						<input type="text" class="form-control" placeholder="请输入车辆承载吨位数" aria-describedby="basic-addon1">
+						<input type="text" id="sys-carteam-mofify-carryingCapacity" class="form-control" placeholder="请输入车辆承载吨位数" aria-describedby="basic-addon1">
 					</div>
 					
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-					<button type="button" class="btn btn-primary">保存</button>
+					<button type="button"  class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" id="sys-carteam-mofify-btnsave" class="btn btn-primary">保存</button>
 				</div>
 			</div>
 		</div>
@@ -109,109 +109,7 @@
 			</div>
 		</div>
 	</div>
+<script src="<%=root%>/company/js/sysmanagecar.js"></script>
 </body>
-<script type="text/javascript">
-	$(document).ready(function() {
-		function operateEvents(){
-		};
-		
-		function createModifyBtn(){
-			return [
-				'<button type="button" class="btn btn-primary" id="modify" data-toggle="modal" data-target="#sysModifyCar" >修改</button>'
-			]
-		}
-		
-		let _demoTable = $('#demoTable').bootstrapTable({
-            sidePagination:'server',//设置为服务器端分页
-            url: '<%=root%>/car/sysgetCarinfo.action',
-			method : 'post',
-			queryParams : function(params) {
-				var temp = { //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
-					limit : params.limit, //页面大小
-					offset : params.offset, //页码
-					motorcade : 1
-				};
-				return temp;
-			},
-			contentType : 'application/x-www-form-urlencoded;charset=utf-8',
-			striped : true,
-			clickToSelect : true,
-			pagenumber : 1,
-			pageSize : 5,
-			pagination : true,
-			pageList : [ 10, 30, 50 ],
-			showToggle : true,
-			showRefresh : true,
 
-			sortable : true,
-			idField : 'id',
-			columns : [ {
-				field : 'state',
-				width : '10%',
-				checkbox : true
-			}, {
-				field : 'carNum',
-				width : '10%',
-				title : '车辆编号',
-				align : 'center'
-			}, {
-				field : 'carBrand',
-				width : '10%',
-				title : '车辆品牌',
-				align : 'center'
-			}, {
-				field : 'carryingCapacity',
-				width : '10%',
-				title : '承载能力',
-				align : 'center'
-			}, {
-				field : 'operate',
-				width : '10%',
-				title : '操作',
-				align : 'center',
-				events : operateEvents,
-				formatter : createModifyBtn
-			} ],
-			toolbar : '#toolbar'
-
-		});
-		
-		function getTree(){
-			var data = [
-				  {
-				    text: "Team1",
-				    nodes: [
-				      {
-				        text: "Car 1",
-				      },
-				      {
-				        text: "Car 2"
-				      }
-				    ]
-				  },
-				  {
-				    text: "Parent 2",
-				    nodes: [
-				    	{
-				    		text:"Car 3"	
-				    	}
-				    	 
-				    ]
-				  },
-				  {
-				    text: "Parent 3"
-				  },
-				  {
-				    text: "Parent 4"
-				  },
-				  {
-				    text: "Parent 5"
-				  }
-				];
-			return data;
-		}
-		$('#tree').treeview({data:getTree()});
-		
-	});
-</script>
 </html>
