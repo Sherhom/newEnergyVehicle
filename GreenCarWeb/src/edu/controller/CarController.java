@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+
 import edu.domain.Car;
+import edu.model.Page;
 import edu.service.CarService;
 
 @Controller
@@ -21,10 +24,17 @@ public class CarController {
 	
 	@RequestMapping(value="/sysgetCarinfo.action", method = RequestMethod.POST)
 	@ResponseBody
-	public List getCarInfo(int limit, int offset, String motorcade) {
+	public String getCarInfo(int limit, int offset, String motorcade) {
 		System.out.println("in controller");
 		List<Car> cars = carService.getCarByTeamNum(motorcade);
-		return cars;
+		Page page = new Page();
+		page.setRows(cars);
+		page.setTotal(10);
+		Gson gson=new Gson();
+		String jsonResult = gson.toJson(page);
+		System.out.println(jsonResult);
+		return jsonResult;
 	}
+	
 
 }

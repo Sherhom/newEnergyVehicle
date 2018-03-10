@@ -62,7 +62,7 @@ public class CarManageController {
 		
 	}
 	
-	 @ResponseBody
+	@ResponseBody
 	@RequestMapping(value = "/getGuaInfo_InOp.action")
 	public void getGuaInfo(HttpServletRequest req,HttpServletResponse response) {
 		System.out.println("进来了！");
