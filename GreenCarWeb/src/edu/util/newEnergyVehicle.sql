@@ -35,7 +35,7 @@ DROP TABLE IF EXISTS `carStatus`;
 CREATE TABLE `carStatus`(
   `carSId` int(11) PRIMARY KEY auto_increment,
   `carNum` varchar(11) NOT NULL,
-  `carLoca` varchar(100) NOT NULL,
+  `carState` varchar(100) NOT NULL,
   `times` timestamp NOT NULL,
   `task` varchar(200) NOT NULL,
   `isBreakdown` int NOT NULL,
