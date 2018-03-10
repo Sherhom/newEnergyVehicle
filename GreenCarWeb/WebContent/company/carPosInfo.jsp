@@ -39,6 +39,27 @@
 	</style>
 	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ltIljHi0Q988RHCszb14Xfs7t6qZoTR5"></script>
 <title>Insert title here</title>
+
+
+
+<script type="text/javascript">
+function getPosInfo(carNum) {
+	$.ajax({  
+		  url: "/GreenCarWeb/getPosInfo.action",  
+		  type:'post',
+		  dataType:'json',
+		  async:true,
+		  data:{  
+		  	carNum:carNum
+			},  
+		success:function(data){  
+			var result=data;
+			getMap(result.longtitude,result.latitude);
+			
+		}
+	}); 
+}
+</script>
 </head>
 <body>
 	<div class="box border green" style="width:20%;height:100%;margin:0px;float:left">
@@ -156,16 +177,33 @@
 	</div>
    
     <div id="allmap" style="width:80%;height:100%;float:right"></div>
+ 
+ <script type="text/javascript">
+// 百度地图API功能
+var map = new BMap.Map("allmap");    // 创建Map实例
+map.centerAndZoom(new BMap.Point(116.000, 40.215), 11);  // 初始化地图,设置中心点坐标和地图级别
+//添加地图类型控件
+map.addControl(new BMap.MapTypeControl({
+	mapTypes:[
+        BMAP_NORMAL_MAP,
+        BMAP_HYBRID_MAP
+    ]}));	  
+map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+ map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+</script>
     	
-   <script type="text/javascript">
+<script type="text/javascript">
+
+function getMap(longtitude,latitude){
 	// 百度地图API功能
 var map = new BMap.Map("allmap");      
-map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);      
+map.centerAndZoom(new BMap.Point(longtitude, latitude), 11);      
 // 创建地理编码实例      
+map.enableScrollWheelZoom(true);
 
 var myGeo = new BMap.Geocoder();      
 // 根据坐标得到地址描述    
-myGeo.getLocation(new BMap.Point(116.364, 39.993), function(result){      
+myGeo.getLocation(new BMap.Point(longtitude, latitude), function(result){      
     if (result){
       alert(result.address);
     var addComp = result.addressComponents;
@@ -178,6 +216,8 @@ myGeo.getLocation(new BMap.Point(116.364, 39.993), function(result){
 addComp.city);
     }      
 });
+
+}
    
 </script> 
 
