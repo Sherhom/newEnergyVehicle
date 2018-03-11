@@ -3,6 +3,8 @@ package edu.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +25,7 @@ import edu.domain.CarLocationBean;
 import edu.domain.CarOpDataBean;
 import edu.domain.GuaInfoBean;
 import edu.domain.TaskInfoBean;
+import edu.model.Page;
 import edu.service.CarManageService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -34,11 +37,16 @@ public class CarManageController {
 	@Resource
 	HttpServletRequest req;
 	
-	@RequestMapping(value = "/getOpInfo.action")
-	public ModelAndView getOpInfoByKey(HttpServletRequest req) {
+	@RequestMapping(value = "/getOpInfo.action", method = RequestMethod.POST)
+	@ResponseBody
+	public String getOpInfoByKey(HttpServletRequest req) {
 		String carKeyword=req.getParameter("carKeyword");
 		String carTeamKeyword=req.getParameter("carTeamKeyword");
+		int offset=Integer.parseInt(req.getParameter("offset"));
+		int limit=Integer.parseInt(req.getParameter("limit"));
 		System.out.println("hello");
+		System.out.println(limit);
+		System.out.println(offset);
 		System.out.println(carKeyword);
 		System.out.println(carTeamKeyword);
 		List<CarOpDataBean> temp=null;
@@ -56,10 +64,22 @@ public class CarManageController {
 			temp=carManageService.getOpDataByMotorcadeNum(carTeamKeyword);
 		}
 		//System.out.println(temp.get(0)); 
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("allOpInfo",temp);
-		mv.setViewName("/company/carOpInfo.jsp");
-		return mv;
+		List<CarOpDataBean> result=new ArrayList<CarOpDataBean>();
+		int max=temp.size();
+		if(max>(offset+limit)){
+			max=offset+limit;
+		}
+		
+	    for(int i=offset;i<max;i++){
+	    	result.add(temp.get(i));
+	    }
+		Page page = new Page();
+		page.setRows(result);
+		page.setTotal(temp.size());
+		Gson gson=new Gson();
+		String jsonResult = gson.toJson(page);
+		System.out.println(jsonResult);
+		return jsonResult;
 		
 	}
 	
@@ -94,6 +114,7 @@ public class CarManageController {
 		public void getTaskInfo(HttpServletRequest req,HttpServletResponse response) {
 			System.out.println("作业进来了！");
 			String motorcadeNum=req.getParameter("motorcadeNum");
+			System.out.println(motorcadeNum);
 			List<TaskInfoBean> temp=carManageService.getTaskInfo_service(motorcadeNum);
 			
 			Gson gson=new Gson();

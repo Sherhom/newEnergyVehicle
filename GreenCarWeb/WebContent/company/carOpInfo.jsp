@@ -95,6 +95,7 @@ function searchingByMotNum(motorcadeNum) {
 
 <script>
 function getCarNum(){
+	
 	var t=document.getElementsByTagName("table")[0];
 	var carNum;
 	for(var i=0;i<t.rows.length;i++){
@@ -108,6 +109,7 @@ function getCarNum(){
 }
 
 function getMotorcadeNum(){
+	alert("hello!");
 	var t=document.getElementsByTagName("table")[0];
 	var motorcadeNum;
 	for(var i=0;i<t.rows.length;i++){
@@ -288,9 +290,6 @@ $(function () { $('#myModal2').modal('hide')});
 </script>
 
 </body>
-
-
-
 
 <script type="text/javascript" src="/GreenCarWeb/company/bootstrap-dist/js/bootstrap.js"></script>
 </html>
