@@ -20,8 +20,10 @@
 <script src="<%=root%>/company/js/bootstrap/bootstrap.min.js"></script>
 <script src="<%=root%>/company/js/bootstrap-table/bootstrap-table.js"></script>
 <script src="<%=root%>/company/js/bootstrap-table/bootstrap-table-zh-CN.js"></script>
-<script src="<%=root%>/company/js/bootstrap/bootstrap-treeview.min.js"></script>
+<script src="<%=root%>/company/js/bootstrap/bootstrap-treeview.js"></script>
 <script src="<%=root%>/company/js/jquery/jquery.extends.js"></script>
+<!-- bootbox -->
+<script src="https://cdn.bootcss.com/bootbox.js/4.4.0/bootbox.min.js"></script>
 
 <title>车辆信息管理</title>
 
@@ -29,21 +31,21 @@
 <body class="gray-bg">
 	<div class="modal fade" id="sysAddCar" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
+		<div class="modal-dialog" id="sysAddCar" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title" id="myModalLabel">添加车队车辆</h4>
 				</div>
 				<div class="modal-body">
 					<div class="input-group">
-						<span class="input-group-addon" id="basic-addon1">车辆编号</span>
-						<input type="text" class="form-control" placeholder="请输入车辆编号" aria-describedby="basic-addon1">
+						<span class="input-group-addon" >车辆编号</span>
+						<input type="text" class="form-control" id="sysAddCarNum" placeholder="请输入车辆编号" aria-describedby="basic-addon1">
 					</div>
 					
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-					<button type="button" class="btn btn-primary">保存</button>
+					<button type="button" id="btnAddCarSave" class="btn btn-primary">保存</button>
 				</div>
 			</div>
 		</div>
@@ -76,7 +78,7 @@
 	
 	<div class="wrapper wrapper-content animated fadeInRight" style="width:100%,height:100%">
 		<div class="col-sm-4">
-			<div id="tree"></div>
+			<div id="tree" class="tree tree-unselectable"></div>
 		</div>
 		<div class="col-sm-8">
 			<div class="ibox float-e-margins">
@@ -92,12 +94,13 @@
 								data-toggle="modal" data-target="#sysAddCar">
 								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
 							</button>
-
+							<!-- 
 							<button id="btn_delete" type="button"
 								class="btn btn-danger btn-sm"
 								onclick="sysGetSections">
 								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>删除
 							</button>
+							 -->
 						</div>
 						<div class="col-sm-12">
 							<table class="table table-striped table-bordered table-hover"
