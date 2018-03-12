@@ -30,6 +30,7 @@ public class SysCarTeamController {
 	@ResponseBody
 	public String getCarInfo(int limit, int offset, String motorcade) {
 		System.out.println("in controller");
+		System.out.println("limit : " + limit + " offset : " + offset + " motorcade : " + motorcade);
 		List<Car> cars = carService.getCarByTeamNum(motorcade);
 		Page page = new Page();
 		page.setRows(cars);
@@ -56,11 +57,30 @@ public class SysCarTeamController {
 	
 	@RequestMapping(value="/modifyCarInfo.action")
 	@ResponseBody
-	public String result(String carryingCapacity, String carBrand ) {
-		System.out.println("carryingC" + carryingCapacity);
+	public String modifyCarResult(String carNum,String carryingCapacity, String carBrand ) {
+		System.out.println("carNum" + carNum);
+		System.out.println("carrying" + carryingCapacity);
 		System.out.println("carBrand " + carBrand);
+		
+		return "modify success";
+	}
+	
+	@RequestMapping(value="/delCar.action")
+	@ResponseBody
+	public String delCarResult(String carNum) {
+		System.out.println("del carNum" + carNum);
+		
 		
 		return "succ";
 	}
-
+	
+	@RequestMapping(value="/addCar.action")
+	@ResponseBody
+	public String addCarResult(String carNum) {
+		System.out.println("add carNum" + carNum);
+		
+		
+		return "addsucc";
+	}
+	
 }
