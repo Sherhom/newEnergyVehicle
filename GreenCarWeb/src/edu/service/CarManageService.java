@@ -47,4 +47,6 @@ public class CarManageService {
 		List<CarLocationBean> temp=carManageMapper.getLocationInfo_mapper(carNum);
 		return temp;
 	}
+	
+	
 }

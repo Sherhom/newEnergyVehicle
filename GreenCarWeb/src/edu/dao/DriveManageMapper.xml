@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3.dtd">
+<mapper namespace = "edu.dao.DriveManageMapper">
+    
+    <!-- 查询所有驾驶员信息 -->
+    <select id="getAllDriverInfo_mapper" resultType="DriverBean">
+		select * from driverInfo 
+	</select>
+    
+    <!-- 根据驾驶员姓名或驾驶号查询 -->
+    <select id="getDriverInfoByNameOrNum_mapper" parameterType="String" resultType="DriverBean">
+		select * from driverInfo where driverNum = #{0} or driverName = #{0}
+	</select>
+   
+   <!-- 根据车队号查询 -->
+    <select id="getDriverInfoByTeamNum_mapper" parameterType="String" resultType="DriverBean">
+		select * from driverInfo where motorcadeNum = #{0}
+	</select>
+	
+	<!-- 根据两种条件查询 -->
+    <select id="getDriverInfoByBoth_mapper" parameterType="String" resultType="DriverBean">
+		select * from driverInfo where (driverNum = #{0} or driverName = #{0}) and motorcadeNum = #{0}
+	</select>
+   
+
+</mapper>
