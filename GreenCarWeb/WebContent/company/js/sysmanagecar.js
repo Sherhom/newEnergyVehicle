@@ -28,6 +28,7 @@ $(document).ready(function() {
 	tree.init();
 		//用于点击车队,重绘table内容
 	function refreshMotorcade(nodeText){
+		nodeText = nodeText +"";
 		var  regx = new RegExp("\\d+");
 		var num = nodeText.match(regx);
 		motorcadeNow = parseInt(num);
@@ -77,7 +78,8 @@ $(document).ready(function() {
 						);
 				}
 			}
-		})	
+		});
+
 	}
 	//表格修改车辆信息
 	function modifyCar(){
@@ -103,9 +105,10 @@ $(document).ready(function() {
 					            });
 							}
 						);
+					
 				}
 			}
-		})	
+		});
 	}
 	//为车队添加车辆
 	function addCar(){
@@ -119,6 +122,7 @@ $(document).ready(function() {
 					$.get("/GreenCarWeb/car/addCar.action",
 							{
 								carNum:carNumVal,
+								carTeamNum:motorcadeNow
 							},
 							function(msg){
 								bootbox.alert({
@@ -127,6 +131,7 @@ $(document).ready(function() {
 					            });
 							}
 						);
+					
 				}
 			}
 		});
@@ -186,7 +191,7 @@ $(document).ready(function() {
 					formatter : function(value, row, index){
 						return[
 						'<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sysModifyCar" >修改</button>' ,
-						'<button type="button" id ="remove" class="btn btn-danger" onclick="sysManageCarDel">删除</button>'
+						'<button type="button" id ="remove" class="btn btn-danger" >删除</button>'
 						].join("");
 					}
 				} ],

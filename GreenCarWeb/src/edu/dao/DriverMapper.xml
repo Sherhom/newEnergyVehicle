@@ -5,8 +5,21 @@
 <mapper namespace = "edu.dao.DriverMapper">
 	<select id="getDriverByTeamNum" resultType="driver">
 		select * from driverinfo where motorcadeNum = #{0}
+			limit #{2},#{1}
 	</select>
 	
+	<select id="getTotalDriverCount" resultType="int">
+		select count(*) from driverinfo
+	</select>
+	<select id="getDriverCountByTeam" resultType="int">
+		select count(*) from driverinfo where motorcadeNum = #{0}
+	</select>
+	
+	<update id="setMotorcadeNumByCarNum" parameterType ="String" >
+		update driverinfo 
+		set driverinfo.motorcadeNum = #{1}
+		where driverinfo.carNum = #{0}
+	</update>
 
 
 </mapper>

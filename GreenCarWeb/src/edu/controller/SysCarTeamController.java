@@ -2,6 +2,9 @@ package edu.controller;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
 
@@ -29,12 +32,11 @@ public class SysCarTeamController {
 	@RequestMapping(value="/sysgetCarinfo.action", method = RequestMethod.POST)
 	@ResponseBody
 	public String getCarInfo(int limit, int offset, String motorcade) {
-		System.out.println("in controller");
 		System.out.println("limit : " + limit + " offset : " + offset + " motorcade : " + motorcade);
-		List<Car> cars = carService.getCarByTeamNum(motorcade);
+		Map<String,Object> retInfo = carService.getCarByTeamNum(motorcade,limit,offset);
 		Page page = new Page();
-		page.setRows(cars);
-		page.setTotal(10);
+		page.setRows((List<Car>) retInfo.get("cars"));
+		page.setTotal((Integer) retInfo.get("driverTeamNum"));
 		Gson gson=new Gson();
 		String jsonResult = gson.toJson(page);
 		System.out.println(jsonResult);
@@ -58,29 +60,35 @@ public class SysCarTeamController {
 	@RequestMapping(value="/modifyCarInfo.action")
 	@ResponseBody
 	public String modifyCarResult(String carNum,String carryingCapacity, String carBrand ) {
-		System.out.println("carNum" + carNum);
-		System.out.println("carrying" + carryingCapacity);
-		System.out.println("carBrand " + carBrand);
-		
-		return "modify success";
+		Pattern p = Pattern.compile("\\d+");
+		Matcher match=p.matcher(carNum);
+		match.find();
+		String convertCarNum = match.group();
+		Car newCar = new Car(convertCarNum,carBrand,null,Double.valueOf(carryingCapacity),-1);
+		if(carService.sysModifyCar(newCar)) {
+			return "Modify Success";
+		}
+		return "Mofidy Failed";
 	}
 	
 	@RequestMapping(value="/delCar.action")
 	@ResponseBody
 	public String delCarResult(String carNum) {
-		System.out.println("del carNum" + carNum);
-		
-		
-		return "succ";
+		if(carService.sysDelCarFromTeam(carNum)) {
+			return "Delete Success";
+		}
+		return "Delete Failed";
 	}
 	
 	@RequestMapping(value="/addCar.action")
 	@ResponseBody
-	public String addCarResult(String carNum) {
+	public String addCarResult(String carNum,String carTeamNum) {
 		System.out.println("add carNum" + carNum);
-		
-		
-		return "addsucc";
+		System.out.println("add carTeamNUm" + carTeamNum);
+		if(carService.sysAddCarIntoTeam(carNum, carTeamNum)) {
+			return "Add Success";
+		}
+		return "Add Failed";
 	}
 	
 }
