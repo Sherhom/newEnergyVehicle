@@ -4,7 +4,12 @@
     "http://mybatis.org/dtd/mybatis-3.dtd">
 <mapper namespace = "edu.dao.CarMapper">
 	<select id="getCarByDriverNum" resultType="car">
-		select * from carinfo where driverNum = #{0}
+		select * from carinfo where drivernum = #{0}
 	</select>
 	
+	<update id="updateCarBrandCarrying" parameterType ="car" >
+		update carinfo 
+		set carinfo.carBrand = #{carBrand}, carinfo.carryingCapacity = #{carryingCapacity}
+		where carinfo.carNum = #{carNum}
+	</update>
 </mapper>

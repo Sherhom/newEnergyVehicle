@@ -60,7 +60,7 @@
 				<div class="modal-body">
 					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon1">车辆品牌</span>
-						<input type="text" id="sys-carteam-mofify-carBrand" class="form-control" placeholder="请输入车辆编号" aria-describedby="basic-addon1">
+						<input type="text" id="sys-carteam-mofify-carBrand" class="form-control" placeholder="请输入车辆品牌" aria-describedby="basic-addon1">
 					</div>
 					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon1">承载能力</span>

@@ -6,4 +6,5 @@ import edu.domain.Car;
 
 public interface CarMapper {
 	Car getCarByDriverNum(String driverNum);
+	void updateCarBrandCarrying(Car newCar);
 }
