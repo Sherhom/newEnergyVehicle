@@ -302,8 +302,12 @@ insert into taskInfo values(2,'carTeam002','task002','2018-3-7 00:00:00','2018-3
 insert into carLocation values(1,'car001',116.364,39.993,'2018-3-10 12:50:05');
 insert into carLocation values(2,'car002',115.000,38.000,'2018-3-10 13:16:17');
 --hushuxiang test data
-insert into adminInfo(adminNum,adminName,adminAccount,adminPass,adminPhone) values(001,'yefei','admin','admin','12345678912');
-insert into adminInfo(adminNum,adminName,adminAccount,adminPass,adminPhone) values(002,'yefei2','admin1','admin1','12345678910');
+show DATABASES ;
+SHOW  TABLES ;
+
+
+
+
 desc carinfo;
 desc carteaminfo;
 DESC driverinfo;
@@ -313,6 +317,10 @@ DESC carteaminfo;
 SELECT * FROM carinfo;
 SELECT * FROM carteaminfo;
 SELECT * FROM driverinfo;
+
+insert into adminInfo(adminNum,adminName,adminAccount,adminPass,adminPhone) values(001,'yefei','admin','admin','12345678912');
+insert into adminInfo(adminNum,adminName,adminAccount,adminPass,adminPhone) values(002,'yefei2','admin1','admin1','12345678910');
+
 INSERT INTO carinfo(carNum, carBrand, carryingCapacity, driverNum) VALUE (001,'hfut',20,001);
 INSERT INTO carinfo(carNum, carBrand, carryingCapacity, driverNum) VALUE (002,'hfut2',30,002);
 INSERT INTO carinfo(carNum, carBrand, carryingCapacity, driverNum) VALUE (003,'hfut2',30,003);
@@ -320,7 +328,6 @@ INSERT INTO carinfo(carNum, carBrand, carryingCapacity, driverNum) VALUE (004,'h
 INSERT INTO carinfo(carNum, carBrand, carryingCapacity, driverNum) VALUE (005,'hfut3',35,005);
 INSERT INTO carinfo(carNum, carBrand, carryingCapacity, driverNum) VALUE (006,'hfut4',40,006);
 
-INSERT INTO carteaminfo (motorcadeNum, captainNum, motorcadeMount) VALUES (001,001,);
 
 INSERT INTO driverinfo(driverId, driverNum, motorcadeNum, carNum, driverName, driverSex, driverPhone, driverPosition) VALUE (1,1,1,1,"A",0,"12312233331","leader");
 INSERT INTO driverinfo(driverId, driverNum, motorcadeNum, carNum, driverName, driverSex, driverPhone, driverPosition) VALUE (2,2,2,2,"B",0,"12312233332","leader");
@@ -328,3 +335,8 @@ INSERT INTO driverinfo(driverId, driverNum, motorcadeNum, carNum, driverName, dr
 INSERT INTO driverinfo(driverId, driverNum, motorcadeNum, carNum, driverName, driverSex, driverPhone, driverPosition) VALUE (4,4,3,4,"d",1,"12312233334","leader");
 INSERT INTO driverinfo(driverId, driverNum, motorcadeNum, carNum, driverName, driverSex, driverPhone, driverPosition) VALUE (5,5,3,5,"e",1,"12312233335","common");
 INSERT INTO driverinfo(driverId, driverNum, motorcadeNum, carNum, driverName, driverSex, driverPhone, driverPosition) VALUE (6,6,1,6,"f",1,"12312233336","common");
+
+INSERT INTO carteaminfo(motorcadeId, motorcadeNum, captainNum, motorcadeMount) VALUE (1,1,1,1);
+INSERT INTO carteaminfo(motorcadeId, motorcadeNum, captainNum, motorcadeMount) VALUE (3,3,4,2);
+INSERT INTO carteaminfo(motorcadeId, motorcadeNum, captainNum, motorcadeMount) VALUE (2,2,2,2);
+

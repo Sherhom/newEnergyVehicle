@@ -22,7 +22,7 @@ public class CarService {
 	 * @param teamNum 车队编号
 	 * @return 同一车队的车辆信息
 	 */
-	public List<Car> getCarByTeamNum(String teamNum){
+	public List<Car> getCarByTeamNum(String teamNum,int limit){
 		List<Driver> drivers = driverMapper.getDriverByTeamNum(teamNum);
 		List<Car> cars = new LinkedList<Car>();
 		for(Driver d:drivers) {

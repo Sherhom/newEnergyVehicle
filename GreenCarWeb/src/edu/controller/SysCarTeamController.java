@@ -29,9 +29,8 @@ public class SysCarTeamController {
 	@RequestMapping(value="/sysgetCarinfo.action", method = RequestMethod.POST)
 	@ResponseBody
 	public String getCarInfo(int limit, int offset, String motorcade) {
-		System.out.println("in controller");
 		System.out.println("limit : " + limit + " offset : " + offset + " motorcade : " + motorcade);
-		List<Car> cars = carService.getCarByTeamNum(motorcade);
+		List<Car> cars = carService.getCarByTeamNum(motorcade,limit);
 		Page page = new Page();
 		page.setRows(cars);
 		page.setTotal(10);
