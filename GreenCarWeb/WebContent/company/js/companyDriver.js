@@ -2,53 +2,127 @@
  * 
  */
 "use strict";
+var num;
+var $testTable;
+function modifyDriverInfo(driverNum, motorcadeNum, carNum, driverName,driverSex,driverPhone,driverPosition) {
+    num = driverNum;
+    $('#modifyDriverNum').val(driverNum);
+    $('#modifyMotorcadeNum').val( motorcadeNum);
+    $('#modifyCarNum').val(carNum);
+    $('#modifyDriverName').val(driverName);
+    $('#modifyDriverSex').val(driverSex);
+    $('#modifyDriverPhone').val(driverPhone);
+    $('#modifyDriverPosition').val(driverPosition);
+    $('#modifyModal').modal('show');
+}
+
+$('#saveModify').click(function() {
+	var titleTip = '提示';
+    $('#modifyModal').modal('hide');
+    bootbox.confirm({
+        title: titleTip,
+        message: '确认修改？',
+        callback: function (flag) {
+        	//alert(flag);
+            if (flag) {
+            	var driverNum = $('#modifyDriverNum').val();
+        	    var motorcadeNum = $('#modifyMotorcadeNum').val();
+        	    var carNum = $('#modifyCarNum').val();
+        	    var driverName = $('#modifyDriverName').val();
+        	    var driverSex = $('#modifyDriverSex').val();
+        	    var driverPhone = $('#modifyDriverPhone').val();
+        	    var driverPosition = $('#modifyDriverPosition').val();
+        	    $('#modifyModal').modal('show');
+               
+        	    exchangeData('/GreenCarWeb/modifyDriverInfo.action', driverNum, motorcadeNum, carNum, driverName,driverSex,driverPhone,driverPosition);
+              
+            }
+        }
+    });
+});
+
+// 删除
+function delDriverInfo(driverNum) {
+	var titleTip = '提示';
+    bootbox.confirm({
+        title: titleTip,
+        message: '确认删除？',
+        callback: function(flag) {
+            if (flag) {
+                exchangeData("/GreenCarWeb/delDriverInfo.action", driverNum);
+            }
+        }
+    });
+}
+
+
+//新增
+$('#addBtn').click(function() {
+	    $('#addDriverNum').val('');
+	    $('#addMotorcadeNum').val('');
+	    $('#addCarNum').val('');
+	    $('#addDriverName').val('');
+	    $('#addDriverSex').val('');
+	    $('#addDriverPhone').val('');
+	    $('#addDriverPosition').val('');
+    $('#addModal').modal('show');
+});
+
+$('#saveAdd').click(function() {
+	var titleTip = '提示';
+    $('#addModal').modal('hide');
+    bootbox.confirm({
+        title: titleTip,
+        message: '确认增加？',
+        callback: function (flag) {
+            if (flag) {
+            	var addDriverNum = $('#addDriverNum').val();
+        	    var addMotorcadeNum = $('#addMotorcadeNum').val();
+        	    var addCarNum = $('#addCarNum').val();
+        	    var addDriverName = $('#addDriverName').val();
+        	    var addDriverSex = $('#addDriverSex').val();
+        	    var addDriverPhone = $('#addDriverPhone').val();
+        	    var addDriverPosition = $('#addDriverPosition').val();
+               
+                exchangeData('/GreenCarWeb/addDriverInfo.action', addDriverNum,addMotorcadeNum,addCarNum, addDriverName,addDriverSex,addDriverPhone,addDriverPosition);
+                
+            }
+        }
+    });
+});
+
+
+
+//用于修改服务器资源
+function exchangeData(path, driverNum, motorcadeNum, carNum, driverName,driverSex,driverPhone,driverPosition) {
+    $.ajax({
+        url: path,
+        type: 'post',
+        data : {
+        	driverNum: driverNum, 
+        	motorcadeNum: motorcadeNum,
+        	carNum: carNum,
+        	driverName: driverName,
+        	driverSex: driverSex,
+        	driverPhone: driverPhone,
+        	driverPosition: driverPosition
+        },
+        success: function(res) {
+           /* bootbox.alert({
+                title: titleTip,
+                message: res.message
+            });*/
+            // 在每次提交操作后返回首页
+            $testTable.bootstrapTable('selectPage', 1);
+        }
+    });
+}
+
+
+
+
 $(document).ready(function() {
-	//生成车队的Tree begin
-	/*var tree = {
-			init: $.get("/GreenCarWeb/car/initCarTeamTree.action",
-					function(result){
-						$('#tree').treeview({
-							data:result,
-							onNodeSelected:function(event){
-								alert(event.target);
-							},
-							onNodeUnchecked:function(event,data){
-								alert(event);
-							} 
-						});
-					})
-		};
-	tree.init;*/
-	//生成车队的Tree end
 	
-	//绑定修改车辆信息事件
-	/*$("#sys-carteam-mofify-btnsave").on('click',modifyCar);
-	
-	function createModifyBtn(){
-		return [
-			'<button type="button" class="btn btn-primary" id="modify" data-toggle="modal" data-target="#sysModifyCar" >修改</button>'
-		]
-	}
-	
-	function modifyCar(){
-		let carryingCapacityVal = $("#sys-carteam-mofify-carryingCapacity").val();
-		let carBrandVal = $("#sys-carteam-mofify-carBrand").val();
-		alert('getsections' + JSON.stringify($('#demoTable').bootstrapTable('getSelections')));
-		$.get("/GreenCarWeb/car/modifyCarInfo.action",
-				{
-					carryingCapacity:carryingCapacityVal,
-					carBrand:carBrandVal
-				},
-				function(data){
-					alert(data);
-				}
-			);
-		
-	}
-	
-	//为修改按钮绑定事件 end
-	function operateEvents(){
-	};*/
 	function queryParams(params) {
 
 		return {
@@ -79,8 +153,10 @@ $(document).ready(function() {
 	    }
 	}
 	
+	
+	$testTable=$('#driverInfoTable');
 	//生成table begin
-	let _demoTable = $('#driverInfoTable').bootstrapTable({
+	let _demoTable = $testTable.bootstrapTable({
         sidePagination:'server',//设置为服务器端分页
         url: '/GreenCarWeb/getDriverInfo.action',
 		method : 'post',
@@ -138,10 +214,40 @@ $(document).ready(function() {
 			width : '10%',
 			title : '驾驶员职位',
 			align : 'center'
-		} ],
+		}, {
+	        formatter: function (value, row, index) {
+	            return [
+	                '<a href="javascript:modifyDriverInfo(' + row.driverNum + ",'" + row.motorcadeNum + "','" + row.carNum + "','" + row.driverName + "'," + row.driverSex + ",'" + row.driverPhone + "','" + row.driverPosition + "'" + ')">' +
+	                    '<i class="glyphicon glyphicon-pencil"></i>修改' +
+	                '</a>',
+	                '<a href="javascript:delDriverInfo(' + row.driverNum + ')">' +
+	                    '<i class="glyphicon glyphicon-remove"></i>删除' +
+	                '</a>'
+	            ].join('');
+	        },
+	        title: '操作'
+	    }],
 		toolbar : '#toolbar'
 
 	});
 	//生成table end
+	// 设置bootbox中文
+	bootbox.setLocale('zh_CN');
+
+	
+	
+	
+	// 点击查询按钮，年龄符合查询条件方可跳转查询
+	
+
+	// 点击重置按钮，清空查询条件并跳转回第一页
+	
+	
+
+	
+
+	// 修改
+	
+
 	
 });

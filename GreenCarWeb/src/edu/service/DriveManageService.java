@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import edu.dao.DriveManageMapper;
+import edu.domain.CarOverSpeedBean;
 import edu.domain.DriverBean;
 
 @Service
@@ -36,5 +37,19 @@ public class DriveManageService {
 		return temp;
 	}
 
-
+    public void mofidyDriverInfo_service(DriverBean db){
+    	driveManageMapper.mofidyDriverInfo_mapper(db);
+    }
+    
+    public void delDriverInfo_service(String driverNum){
+    	driveManageMapper.delDriverInfo_mapper(driverNum);
+    }
+    
+    public void addDriverInfo_service(DriverBean db){
+    	driveManageMapper.addDriverInfo_mapper(db);
+    }
+    
+    public List<CarOverSpeedBean> getOverSpeedInfo(String startDate,String endDate,String keyword){
+    	
+    }
 }

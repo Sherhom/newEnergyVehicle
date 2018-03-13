@@ -20,7 +20,7 @@ CREATE TABLE `carInfo`(
   `carBrand` varchar(20) NOT NULL,
   `carryingCapacity` double(5,2) default 0.00,
   `dateManu` timestamp NOT NULL,
-  `driverNum` int(11) NOT NULL
+  `driverNum` varchar(11) NOT NULL
 )DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `batteryInfo`;
@@ -247,14 +247,14 @@ CREATE TABLE `companyInfo`(
 insert into adminInfo(adminNum,adminName,adminAccount,adminPass,adminPhone) values(001,'yefei','admin','admin','12345678912');
 insert into adminInfo(adminNum,adminName,adminAccount,adminPass,adminPhone) values(002,'yefei2','admin1','admin1','12345678910');
 
-insert into carInfo values('car001','BMW1',20.00,'2010-01-05',1);
-insert into driverInfo values(1,1,'carTeam001','car001','jack01',1,'123456','normal');
+insert into carInfo values('car001','BMW1',20.00,'2010-01-05','1');
+insert into driverInfo values(1,'1','carTeam001','car001','jack01',1,'123456','normal');
 insert into batteryInfo values('battery001','南孚','ab01','car001');
 insert into carGuarantee values(1,'car001',6.00,'在桃花镇男子职业技术学院进行保养','2018-02-28');
 insert into carMile values(1,500.00,1,1,0,1,'2018-02-28','car001');
 
-insert into carInfo values('car002','qirui2',50.00,'2010-10-11',2);
-insert into driverInfo values(2,2,'carTeam002','car002','tom02',1,'4548123','normal');
+insert into carInfo values('car002','qirui2',50.00,'2010-10-11','2');
+insert into driverInfo values(2,'2','carTeam002','car002','tom02',1,'4548123','normal');
 insert into batteryInfo values('battery002','快电','ab01','car002');
 insert into carGuarantee values(2,'car002',6.00,'在合肥货车维修站进行保养','2018-03-03');
 insert into carMile values(2,340.55,1,1,0,1,'2018-03-03','car002');
@@ -265,27 +265,27 @@ insert into carMile values(2,340.55,1,1,0,1,'2018-03-03','car002');
 
 -- 2018-3-11
 
-insert into carInfo values('car003','benz3',20.00,'2010-01-05',3);
-insert into driverInfo values(3,3,'carTeam003','car003','jack03',1,'123456','captain');
+insert into carInfo values('car003','benz3',20.00,'2010-01-05','3');
+insert into driverInfo values(3,'3','carTeam003','car003','jack03',1,'123456','captain');
 insert into batteryInfo values('battery003','南孚','ab01','car003');
 insert into carGuarantee values(3,'car003',6.00,'在桃花镇男子职业技术学院3号保养厂进行保养','2018-02-28');
 insert into carMile values(3,500.00,1,1,0,1,'2018-02-28','car003');
 
 
-insert into carInfo values('car004','changcheng4',50.00,'2010-10-11',4);
-insert into driverInfo values(4,4,'carTeam004','car004','tom04',1,'4548123','normal');
+insert into carInfo values('car004','changcheng4',50.00,'2010-10-11','4');
+insert into driverInfo values(4,'4','carTeam004','car004','tom04',1,'4548123','normal');
 insert into batteryInfo values('battery004','快电','ab01','car004');
 insert into carGuarantee values(4,'car004',6.00,'在合肥货车维修站04号场地进行保养','2018-03-03');
 insert into carMile values(4,340.55,1,1,0,1,'2018-03-03','car004');
 
-insert into carInfo values('car005','dazhong5',20.00,'2010-01-05',5);
-insert into driverInfo values(5,5,'carTeam005','car005','jack05',1,'123456','captain');
+insert into carInfo values('car005','dazhong5',20.00,'2010-01-05','5');
+insert into driverInfo values(5,'5','carTeam005','car005','jack05',1,'123456','captain');
 insert into batteryInfo values('battery005','南孚','ab01','car005');
 insert into carGuarantee values(5,'car005',6.00,'在桃花镇男子职业技术学院5号场地进行保养','2018-02-28');
 insert into carMile values(5,500.00,1,1,0,1,'2018-02-28','car005');
 
-insert into carInfo values('car006','biaozhi6',50.00,'2010-10-11',6);
-insert into driverInfo values(6,6,'carTeam006','car006','tom06',1,'4548123','normal');
+insert into carInfo values('car006','biaozhi6',50.00,'2010-10-11','6');
+insert into driverInfo values(6,'6','carTeam006','car006','tom06',1,'4548123','normal');
 insert into batteryInfo values('battery006','快电','ab01','car006');
 insert into carGuarantee values(6,'car006',6.00,'在合肥货车维修站06号场地进行保养','2018-03-03');
 insert into carMile values(6,340.55,1,1,0,1,'2018-03-03','car006');

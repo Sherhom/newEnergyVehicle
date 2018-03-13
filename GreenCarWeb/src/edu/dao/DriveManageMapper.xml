@@ -6,7 +6,7 @@
     
     <!-- 查询所有驾驶员信息 -->
     <select id="getAllDriverInfo_mapper" resultType="DriverBean">
-		select * from driverInfo 
+		select * from driverInfo order by driverNum asc
 	</select>
     
     <!-- 根据驾驶员姓名或驾驶号查询 -->
@@ -23,6 +23,61 @@
     <select id="getDriverInfoByBoth_mapper" parameterType="String" resultType="DriverBean">
 		select * from driverInfo where (driverNum = #{0} or driverName = #{0}) and motorcadeNum = #{0}
 	</select>
+	
+	<!-- 根据司机号更改司机信息 -->
+	<update id="mofidyDriverInfo_mapper" parameterType="DriverBean">
+         update driverInfo set driverNum = #{driverNum},motorcadeNum = #{motorcadeNum},carNum = #{carNum},
+         driverName = #{driverName},driverSex = #{driverSex},driverPhone = #{driverPhone},driverPosition = #{driverPosition}
+         where driverNum = #{driverNum}
+     </update>
    
-
+     <!-- 根据司机号删除司机信息 -->
+     <delete id="delDriverInfo_mapper" parameterType="String">
+          delete from driverInfo where driverNum = #{driverNum}
+     </delete>
+     
+     <!-- 插入司机信息 -->	
+	<insert id="addDriverInfo_mapper" parameterType="DriverBean" useGeneratedKeys="true"
+	keyProperty="driverID">
+		insert into driverInfo(driverNum,motorcadeNum,carNum,driverName,driverSex,driverPhone,driverPosition) 
+		values(#{driverNum},#{motorcadeNum},#{carNum},#{driverName},#{driverSex},#{driverPhone},#{driverPosition})
+	</insert>
+	
+	 <resultMap type="CarOverSpeedBean" id="codp_map">
+	    <result column="driverInfo.carNum" property="carNum"/>
+		<result column="driverInfo.driverNum" property="driverNum"/>
+		<result column="driverInfo.driverName" property="driverName"/>
+		<result column="carOverSpeed.limitSpeed" property="limitSpeed"/>
+		<result column="carOverSpeed.maxSpeed" property="maxSpeed"/>
+		<result column="carOverSpeed.statusIdent" property="statusIdent"/>
+		
+	</resultMap>
+	
+	
+	<!-- 查询超速信息 -->
+	<select id="getOverSpeedInfo_mapper" resultMap="codp_map">
+		SELECT * FROM carInfo ,driverInfo,batteryInfo,carGuarantee ,carMile 
+		WHERE carInfo.driverNum=driverInfo.driverNum and carInfo.carNum=batteryInfo.carNum and 
+		carInfo.carNum=carGuarantee.carNum and carInfo.carNum=carMile.carNum	
+	</select>
+	
+	<!--  待解决-->
+	   <select id="getOverSpeedInfo_mapper" resultMap="codp_map">
+             select * from game,gameDetail where game.did=gameDetail.did 
+             <if test="gameName_b!=null and gameName_b!=''">
+             and gameName like concat(concat('%',#{gameName_b}),'%')
+             </if>
+             <if test="gid_b >0">
+             and gid=#{gid_b}
+             </if>
+             <if test="startTime_b !=null and startTime_b !=''">
+             and  startTime  between str_to_date(#{startTime_b},'%Y-%m-%d') and str_to_date(#{endTime_b},'%Y-%m-%d')
+             </if>
+             <if test="startTime_b ==null or startTime_b ==''">
+             and  str_to_date(#{endTime_b},'%Y-%m-%d') > startTime
+             </if>
+             <if test="start !=null and pageSize !=null">
+             limit #{start},#{pageSize}
+             </if>
+          </select>
 </mapper>

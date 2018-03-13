@@ -2,6 +2,7 @@ package edu.dao;
 
 import java.util.List;
 
+import edu.domain.CarOverSpeedBean;
 import edu.domain.DriverBean;
 
 public interface DriveManageMapper {
@@ -14,4 +15,11 @@ public interface DriveManageMapper {
 	
 	List<DriverBean> getAllDriverInfo_mapper();
 
+	void mofidyDriverInfo_mapper(DriverBean db);
+
+	void delDriverInfo_mapper(String driverNum);
+
+	void addDriverInfo_mapper(DriverBean db);
+    
+	List<CarOverSpeedBean> getOverSpeedInfo_mapper(String startDate,String endDate,String keyword);
 }
