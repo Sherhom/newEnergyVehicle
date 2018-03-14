@@ -44,34 +44,14 @@
 							<!-- 工具栏 -->
 							<button id="btn_addBattery" type="button"
 								class="btn btn-primary btn-sm" data-toggle="modal"
-								data-target="#sysAddCar">
+								data-target="">
 								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增电池
 							</button>
-							<button id="btn_modifyBattery" type="button"
-								class="btn btn-primary btn-sm" data-toggle="modal"
-								data-target="#sysAddCar">
-								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>修改信息
-							</button>
-							<button id="btn_delBattery" type="button"
-								class="btn btn-primary btn-sm" data-toggle="modal"
-								data-target="#sysAddCar">
-								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>删除电池
-							</button>
-							<button id="btn_correlateBattery" type="button"
-								class="btn btn-primary btn-sm" data-toggle="modal"
-								data-target="#sysAddCar">
-								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>关联电池
-							</button>
-							<button id="btn_detatchBattery" type="button"
-								class="btn btn-primary btn-sm" data-toggle="modal"
-								data-target="#sysAddCar">
-								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>脱离关联
-							</button>
-							<div class="col-sm-12">
+						</div>
+						<div class="col-sm-12">
 								<table class="table table-striped table-bordered table-hover"
 									id="batteryTable">
 								</table>
-							</div>
 						</div>
 					</div>
 				</div>

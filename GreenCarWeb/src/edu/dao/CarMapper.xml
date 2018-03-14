@@ -7,6 +7,10 @@
 		select * from carinfo where drivernum = #{0}
 	</select>
 	
+	<select id="getCarByCarNum" resultType="car">
+		select * from carinfo where carNum = #{0}
+	</select>
+	
 	<update id="updateCarBrandCarrying" parameterType ="car" >
 		update carinfo 
 		set carinfo.carBrand = #{carBrand}, carinfo.carryingCapacity = #{carryingCapacity}
