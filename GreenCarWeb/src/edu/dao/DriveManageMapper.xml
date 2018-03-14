@@ -43,41 +43,80 @@
 		values(#{driverNum},#{motorcadeNum},#{carNum},#{driverName},#{driverSex},#{driverPhone},#{driverPosition})
 	</insert>
 	
-	 <resultMap type="CarOverSpeedBean" id="codp_map">
+	
+	<!-- 根据日期和关键字查询超速事件的信息 -->
+	 <resultMap type="CarOverSpeedBean" id="overSpeed_map">
 	    <result column="driverInfo.carNum" property="carNum"/>
 		<result column="driverInfo.driverNum" property="driverNum"/>
 		<result column="driverInfo.driverName" property="driverName"/>
 		<result column="carOverSpeed.limitSpeed" property="limitSpeed"/>
 		<result column="carOverSpeed.maxSpeed" property="maxSpeed"/>
 		<result column="carOverSpeed.statusIdent" property="statusIdent"/>
+		<result column="carOverSpeed.times" property="times"/>
+	</resultMap>
+
+	   <select id="getOverSpeedInfo_mapper" parameterType="java.lang.String" resultMap="overSpeed_map">
+             select * from driverInfo,carOverSpeed where driverInfo.carNum=carOverSpeed.carNum 
+             <if test="#{2}!=null and #{2}!=''">
+             and (driverInfo.carNum = #{2} || driverInfo.driverNum = #{2})
+             </if>
+             <if test="#{1} !=null and #{1} !=''">
+             and  carOverSpeed.times  between str_to_date(#{0},'%Y-%m-%d') and str_to_date(#{1},'%Y-%m-%d')
+             </if>
+             <if test="#{0} ==null or #{0} ==''">
+             and  str_to_date(#{1},'%Y-%m-%d') > carOverSpeed.times
+             </if>
+          </select>
+          
+     <!-- 根据日期和关键字查询超载事件的信息 -->
+	 <resultMap type="CarOverLoadBean" id="overLoad_map">
+	    <result column="driverInfo.carNum" property="carNum"/>
+		<result column="driverInfo.driverNum" property="driverNum"/>
+		<result column="driverInfo.driverName" property="driverName"/>
+		<result column="carOverLoad.limitLoad" property="limitLoad"/>
+		<result column="carOverLoad.actualLoad" property="actualLoad"/>
+		<result column="carOverLoad.ident" property="ident"/>
+		<result column="carOverLoad.times" property="times"/>
 		
 	</resultMap>
-	
-	
-	<!-- 查询超速信息 -->
-	<select id="getOverSpeedInfo_mapper" resultMap="codp_map">
-		SELECT * FROM carInfo ,driverInfo,batteryInfo,carGuarantee ,carMile 
-		WHERE carInfo.driverNum=driverInfo.driverNum and carInfo.carNum=batteryInfo.carNum and 
-		carInfo.carNum=carGuarantee.carNum and carInfo.carNum=carMile.carNum	
-	</select>
-	
-	<!--  待解决-->
-	   <select id="getOverSpeedInfo_mapper" resultMap="codp_map">
-             select * from game,gameDetail where game.did=gameDetail.did 
-             <if test="gameName_b!=null and gameName_b!=''">
-             and gameName like concat(concat('%',#{gameName_b}),'%')
+
+	   <select id="getOverLoadInfo_mapper" resultMap="overLoad_map">
+             select * from driverInfo,carOverLoad where driverInfo.carNum=carOverLoad.carNum 
+             <if test="#{2}!=null and #{2}!=''">
+             and (driverInfo.carNum = #{2} || driverInfo.driverNum = #{2})
              </if>
-             <if test="gid_b >0">
-             and gid=#{gid_b}
+             <if test="#{0} !=null and #{0} !=''">
+             and  carOverLoad.times  between str_to_date(#{0},'%Y-%m-%d') and str_to_date(#{1},'%Y-%m-%d')
              </if>
-             <if test="startTime_b !=null and startTime_b !=''">
-             and  startTime  between str_to_date(#{startTime_b},'%Y-%m-%d') and str_to_date(#{endTime_b},'%Y-%m-%d')
+             <if test="#{0} ==null or #{0} ==''">
+             and  str_to_date(#{1},'%Y-%m-%d') > carOverLoad.times
              </if>
-             <if test="startTime_b ==null or startTime_b ==''">
-             and  str_to_date(#{endTime_b},'%Y-%m-%d') > startTime
+          </select>
+          
+          
+      <!-- 根据日期和关键字查询碰撞事件的信息 -->
+	 <resultMap type="CarCollisionBean" id="collision_map">
+	    <result column="driverInfo.carNum" property="carNum"/>
+		<result column="driverInfo.driverNum" property="driverNum"/>
+		<result column="driverInfo.driverName" property="driverName"/>
+		<result column="carCollision.collRank" property="collRank"/>
+		<result column="carCollision.limitValue" property="limitValue"/>
+		<result column="carCollision.actualValue" property="actualValue"/>
+		<result column="carCollision.collAngel" property="collAngel"/>
+		<result column="carCollision.times" property="times"/>
+		
+	</resultMap>
+
+	   <select id="getCollisionInfo_mapper" resultMap="collision_map">
+             select * from driverInfo,carCollision where driverInfo.carNum=carCollision.carNum 
+             <if test="#{2}!=null and #{2}!=''">
+             and (driverInfo.carNum = #{2} || driverInfo.driverNum = #{2})
              </if>
-             <if test="start !=null and pageSize !=null">
-             limit #{start},#{pageSize}
+             <if test="#{0} !=null and #{0} !=''">
+             and  carCollision.times  between str_to_date(#{0},'%Y-%m-%d') and str_to_date(#{1},'%Y-%m-%d')
+             </if>
+             <if test="#{0} ==null or #{0} ==''">
+             and  str_to_date(#{1},'%Y-%m-%d') > carCollision.times
              </if>
           </select>
 </mapper>

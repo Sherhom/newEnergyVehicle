@@ -291,17 +291,24 @@ insert into carGuarantee values(6,'car006',6.00,'在合肥货车维修站06号�
 insert into carMile values(6,340.55,1,1,0,1,'2018-03-03','car006');
 
 
-
-
-
-
-
-
 insert into taskInfo values(1,'carTeam001','task001','2018-3-6 20:00:00','2018-3-13 20:00:00','2018-3-12 15:36:25',1,'为合肥工地大学运货');
 insert into taskInfo values(2,'carTeam002','task002','2018-3-7 00:00:00','2018-3-15 20:00:00','2018-3-13 07:25:16',1,'为合肥女子学院的运货');
 
 insert into carLocation values(1,'car001',116.364,39.993,'2018-3-10 12:50:05');
 insert into carLocation values(2,'car002',115.000,38.000,'2018-3-10 13:16:17');
+
+
+--2018-3-14
+
+insert into carCollision values(1,'car001',5,63.7,76.5,37.5,'2018-3-12 14:40:12');
+insert into carCollision values(2,'car002',6,63.7,89.3,62.25,'2018-3-13 15:35:05');
+
+insert into carOverSpeed values(1,'car003',60.0,75.38,1,'2018-3-9 08:15:30');
+insert into carOverSpeed values(2,'car004',60.0,69.35,1,'2018-3-9 11:30:27');
+
+insert into carOverLoad values(1,'car005',30.0,31.92,1,'2018-3-11 07:55:03');
+insert into carOverLoad values(2,'car006',30.0,35.58,1,'2018-3-13 09:10:48');
+
 --hushuxiang test data
 show DATABASES ;
 SHOW  TABLES ;
