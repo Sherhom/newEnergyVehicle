@@ -149,7 +149,7 @@
 		src="/GreenCarWeb/company/js/bootstrap-table/bootstrap-table.js"></script>
 	<script
 		src="/GreenCarWeb/company/js/bootstrap-table/bootstrap-table-zh-CN.js"></script>
-	<script src="/GreenCarWeb/company/js/companyDriver.js"></script>
+	<script src="/GreenCarWeb/company/js/driveEvent.js"></script>
 
 
 

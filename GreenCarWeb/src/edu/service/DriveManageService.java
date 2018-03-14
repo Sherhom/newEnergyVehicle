@@ -7,6 +7,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import edu.dao.DriveManageMapper;
+import edu.domain.CarCollisionBean;
+import edu.domain.CarOverLoadBean;
 import edu.domain.CarOverSpeedBean;
 import edu.domain.DriverBean;
 
@@ -50,7 +52,23 @@ public class DriveManageService {
     }
     
     public List<CarOverSpeedBean> getOverSpeedInfo(String startDate,String endDate,String keyword){
-		return null;
+    	System.out.println("*****service*******");
+    	System.out.println(startDate);
+    	System.out.println(endDate);
+        System.out.println(keyword);
+    	List<CarOverSpeedBean> temp=driveManageMapper.getOverSpeedInfo_mapper(startDate, endDate, keyword);
     	
+    	return temp;
+    	
+    }
+    
+    public List<CarOverLoadBean> getOverLoadInfo(String startDate,String endDate,String keyword){
+    	List<CarOverLoadBean> temp=driveManageMapper.getOverLoadInfo_mapper(startDate, endDate, keyword);
+    	return temp;
+    }
+    
+    public List<CarCollisionBean> getCollisionInfo(String startDate,String endDate,String keyword){
+    	List<CarCollisionBean> temp=driveManageMapper.getCollisionInfo_mapper(startDate, endDate, keyword);
+    	return temp;
     }
 }
