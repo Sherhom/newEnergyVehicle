@@ -29,7 +29,95 @@
 <title>独立电池维护</title>
 </head>
 <body>
-
+	<!--修改电池信息modal  -->
+	<div class="modal fade" id="batteryMaintainModify" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog"  role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">修改电池信息</h4>
+				</div>
+				<div class="modal-body">
+					<div class="input-group">
+						<span class="input-group-addon" >电池品牌</span>
+						<input type="text" class="form-control" id="batteryMaintainBatteryBrand" placeholder="请输入电池品牌" aria-describedby="basic-addon1">
+					</div>
+					
+				</div>
+				<div class="modal-body">
+					<div class="input-group">
+						<span class="input-group-addon" >电池型号</span>
+						<input type="text" class="form-control" id="batteryMaintainBatteryVersion" placeholder="请输入电池型号" aria-describedby="basic-addon1">
+					</div>
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" id="batteryMaintainBtnSave" class="btn btn-primary">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 电池关联车辆modal -->
+	<div class="modal fade" id="batteryMaintainAttach" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog"  role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">关联车辆</h4>
+				</div>
+				<div class="modal-body">
+					<div class="input-group">
+						<span class="input-group-addon" >车辆编号</span>
+						<input type="text" class="form-control" id="batteryMaintainAttachCarNum" placeholder="请输入车辆编号" aria-describedby="basic-addon1">
+					</div>
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" id="batteryMaintainBtnSaveAttach" class="btn btn-primary">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 新增电池modal -->
+	<div class="modal fade" id="batteryMaintainAddBattery" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog"  role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" >新增电池信息</h4>
+				</div>
+				<div class="modal-body">
+					<div class="input-group">
+						<span class="input-group-addon" >电池编号</span>
+						<input type="text" class="form-control" id="batteryMaintainBatteryAddBatteryNum" placeholder="请输入电池编号" aria-describedby="basic-addon1">
+					</div>
+					
+				</div>
+				<div class="modal-body">
+					<div class="input-group">
+						<span class="input-group-addon" >电池品牌</span>
+						<input type="text" class="form-control" id="batteryMaintainBatteryAddBrand" placeholder="请输入电池品牌" aria-describedby="basic-addon1">
+					</div>
+					
+				</div>
+				<div class="modal-body">
+					<div class="input-group">
+						<span class="input-group-addon" >电池型号</span>
+						<input type="text" class="form-control" id="batteryMaintainBatteryAddVersion" placeholder="请输入电池编号" aria-describedby="basic-addon1">
+					</div>
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" id="batteryMaintainAddBatteryBtn" class="btn btn-primary">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="wrapper wrapper-content animated fadeInRight"
 		style="width: 100%, height:100%">
 		<div class="col-sm-12">
@@ -42,41 +130,22 @@
 					<div class="row">
 						<div id="toolbar" class="btn-group">
 							<!-- 工具栏 -->
-							<button id="btn_addBattery" type="button"
+							<button id="batteryMaintainAddBatteryBtn" type="button"
 								class="btn btn-primary btn-sm" data-toggle="modal"
-								data-target="#sysAddCar">
+								data-target="#batteryMaintainAddBattery">
 								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增电池
 							</button>
-							<button id="btn_modifyBattery" type="button"
-								class="btn btn-primary btn-sm" data-toggle="modal"
-								data-target="#sysAddCar">
-								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>修改信息
-							</button>
-							<button id="btn_delBattery" type="button"
-								class="btn btn-primary btn-sm" data-toggle="modal"
-								data-target="#sysAddCar">
-								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>删除电池
-							</button>
-							<button id="btn_correlateBattery" type="button"
-								class="btn btn-primary btn-sm" data-toggle="modal"
-								data-target="#sysAddCar">
-								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>关联电池
-							</button>
-							<button id="btn_detatchBattery" type="button"
-								class="btn btn-primary btn-sm" data-toggle="modal"
-								data-target="#sysAddCar">
-								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>脱离关联
-							</button>
-							<div class="col-sm-12">
+						</div>
+						<div class="col-sm-12">
 								<table class="table table-striped table-bordered table-hover"
 									id="batteryTable">
 								</table>
-							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 		<script src="<%=root%>/company/js/batteryMaintain.js"></script>
 </body>
 </html>

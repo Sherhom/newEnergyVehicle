@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3.dtd">
+<mapper namespace = "edu.dao.BatteryMapper">
+	
+	<select id="getBatteryByBatteryNum" resultType="battery">
+		select * from batteryinfo
+			where batteryNum = #{0}
+	</select>
+	
+	<select id="getBatteryByCarNum" resultType="battery">
+		select * from batteryinfo
+			where carNum = #{0}
+	</select>
+	
+	<select id="getBatteryInfoShowDetached" resultType="battery">
+		select * from batteryinfo
+			where carNum = null
+		limit #{1},#{0}
+	</select>
+	
+	<select id="getBatteryInfoNotShowDetached" resultType="battery">
+		select * from batteryinfo
+		limit #{1},#{0}
+	</select>
+	
+	<select id="getBatteryCountShowDetached" resultType="int">
+		select count(*) from batteryinfo
+			where carNum = null
+	</select>
+	
+	<select id="getBatteryCountNotShowDetached" resultType="int">
+		select count(*) from batteryinfo
+	</select>
+	
+	<update id="setBatteryCarNum">
+		update batteryinfo set carNum = #{1} 
+		where batteryNum = #{0}
+	</update>
+	
+	<update id="setBatteryInfo">
+		update batteryinfo set batteryBrand = #{1} ,batteryVersion = #{2}
+		where batteryNum = #{0}
+	</update>
+	
+	<delete id="delBatteryByBatteryNum">
+		delete from batteryinfo where batteryNum = #{0}
+	</delete>
+	
+	<insert id="addBattery">
+		insert into batteryinfo(batteryNum,batteryBrand,batteryVersion,carNum)
+		value(#{0},#{1},#{2},#{3})
+	</insert>
+	
+</mapper>

@@ -158,6 +158,7 @@ public class DriveManageController {
 		return temp;
 	}
 	
+	
 	@ResponseBody
 	@RequestMapping(value = "/driveEventManage.action")
 	public String getDriveEventInfo(HttpServletResponse response) {
@@ -260,7 +261,7 @@ public class DriveManageController {
         }
         return jsonResult;
 	}
-	
+       
 	@ResponseBody
 	@RequestMapping(value = "/delDriveEventInfo.action")
 	public void delDriveEventInfo(HttpServletResponse response) {
@@ -294,6 +295,6 @@ public class DriveManageController {
 		}else{
 			
 		}
+
+}    
 	}
-	
-}
