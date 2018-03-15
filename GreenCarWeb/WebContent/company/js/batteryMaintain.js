@@ -2,28 +2,179 @@
  * 
  */
 "use strict";
-//生成表格 begin
-
 
 
 $(document).ready(function() {
+	
 	let isBindedNow = null;
+	let batteryNumNow;
+	//点击每行将车辆编号赋给全局变量carNumNow
+	 $('#batteryTable').on('click-row.bs.table', function (e, row, $element) {
+		 batteryNumNow = JSON.stringify(row.batteryNum);
+    });
+	// 设置bootbox中文
+	bootbox.setLocale('zh_CN');
+	
+	//表格响应事件 begin
+	
+	//新增电池
+	$("#batteryMaintainAddBatteryBtn").click(function(){
+		let batteryNumVal =$("#batteryMaintainBatteryAddBatteryNum").val();
+		let brandVal = $("#batteryMaintainBatteryAddBrand").val();
+		let batteryVersionVal = $("#batteryMaintainBatteryAddVersion").val();
+		$('#batteryMaintainAddBattery').modal('hide');
+	    bootbox.confirm({
+	        title: "提示",
+	        message: '确认添加？',
+	        callback: function (flag) {
+	            if (flag) {	            
+	            	$.get("/GreenCarWeb/battery/addBattery.action",
+							{
+								batteryNum:batteryNumVal,
+								brand:brandVal,
+								version:batteryVersionVal
+							},
+							function(msg){
+								bootbox.alert({
+					                title: '提示',
+					                message: msg
+					            });
+							}
+						);
+	            }
+	        }
+	    });
+	});
+	
+	 
 	window.sysMatainBatteryOp = {
 			
 		    'click #batteryModify': function (e, value, row, index) {
-		        alert("modify");
+		    	alert("modify");
+		        modifyBattery(row);
 		    },
 			'click #batteryDel': function (e, value, row, index) {
-				alert("batteryDel");
+				delBattery(row.batteryNum);
 		    },
 		    'click #batteryCorrelation': function (e, value, row, index) {
-		        alert("batteryCorrelation");
+		    	attachBattery(row);
 		    },
 		    'click #batteryDetatch': function (e, value, row, index) {
-		        alert("batteryDetatch");
+		    	detachBattery(row.batteryNum);
 		     }	
 				
 		};
+	//修改电池信息
+	function modifyBattery(row){
+		$("#batteryMaintainBatteryBrand").val("");
+		$("#batteryMaintainBatteryVersion").val("");
+		$("#batteryMaintainModify").modal('show');
+	}
+	$('#batteryMaintainBtnSave').click(function() {
+	    $('#batteryMaintainModify').modal('hide');
+	    bootbox.confirm({
+	        title: "提示",
+	        message: '确认修改？',
+	        callback: function (flag) {
+	            if (flag) {
+	            	let brandVal = $("#batteryMaintainBatteryBrand").val();
+	        		let versionVal = $("#batteryMaintainBatteryVersion").val();
+	            	$.get("/GreenCarWeb/battery/modifyBattery.action",
+							{
+								batteryNum:batteryNumNow,
+								brand:brandVal,
+								version:versionVal
+							},
+							function(msg){
+								bootbox.alert({
+					                title: '提示',
+					                message: msg
+					            });
+							}
+						);
+	            }
+	        }
+	    });
+	});
+	
+	//删除电池信息
+	function delBattery(batteryNumVal){
+		bootbox.confirm({
+			title:"提示",
+			message:"确认删除电池?",
+			callback: function(flag){
+				if(flag){
+					$.get("/GreenCarWeb/battery/del.action",
+							{
+								batteryNum:batteryNumVal
+							},
+							function(msg){
+								bootbox.alert({
+					                title: '提示',
+					                message: msg
+					            });
+							}
+						);
+				}
+			}
+		});
+	}
+	
+	//添加电池关联
+	function attachBattery(row){
+		$("#batteryMaintainAttachCarNum").val("");
+		$("#batteryMaintainAttach").modal('show');
+	}
+	$('#batteryMaintainBtnSaveAttach').click(function() {
+	    $('#batteryMaintainAttach').modal('hide');
+	    bootbox.confirm({
+	        title: "提示",
+	        message: '确认关联？',
+	        callback: function (flag) {
+	            if (flag) {
+	            	let carNumVal = $("#batteryMaintainAttachCarNum").val();
+	            	$.get("/GreenCarWeb/battery/attach.action",
+							{
+	            				batteryNum:batteryNumNow,
+								carNum:carNumVal
+							},
+							function(msg){
+								bootbox.alert({
+					                title: '提示',
+					                message: msg
+					            });
+							}
+						);
+	            }
+	        }
+	    });
+	});
+	//电池脱离关联
+	function detachBattery(batteryNumVal){
+		bootbox.confirm({
+			title:"提示",
+			message:"确认取消关联?",
+			callback: function(flag){
+				if(flag){
+					$.get("/GreenCarWeb/battery/detach.action",
+							{
+								batteryNum:batteryNumVal
+							},
+							function(msg){
+								bootbox.alert({
+					                title: '提示',
+					                message: msg
+					            });
+							}
+						);
+				}
+			}
+		});
+	}
+	
+	
+	//表格相应事件 end
+	//生成表格 begin
 	let tableBattery = {
 			init: function(){
 				$('#batteryTable').bootstrapTable({
@@ -112,4 +263,5 @@ $(document).ready(function() {
 	
 	tableBattery.init();
 	
+	//生成表格end
 });

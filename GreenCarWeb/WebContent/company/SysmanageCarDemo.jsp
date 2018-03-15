@@ -31,7 +31,7 @@
 <body class="gray-bg">
 	<div class="modal fade" id="sysAddCar" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
-		<div class="modal-dialog" id="sysAddCar" role="document">
+		<div class="modal-dialog"  role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title" id="myModalLabel">添加车队车辆</h4>
