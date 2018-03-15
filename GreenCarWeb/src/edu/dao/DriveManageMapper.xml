@@ -55,16 +55,16 @@
 		<result column="carOverSpeed.times" property="times"/>
 	</resultMap>
 
-	   <select id="getOverSpeedInfo_mapper" parameterType="java.lang.String" resultMap="overSpeed_map">
+	   <select id="getOverSpeedInfo_mapper" parameterType="SelectDriveEventBean" resultMap="overSpeed_map">
              select * from driverInfo,carOverSpeed where driverInfo.carNum=carOverSpeed.carNum 
-             <if test="#{2}!=null and #{2}!=''">
-             and (driverInfo.carNum = #{2} || driverInfo.driverNum = #{2})
+             <if test='keyword != null and keyword != ""'>
+             and (driverInfo.carNum = #{keyword} || driverInfo.driverNum = #{keyword})
              </if>
-             <if test="#{1} !=null and #{1} !=''">
-             and  carOverSpeed.times  between str_to_date(#{0},'%Y-%m-%d') and str_to_date(#{1},'%Y-%m-%d')
+             <if test='startDate !=null and startDate !=""'>
+             and  carOverSpeed.times  between str_to_date(#{startDate},'%Y-%m-%d') and str_to_date(#{endDate},'%Y-%m-%d')
              </if>
-             <if test="#{0} ==null or #{0} ==''">
-             and  str_to_date(#{1},'%Y-%m-%d') > carOverSpeed.times
+             <if test='startDate ==null or startDate ==""'>
+             and  str_to_date(#{endDate},'%Y-%m-%d') > carOverSpeed.times
              </if>
           </select>
           
@@ -80,16 +80,16 @@
 		
 	</resultMap>
 
-	   <select id="getOverLoadInfo_mapper" resultMap="overLoad_map">
+	   <select id="getOverLoadInfo_mapper" parameterType="SelectDriveEventBean" resultMap="overLoad_map">
              select * from driverInfo,carOverLoad where driverInfo.carNum=carOverLoad.carNum 
-             <if test="#{2}!=null and #{2}!=''">
-             and (driverInfo.carNum = #{2} || driverInfo.driverNum = #{2})
+             <if test="keyword!=null and keyword!=''">
+             and (driverInfo.carNum = #{keyword} || driverInfo.driverNum = #{keyword})
              </if>
-             <if test="#{0} !=null and #{0} !=''">
-             and  carOverLoad.times  between str_to_date(#{0},'%Y-%m-%d') and str_to_date(#{1},'%Y-%m-%d')
+             <if test="startDate !=null and startDate !=''">
+             and  carOverLoad.times  between str_to_date(#{startDate},'%Y-%m-%d') and str_to_date(#{endDate},'%Y-%m-%d')
              </if>
-             <if test="#{0} ==null or #{0} ==''">
-             and  str_to_date(#{1},'%Y-%m-%d') > carOverLoad.times
+             <if test="startDate ==null or startDate ==''">
+             and  str_to_date(#{endDate},'%Y-%m-%d') > carOverLoad.times
              </if>
           </select>
           
@@ -102,21 +102,37 @@
 		<result column="carCollision.collRank" property="collRank"/>
 		<result column="carCollision.limitValue" property="limitValue"/>
 		<result column="carCollision.actualValue" property="actualValue"/>
-		<result column="carCollision.collAngel" property="collAngel"/>
+		<result column="carCollision.collAngle" property="collAngle"/>
 		<result column="carCollision.times" property="times"/>
 		
 	</resultMap>
 
-	   <select id="getCollisionInfo_mapper" resultMap="collision_map">
+	   <select id="getCollisionInfo_mapper" parameterType="SelectDriveEventBean" resultMap="collision_map">
              select * from driverInfo,carCollision where driverInfo.carNum=carCollision.carNum 
-             <if test="#{2}!=null and #{2}!=''">
-             and (driverInfo.carNum = #{2} || driverInfo.driverNum = #{2})
+             <if test="keyword!=null and keyword!=''">
+             and (driverInfo.carNum = #{keyword} || driverInfo.driverNum = #{keyword})
              </if>
-             <if test="#{0} !=null and #{0} !=''">
-             and  carCollision.times  between str_to_date(#{0},'%Y-%m-%d') and str_to_date(#{1},'%Y-%m-%d')
+             <if test="startDate !=null and startDate !=''">
+             and  carCollision.times  between str_to_date(#{startDate},'%Y-%m-%d') and str_to_date(#{endDate},'%Y-%m-%d')
              </if>
-             <if test="#{0} ==null or #{0} ==''">
-             and  str_to_date(#{1},'%Y-%m-%d') > carCollision.times
+             <if test="startDate ==null or startDate ==''">
+             and  str_to_date(#{endDate},'%Y-%m-%d') > carCollision.times
              </if>
           </select>
+          
+      <!-- 删除超速信息 -->
+     <delete id="delOverSpeedInfo_mapper" parameterType="DelOverSpeedBean">
+          delete from carOverSpeed where carNum = #{carNum}  and maxSpeed = #{maxSpeed}
+     </delete> 
+     
+      <!-- 删除超载信息 -->
+     <delete id="delOverLoadInfo_mapper" parameterType="DelOverLoadBean">
+          delete from carOverLoad where carNum = #{carNum}  and actualLoad = #{actualLoad}
+     </delete>      
+      
+       <!-- 删除碰撞信息 -->
+     <delete id="delCollisionInfo_mapper" parameterType="DelCollisionBean">
+          delete from carCollision where carNum = #{carNum} and  actualValue = #{actualValue}
+     </delete>  
+      
 </mapper>

@@ -1,24 +1,23 @@
 package edu.domain;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class CarCollisionBean {
 	private String carNum;
 	private String driverNum;
 	private String driverName;
-	private Date times;
+	private Timestamp times;
 	private int collRank;
 	private double limitValue;
 	private double actualValue;
-	private double collAngel;
-	
+	private double collAngle;
 	public CarCollisionBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	public CarCollisionBean(String carNum, String driverNum, String driverName, Date times, int collRank,
-			double limitValue, double actualValue, double collAngel) {
+	public CarCollisionBean(String carNum, String driverNum, String driverName, Timestamp times, int collRank,
+			double limitValue, double actualValue, double collAngle) {
 		super();
 		this.carNum = carNum;
 		this.driverNum = driverNum;
@@ -27,16 +26,14 @@ public class CarCollisionBean {
 		this.collRank = collRank;
 		this.limitValue = limitValue;
 		this.actualValue = actualValue;
-		this.collAngel = collAngel;
+		this.collAngle = collAngle;
 	}
-	
 	@Override
 	public String toString() {
 		return "CarCollisionBean [carNum=" + carNum + ", driverNum=" + driverNum + ", driverName=" + driverName
 				+ ", times=" + times + ", collRank=" + collRank + ", limitValue=" + limitValue + ", actualValue="
-				+ actualValue + ", collAngel=" + collAngel + "]";
+				+ actualValue + ", collAngle=" + collAngle + "]";
 	}
-	
 	public String getCarNum() {
 		return carNum;
 	}
@@ -55,10 +52,10 @@ public class CarCollisionBean {
 	public void setDriverName(String driverName) {
 		this.driverName = driverName;
 	}
-	public Date getTimes() {
+	public Timestamp getTimes() {
 		return times;
 	}
-	public void setTimes(Date times) {
+	public void setTimes(Timestamp times) {
 		this.times = times;
 	}
 	public int getCollRank() {
@@ -79,12 +76,14 @@ public class CarCollisionBean {
 	public void setActualValue(double actualValue) {
 		this.actualValue = actualValue;
 	}
-	public double getCollAngel() {
-		return collAngel;
+	public double getCollAngle() {
+		return collAngle;
 	}
-	public void setCollAngel(double collAngel) {
-		this.collAngel = collAngel;
+	public void setCollAngle(double collAngle) {
+		this.collAngle = collAngle;
 	}
+	
+	
 	
 	
 	

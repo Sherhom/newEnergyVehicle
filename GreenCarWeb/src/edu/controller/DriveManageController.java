@@ -1,8 +1,11 @@
 package edu.controller;
 
+import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +22,9 @@ import edu.domain.CarCollisionBean;
 import edu.domain.CarOpDataBean;
 import edu.domain.CarOverLoadBean;
 import edu.domain.CarOverSpeedBean;
+import edu.domain.DelCollisionBean;
+import edu.domain.DelOverLoadBean;
+import edu.domain.DelOverSpeedBean;
 import edu.domain.DriverBean;
 import edu.model.Page;
 import edu.service.DriveManageService;
@@ -163,11 +169,11 @@ public class DriveManageController {
 		int offset=Integer.parseInt(req.getParameter("offset"));
 		int limit=Integer.parseInt(req.getParameter("limit"));
 		
-		if(startDate.equals("")){
+		/*if(startDate.equals("")){
 			startDate=null;
-		}
+		}*/
 		if(keyword.equals("")){
-			keyword=null;
+			System.out.println("woc");
 		}
 		
 		System.out.println(driveEvent);
@@ -192,6 +198,7 @@ public class DriveManageController {
         if(driveEvent.equals("overSpeed")){
         	List<CarOverSpeedBean> result=new ArrayList<CarOverSpeedBean>();
         	os_list=driveManageService.getOverSpeedInfo(startDate, endDate, keyword);
+        	System.out.println("****"+os_list.get(0).getTimes());
         	int max=os_list.size();
         	if(max>(offset+limit)){
     			max=offset+limit;
@@ -253,4 +260,40 @@ public class DriveManageController {
         }
         return jsonResult;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/delDriveEventInfo.action")
+	public void delDriveEventInfo(HttpServletResponse response) {
+		//event,carNum,times,maxSpeed,actualLoad,actualValue
+		String event=req.getParameter("event");
+		String carNum=req.getParameter("carNum");
+		String times=req.getParameter("times");
+		
+		//SimpleDateFormat sdf = new SimpleDateFormat("M d, yyyy K:m:s a",Locale.CHINA);
+		/*try {
+			String  d=sdf.parse(times).toString();
+			times=d;
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(times);*/
+		if(event.equals("overSpeed")){
+			double maxSpeed=Double.parseDouble(req.getParameter("maxSpeed"));
+			DelOverSpeedBean osb=new DelOverSpeedBean(carNum,times,maxSpeed);
+			driveManageService.delOverSpeedInfo(osb);
+		}else if(event.equals("overLoad")){
+			double actualLoad=Double.parseDouble(req.getParameter("actualLoad"));
+			DelOverLoadBean olb= new DelOverLoadBean(carNum,times,actualLoad);
+			driveManageService.delOverLoadInfo(olb);
+			
+		}else if(event.equals("collision")){
+			double actualValue=Double.parseDouble(req.getParameter("actualValue"));
+			DelCollisionBean cb=new DelCollisionBean(carNum, times, actualValue);
+			driveManageService.delCollisionInfo(cb);
+		}else{
+			
+		}
+	}
+	
 }

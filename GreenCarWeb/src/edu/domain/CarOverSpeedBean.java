@@ -1,22 +1,21 @@
 package edu.domain;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class CarOverSpeedBean {
 	private String carNum;
 	private String driverNum;
 	private String driverName;
-	private Date times;
+	private Timestamp times;
 	private double limitSpeed;
 	private double maxSpeed;
 	private int statusIdent;
-	
 	public CarOverSpeedBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	public CarOverSpeedBean(String carNum, String driverNum, String driverName, Date times, double limitSpeed,
+	public CarOverSpeedBean(String carNum, String driverNum, String driverName, Timestamp times, double limitSpeed,
 			double maxSpeed, int statusIdent) {
 		super();
 		this.carNum = carNum;
@@ -27,7 +26,6 @@ public class CarOverSpeedBean {
 		this.maxSpeed = maxSpeed;
 		this.statusIdent = statusIdent;
 	}
-	
 	@Override
 	public String toString() {
 		return "CarOverSpeedBean [carNum=" + carNum + ", driverNum=" + driverNum + ", driverName=" + driverName
@@ -52,10 +50,10 @@ public class CarOverSpeedBean {
 	public void setDriverName(String driverName) {
 		this.driverName = driverName;
 	}
-	public Date getTimes() {
+	public Timestamp getTimes() {
 		return times;
 	}
-	public void setTimes(Date times) {
+	public void setTimes(Timestamp times) {
 		this.times = times;
 	}
 	public double getLimitSpeed() {
@@ -76,6 +74,7 @@ public class CarOverSpeedBean {
 	public void setStatusIdent(int statusIdent) {
 		this.statusIdent = statusIdent;
 	}
+	
 	
 	
 	

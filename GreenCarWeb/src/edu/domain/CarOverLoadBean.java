@@ -1,22 +1,21 @@
 package edu.domain;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class CarOverLoadBean {
 	private String carNum;
 	private String driverNum;
 	private String driverName;
-	private Date times;
+	private Timestamp times;
 	private double limitLoad;
 	private double actualLoad;
 	private int ident;
-	
 	public CarOverLoadBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	public CarOverLoadBean(String carNum, String driverNum, String driverName, Date times, double limitLoad,
+	public CarOverLoadBean(String carNum, String driverNum, String driverName, Timestamp times, double limitLoad,
 			double actualLoad, int ident) {
 		super();
 		this.carNum = carNum;
@@ -27,15 +26,12 @@ public class CarOverLoadBean {
 		this.actualLoad = actualLoad;
 		this.ident = ident;
 	}
-	
-	
 	@Override
 	public String toString() {
 		return "CarOverLoadBean [carNum=" + carNum + ", driverNum=" + driverNum + ", driverName=" + driverName
 				+ ", times=" + times + ", limitLoad=" + limitLoad + ", actualLoad=" + actualLoad + ", ident=" + ident
 				+ "]";
 	}
-	
 	public String getCarNum() {
 		return carNum;
 	}
@@ -54,10 +50,10 @@ public class CarOverLoadBean {
 	public void setDriverName(String driverName) {
 		this.driverName = driverName;
 	}
-	public Date getTimes() {
+	public Timestamp getTimes() {
 		return times;
 	}
-	public void setTimes(Date times) {
+	public void setTimes(Timestamp times) {
 		this.times = times;
 	}
 	public double getLimitLoad() {
@@ -78,6 +74,8 @@ public class CarOverLoadBean {
 	public void setIdent(int ident) {
 		this.ident = ident;
 	}
+	
+	
 	
 	
 	

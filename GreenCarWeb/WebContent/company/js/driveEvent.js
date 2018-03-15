@@ -8,14 +8,15 @@ var $testTable;
 
 
 // 删除
-function delDriverInfo(driverNum) {
+function delDriveEventInfo(carNum,times,maxSpeed,actualLoad,actualValue) {
 	var titleTip = '提示';
+	var event=$("#driveEvent").val();
     bootbox.confirm({
         title: titleTip,
         message: '确认删除？',
         callback: function(flag) {
             if (flag) {
-                exchangeData("/GreenCarWeb/delDriverInfo.action", driverNum);
+                exchangeData("/GreenCarWeb/delDriveEventInfo.action",event,carNum,times,maxSpeed,actualLoad,actualValue);
             }
         }
     });
@@ -23,18 +24,17 @@ function delDriverInfo(driverNum) {
 
 
 //用于修改服务器资源
-function exchangeData(path, driverNum, motorcadeNum, carNum, driverName,driverSex,driverPhone,driverPosition) {
+function exchangeData(path,event,carNum,times,maxSpeed,actualLoad,actualValue) {
     $.ajax({
         url: path,
         type: 'post',
         data : {
-        	driverNum: driverNum, 
-        	motorcadeNum: motorcadeNum,
-        	carNum: carNum,
-        	driverName: driverName,
-        	driverSex: driverSex,
-        	driverPhone: driverPhone,
-        	driverPosition: driverPosition
+        	event:event,
+        	carNum:carNum,
+        	times:times,
+        	maxSpeed:maxSpeed,
+        	actualLoad:actualLoad,
+        	actualValue:actualValue
         },
         success: function(res) {
            /* bootbox.alert({
@@ -181,7 +181,7 @@ $(document).ready(function() {
 			title : '实际值(碰撞)',
 			align : 'center'
 		}, {
-			field : 'collAngel',
+			field : 'collAngle',
 			//width : '10%',
 			title : '碰撞角度(碰撞)',
 			align : 'center'
@@ -189,7 +189,7 @@ $(document).ready(function() {
 	        formatter: function (value, row, index) {
 	            return [
 	                
-	                '<a href="javascript:delDriverInfo(' + row.driverNum + ')">' +
+	                '<a href="javascript:delDriveEventInfo(' + "'" + row.carNum +"','" +row.times+ "','" + row.maxSpeed + "','" + row.actualLoad + "','" + row.actualValue + "'" +  ')">' +
 	                    '<i class="glyphicon glyphicon-remove"></i>删除' +
 	                '</a>'
 	            ].join('');

@@ -200,7 +200,10 @@ CREATE TABLE `taskInfo`(
   `endTime` timestamp NOT NULL,
   `finishTime` timestamp NOT NULL,
   `finishStatus` int NOT NULL,
-  `taskDes` varchar(1000)
+  `taskDes` varchar(1000),
+  `driverNum` varchar(11) NOT NULL,
+  `workMileage` double(5,2) default 0.00,
+  `moveDuration` double(5,2) default 0.00
 )DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `driverInfo`;
@@ -308,6 +311,11 @@ insert into carOverSpeed values(2,'car004',60.0,69.35,1,'2018-3-9 11:30:27');
 
 insert into carOverLoad values(1,'car005',30.0,31.92,1,'2018-3-11 07:55:03');
 insert into carOverLoad values(2,'car006',30.0,35.58,1,'2018-3-13 09:10:48');
+
+
+insert into taskInfo values(1,'carTeam001','task001','2018-3-5 07:05:31','2018-3-7 08:00:00','2018-3-7 05:17:31',1,'为湖北省运苹果','1',545.95,11.25);
+insert into taskInfo values(2,'carTeam002','task002','2018-3-8 11:34:58','2018-3-9 12:00:00','2018-3-9 09:15:48',1,'为江西省运桃子','1',340.67,7.85);
+insert into taskInfo values(3,'carTeam003','task003','2018-3-10 13:55:03','2018-3-13 14:00:00','2018-3-13 08:50:17',1,'为北京市运香蕉','1',890.12,23.18);
 
 --hushuxiang test data
 show DATABASES ;

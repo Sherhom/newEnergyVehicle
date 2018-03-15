@@ -5,7 +5,11 @@ import java.util.List;
 import edu.domain.CarCollisionBean;
 import edu.domain.CarOverLoadBean;
 import edu.domain.CarOverSpeedBean;
+import edu.domain.DelCollisionBean;
+import edu.domain.DelOverLoadBean;
+import edu.domain.DelOverSpeedBean;
 import edu.domain.DriverBean;
+import edu.domain.SelectDriveEventBean;
 
 public interface DriveManageMapper {
 
@@ -23,9 +27,15 @@ public interface DriveManageMapper {
 
 	void addDriverInfo_mapper(DriverBean db);
     
-	List<CarOverSpeedBean> getOverSpeedInfo_mapper(String startDate,String endDate,String keyword);
+	List<CarOverSpeedBean> getOverSpeedInfo_mapper(SelectDriveEventBean sdeb);
 	
-	List<CarOverLoadBean> getOverLoadInfo_mapper(String startDate,String endDate,String keyword);
+	List<CarOverLoadBean> getOverLoadInfo_mapper(SelectDriveEventBean sdeb);
 	
-	List<CarCollisionBean> getCollisionInfo_mapper(String startDate,String endDate,String keyword);
+	List<CarCollisionBean> getCollisionInfo_mapper(SelectDriveEventBean sdeb);
+	
+	void delOverSpeedInfo_mapper(DelOverSpeedBean osb);
+	
+	void delOverLoadInfo_mapper(DelOverLoadBean olb);
+	
+	void delCollisionInfo_mapper(DelCollisionBean cb);;
 }

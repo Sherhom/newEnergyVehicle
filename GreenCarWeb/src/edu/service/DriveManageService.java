@@ -10,7 +10,11 @@ import edu.dao.DriveManageMapper;
 import edu.domain.CarCollisionBean;
 import edu.domain.CarOverLoadBean;
 import edu.domain.CarOverSpeedBean;
+import edu.domain.DelCollisionBean;
+import edu.domain.DelOverLoadBean;
+import edu.domain.DelOverSpeedBean;
 import edu.domain.DriverBean;
+import edu.domain.SelectDriveEventBean;
 
 @Service
 public class DriveManageService {
@@ -53,22 +57,38 @@ public class DriveManageService {
     
     public List<CarOverSpeedBean> getOverSpeedInfo(String startDate,String endDate,String keyword){
     	System.out.println("*****service*******");
-    	System.out.println(startDate);
-    	System.out.println(endDate);
-        System.out.println(keyword);
-    	List<CarOverSpeedBean> temp=driveManageMapper.getOverSpeedInfo_mapper(startDate, endDate, keyword);
+    	
+        SelectDriveEventBean sdeb=new SelectDriveEventBean(startDate, endDate, keyword);
+        System.out.println(sdeb);
+    	List<CarOverSpeedBean> temp=driveManageMapper.getOverSpeedInfo_mapper(sdeb);
     	
     	return temp;
     	
     }
     
     public List<CarOverLoadBean> getOverLoadInfo(String startDate,String endDate,String keyword){
-    	List<CarOverLoadBean> temp=driveManageMapper.getOverLoadInfo_mapper(startDate, endDate, keyword);
+    	SelectDriveEventBean sdeb=new SelectDriveEventBean(startDate, endDate, keyword);
+    	List<CarOverLoadBean> temp=driveManageMapper.getOverLoadInfo_mapper(sdeb);
     	return temp;
     }
     
     public List<CarCollisionBean> getCollisionInfo(String startDate,String endDate,String keyword){
-    	List<CarCollisionBean> temp=driveManageMapper.getCollisionInfo_mapper(startDate, endDate, keyword);
+    	SelectDriveEventBean sdeb=new SelectDriveEventBean(startDate, endDate, keyword);
+    	List<CarCollisionBean> temp=driveManageMapper.getCollisionInfo_mapper(sdeb);
     	return temp;
+    	
     }
+    
+    public void delOverSpeedInfo(DelOverSpeedBean osb){
+    	driveManageMapper.delOverSpeedInfo_mapper(osb);
+    }
+    
+    public void delOverLoadInfo(DelOverLoadBean olb){
+    	driveManageMapper.delOverLoadInfo_mapper(olb);
+    }
+    
+    public void delCollisionInfo(DelCollisionBean cb){
+    	driveManageMapper.delCollisionInfo_mapper(cb);
+    }
+    
 }
