@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3.dtd">
+<mapper namespace = "edu.dao.CarTeamInfoMapper">
+    
+    <!-- 查询车队信息 -->
+     <resultMap type="CarTeamInfoBean" id="cti_map">
+	    <result column="carTeamInfo.motorcadeNum" property="motorcadeNum"/>
+		<result column="carTeamInfo.captainNum" property="captainNum"/>
+		<result column="carTeamInfo.motorcadeMount" property="motorcadeMount"/>
+		<result column="driverInfo.driverName" property="driverName"/>
+		<result column="driverInfo.driverPhone" property="driverPhone"/>
+	</resultMap>
+    
+    <select id="getCarTeamInfo_mapper" parameterType="String" resultMap="cti_map">
+		select * from driverInfo,carTeamInfo where carTeamInfo.captainNum = driverInfo.driverNum
+		<if test='keyword != null and keyword != ""'>
+             and (carTeamInfo.motorcadeNum = #{keyword} || driverInfo.driverNum = #{keyword} ||driverInfo.driverName = #{keyword})
+             </if>
+         
+	</select>
+	
+	
+	 <!-- 插入车队信息 -->	
+	<insert id="addCarTeamInfo_mapper" parameterType="AddCarTeamInfoBean" useGeneratedKeys="true"
+	keyProperty="motorcadeId">
+		insert into carTeamInfo(motorcadeNum,captainNum,motorcadeMount) 
+		values(#{motorcadeNum},#{captainNum},#{motorcadeMount})
+	</insert>
+</mapper>

@@ -37,8 +37,8 @@
 <script src="https://cdn.bootcss.com/bootbox.js/4.4.0/bootbox.min.js"></script>
 
 <script>
-	function getDriverInfo() {
-		$('#driverInfoTable').bootstrapTable('refresh', {
+	function getCarTeamInfo() {
+		$('#carTeamInfoTable').bootstrapTable('refresh', {
 			limit : 5,
 			offset : 0
 		});
@@ -49,7 +49,7 @@
 	<!-- <div class="box border purple" style="height: 100%">
 		<div class="box-title">
 			<h4>
-				<i class="fa fa-list-ul"></i>公司驾驶人员信息
+				<i class="fa fa-list-ul"></i>公司
 			</h4>
 		</div>
 		<div class="box-body" >
@@ -65,61 +65,27 @@
 					<div class="box border blue" style="margin-bottom: 10px;width:1100px;height:500px">
 						<div class="box-title">
 							<h4>
-								<i class="fa fa-table"></i>公司驾驶人员
+								<i class="fa fa-table"></i>车队信息管理
 							</h4>
 
 						</div>
-						<div class="box-body" style="height:450px">
+						<div class="box-body">
 
 							<div class="form-inline">
-								<div class="form-group">
-									<label>车队号：</label> <select id="teamNum">
-										<option value="all">全部车队</option>
-										<option value="carTeam001">车队一</option>
-										<option value="carTeam002">车队二</option>
-										<option value="carTeam003">车队三</option>
-										<option value="carTeam004">车队四</option>
-										<option value="carTeam005">车队五</option>
-										<option value="carTeam006">车队六</option>
-									</select>
-								</div>
+								
 								<div class="form-group">
 									关键字：<input id="keyword" name="keyword" class="input-sm">
 								</div>
 								<div class="form-group">
 									<button class="btn btn-primary btn-sm" id="queryBtn"
-										onclick="getDriverInfo()">查询</button>
+										onclick="getCarTeamInfo()">查询</button>
 
 									<button class="btn btn-primary btn-sm" id="addBtn">新增</button>
 								</div>
 							</div>
-							<!-- <table>
-								<tr>
-									<td>车队号:<select id="teamNum">
-											<option value="all">全部车队</option>
-											<option value="carTeam001">车队一</option>
-											<option value="carTeam002">车队二</option>
-											<option value="carTeam003">车队三</option>
-											<option value="carTeam004">车队四</option>
-											<option value="carTeam005">车队五</option>
-											<option value="carTeam006">车队六</option>
-									</select>
-									</td>
-									<td>搜索关键字：<input type="text" id="keyword"
-										name="keyword" />
-									</td>
-									<td><input type="submit" value="查询" onclick="getDriverInfo()" /></td>
+						
 
-									<td>
-										<button class="btn btn-primary btn-lg" data-toggle="modal"
-											data-target="#myModal">增加驾驶员</button>
-									</td>
-
-
-								</tr>
-							</table> -->
-
-							<table class="table table-striped" id="driverInfoTable">
+							<table class="table table-striped" id="carTeamInfoTable">
 
 								<!--表在这里  -->
 							</table>
@@ -127,7 +93,7 @@
 
 					</div>
 					<!-- /BOX -->
-				<!-- </div>
+			<!-- 	</div>
 				/ORDER DETAILS
 			</div>
 			ORDERS
@@ -144,40 +110,24 @@
 				</div>
 				
 				<div class="modal-body">
-					<div class="form-inline">
+					
 						<div class="form-group">
-							<label for="modifyNameText">驾驶员编号：</label> <input
-								id="addDriverNum" class="form-control input-sm">
-						</div>
-						<div class="form-group">
-							<label for="modifyAgeText">车队编号：</label> <input
+							<label for="modifyNameText">车队号：</label> <input
 								id="addMotorcadeNum" class="form-control input-sm">
 						</div>
-					</div>
-					<div class="form-inline">
+						
+					
 						<div class="form-group">
-							<label for="modifyNameText">车辆编号：</label> <input
-								id="addCarNum" class="form-control input-sm">
+							<label for="modifyNameText">队长编号：</label> <input
+								id="addCaptainNum" class="form-control input-sm">
 						</div>
+						
+					
 						<div class="form-group">
-							<label for="modifyAgeText">驾驶员姓名：</label> <input
-								id="addDriverName" class="form-control input-sm">
+							<label for="modifyNameText">车队人数：</label> <input
+								id="addMotorcadeMount" class="form-control input-sm">
 						</div>
-					</div>
-					<div class="form-inline">
-						<div class="form-group">
-							<label for="modifyNameText">驾驶员性别：</label> <input
-								id="addDriverSex" class="form-control input-sm">
-						</div>
-						<div class="form-group">
-							<label for="modifyAgeText">驾驶员职位：</label> <input
-								id="addDriverPosition" class="form-control input-sm">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="modifyAddressText">驾驶员电话：</label> <input
-							id="addDriverPhone" class="form-control input-sm">
-					</div>
+						
 				</div>
 				
 				<div class="modal-footer">
@@ -279,7 +229,7 @@
 		src="/GreenCarWeb/company/js/bootstrap-table/bootstrap-table.js"></script>
 	<script
 		src="/GreenCarWeb/company/js/bootstrap-table/bootstrap-table-zh-CN.js"></script>
-	<script src="/GreenCarWeb/company/js/companyDriver.js"></script>
+	<script src="/GreenCarWeb/company/js/carTeamManage.js"></script>
 
 
 

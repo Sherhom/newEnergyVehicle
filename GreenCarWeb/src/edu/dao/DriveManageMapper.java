@@ -10,6 +10,8 @@ import edu.domain.DelOverLoadBean;
 import edu.domain.DelOverSpeedBean;
 import edu.domain.DriverBean;
 import edu.domain.SelectDriveEventBean;
+import edu.domain.SelectWorkRecordBean;
+import edu.domain.WorkRecordBean;
 
 public interface DriveManageMapper {
 
@@ -37,5 +39,7 @@ public interface DriveManageMapper {
 	
 	void delOverLoadInfo_mapper(DelOverLoadBean olb);
 	
-	void delCollisionInfo_mapper(DelCollisionBean cb);;
+	void delCollisionInfo_mapper(DelCollisionBean cb);
+
+	List<WorkRecordBean> getWorkRecord_mapper(SelectWorkRecordBean wrb);;
 }
