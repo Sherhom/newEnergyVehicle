@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import edu.dao.CarMapper;
 import edu.dao.DriverMapper;
 import edu.domain.Car;
+import edu.domain.CarLocationBean;
 import edu.domain.Driver;
 @Service
 public class CarService {
@@ -71,5 +72,9 @@ public class CarService {
 			return false;
 		}
 		return true;
+	}
+	
+	public List<CarLocationBean> getPathPoints(String carNum){
+		return carMapper.getPathPointsByCarNum(carNum);
 	}
 }

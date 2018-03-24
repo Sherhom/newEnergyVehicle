@@ -91,4 +91,26 @@ public class SysCarTeamController {
 		return "Add Failed";
 	}
 	
+	@RequestMapping(value="/initCarTeamDetailTree.action")
+	@ResponseBody
+	public String getInitTeamDetailTree() {
+		List carTeams = carTeamService.getCarTeamDetail();
+		Gson json = new Gson();
+		String result = json.toJson(carTeams);
+		System.out.println(result);
+		return result;
+	}
+	
+	@RequestMapping(value="/queryCarPathHistory.action")
+	@ResponseBody
+	public String getPathHistoryImp(String carNum) {
+		List points =carService.getPathPoints(carNum);
+		Gson json = new Gson();
+		String result = json.toJson(points);
+		System.out.println(result);
+		return result;
+	}
+	
+	
+	
 }

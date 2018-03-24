@@ -16,4 +16,9 @@
 		set carinfo.carBrand = #{carBrand}, carinfo.carryingCapacity = #{carryingCapacity}
 		where carinfo.carNum = #{carNum}
 	</update>
+	
+	
+	<select id="getPathPointsByCarNum" parameterType="string" resultType="CarLocationBean">
+		select * from carPathHistory where carNum = #{0}
+	</select>
 </mapper>

@@ -94,13 +94,6 @@
 								data-toggle="modal" data-target="#sysAddCar">
 								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
 							</button>
-							<!-- 
-							<button id="btn_delete" type="button"
-								class="btn btn-danger btn-sm"
-								onclick="sysGetSections">
-								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>删除
-							</button>
-							 -->
 						</div>
 						<div class="col-sm-12">
 							<table class="table table-striped table-bordered table-hover"
