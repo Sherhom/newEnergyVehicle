@@ -46,21 +46,21 @@
 </script>
 </head>
 <body>
-	<div class="box border purple" style="height: 100%">
+	<!-- <div class="box border purple" style="height: 100%">
 		<div class="box-title">
 			<h4>
 				<i class="fa fa-list-ul"></i>公司驾驶人员信息
 			</h4>
 		</div>
 		<div class="box-body" >
-			<!-- ORDERS -->
+			ORDERS
 			<div class="row">
-				<!-- ORDER SCROLL -->
+				ORDER SCROLL
 
-				<!-- /ORDER SCROLL -->
-				<!-- ORDER DETAILS -->
+				/ORDER SCROLL
+				ORDER DETAILS
 				<div class="col-md-8">
-					<div class="box-body center"></div>
+					<div class="box-body center"></div> -->
 					<!-- BOX -->
 					<div class="box border blue" style="margin-bottom: 10px;width:1100px;height:500px">
 						<div class="box-title">
@@ -69,7 +69,7 @@
 							</h4>
 
 						</div>
-						<div class="box-body">
+						<div class="box-body" style="height:450px">
 
 							<div class="form-inline">
 								<div class="form-group">
@@ -127,12 +127,12 @@
 
 					</div>
 					<!-- /BOX -->
-				</div>
-				<!-- /ORDER DETAILS -->
+				<!-- </div>
+				/ORDER DETAILS
 			</div>
-			<!-- ORDERS -->
+			ORDERS
 		</div>
-	</div>
+	</div> -->
 
 	<!-- 新增模态窗 -->
 	<div class="modal fade" id="addModal">

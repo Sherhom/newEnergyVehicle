@@ -134,5 +134,32 @@
      <delete id="delCollisionInfo_mapper" parameterType="DelCollisionBean">
           delete from carCollision where carNum = #{carNum} and  actualValue = #{actualValue}
      </delete>  
+     
+     <!-- 根据日期和关键字查询作业记录的信息 -->
+	 <resultMap type="WorkRecordBean" id="workRecord_map">
+	    <result column="driverInfo.carNum" property="carNum"/>
+		<result column="driverInfo.driverNum" property="driverNum"/>
+		<result column="driverInfo.driverName" property="driverName"/>
+		<result column="taskInfo.commitTime" property="commitTime"/>
+		<result column="taskInfo.endTime" property="endTime"/>
+		<result column="taskInfo.workDuration" property="workDuration"/>
+		<result column="taskInfo.workMileage" property="workMileage"/>
+		<result column="taskInfo.taskDes" property="taskDes"/>
+		<result column="taskInfo.moveDuration" property="moveDuration"/>
+	
+	</resultMap>
+
+	   <select id="getWorkRecord_mapper" parameterType="SelectWorkRecordBean" resultMap="workRecord_map">
+             select * from driverInfo,taskInfo where driverInfo.driverNum=taskInfo.driverNum 
+             <if test='keyword != null and keyword != ""'>
+             and (driverInfo.carNum = #{keyword} || driverInfo.driverNum = #{keyword} || driverInfo.driverName = #{keyword})
+             </if>
+             <if test='startDate !=null and startDate !=""'>
+             and taskInfo.commitTime  between str_to_date(#{startDate},'%Y-%m-%d') and str_to_date(#{endDate},'%Y-%m-%d')
+             </if>
+             <if test='startDate ==null or startDate ==""'>
+             and  str_to_date(#{endDate},'%Y-%m-%d') > taskInfo.commitTime
+             </if>
+      </select>
       
 </mapper>

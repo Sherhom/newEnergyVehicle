@@ -1,5 +1,7 @@
 package edu.service;
 
+
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -74,7 +76,7 @@ public class CarService {
 		return true;
 	}
 	
-	public List<CarLocationBean> getPathPoints(String carNum){
-		return carMapper.getPathPointsByCarNum(carNum);
+	public List<CarLocationBean> getPathPoints(String carNum,Date begin, Date end){
+		return carMapper.getPathPointsByCarNum(carNum,begin,end);
 	}
 }

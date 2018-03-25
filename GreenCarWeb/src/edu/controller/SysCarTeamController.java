@@ -1,5 +1,7 @@
 package edu.controller;
 
+
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -103,8 +105,10 @@ public class SysCarTeamController {
 	
 	@RequestMapping(value="/queryCarPathHistory.action")
 	@ResponseBody
-	public String getPathHistoryImp(String carNum) {
-		List points =carService.getPathPoints(carNum);
+	public String getPathHistoryImp(String carNum,Date dateBegin,Date dateEnd) {
+//	    Date begin = new Date(dateBegin);
+//	    Date end = new Date(dateEnd);
+		List points =carService.getPathPoints(carNum,dateBegin,dateEnd);
 		Gson json = new Gson();
 		String result = json.toJson(points);
 		System.out.println(result);

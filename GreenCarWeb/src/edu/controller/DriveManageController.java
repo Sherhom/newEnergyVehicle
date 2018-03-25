@@ -26,6 +26,8 @@ import edu.domain.DelCollisionBean;
 import edu.domain.DelOverLoadBean;
 import edu.domain.DelOverSpeedBean;
 import edu.domain.DriverBean;
+import edu.domain.SelectWorkRecordBean;
+import edu.domain.WorkRecordBean;
 import edu.model.Page;
 import edu.service.DriveManageService;
 
@@ -38,7 +40,7 @@ public class DriveManageController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/getDriverInfo.action")
-	public String getGuaInfo(HttpServletResponse response) {
+	public String getDriverInfo(HttpServletResponse response) {
 		
 		String teamNum=req.getParameter("teamNum");
 		String keyword=req.getParameter("keyword");
@@ -296,5 +298,56 @@ public class DriveManageController {
 			
 		}
 
-}    
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "/workRecord.action",produces = "text/html;charset=UTF-8")
+	public String getWorkRecordInfo(HttpServletResponse response) {
+		
+		String startDate=req.getParameter("startDate");
+		String endDate=req.getParameter("endDate");
+		String keyword=req.getParameter("keyword");
+		int offset=Integer.parseInt(req.getParameter("offset"));
+		int limit=Integer.parseInt(req.getParameter("limit"));
+		
+		System.out.println(startDate);
+		System.out.println(endDate);
+		System.out.println(keyword);
+		System.out.println(limit);
+		System.out.println(offset);
+		
+		
+		if(endDate==null||endDate.equals("")){
+   		   System.out.println("hello");
+     	   java.util.Date date=new  java.util.Date();
+     	   SimpleDateFormat sdf=new  SimpleDateFormat("yyyy-MM-dd");
+     	   endDate=sdf.format(date);
+     	   System.out.println(endDate);
+        }
+		
+		SelectWorkRecordBean wrb=new SelectWorkRecordBean(startDate,endDate,keyword);
+		
+		List<WorkRecordBean> temp=driveManageService.getWorkRecord_service(wrb);
+		
+		List<WorkRecordBean> result=new ArrayList<WorkRecordBean>();
+		
+		int max=temp.size();
+		if(max>(offset+limit)){
+			max=offset+limit;
+		}
+		
+	    for(int i=offset;i<max;i++){
+	    	result.add(temp.get(i));
+	    }
+		Page page = new Page();
+		page.setRows(result);
+		page.setTotal(temp.size());
+		Gson gson=new Gson();
+		String jsonResult = gson.toJson(page);
+		System.out.println(jsonResult);
+		return jsonResult;
+	}
+	
+	
+}

@@ -48,7 +48,8 @@
         <span class="input-group-addon">  
             <span class="glyphicon glyphicon-calendar"></span>  
         </span>  
-    </div>  
+    </div>
+    <button type="button"  id ="queryPath" class="btn btn-default">查询</button> 
 </div>  
 
 	<div id="tree" class="tree tree-unselectable"></div>
@@ -74,6 +75,24 @@ let carNumNow;
 
 $('#dateBegin').datetimepicker();
 $('#dateEnd').datetimepicker();
+
+$("#queryPath").click(function(){
+	let dateBegin = $("#dateBegin").val();
+	let dateEnd = $("#dateEnd").val();
+	if(dateBegin == ""){
+        alert("请输入开始日期");
+        return;
+    }
+	if(dateEnd == ""){
+		alert("请输入结束日期");
+		return;
+	}
+	if(carNumNow == undefined){
+	    alert("请选择车辆");
+		return;
+	}
+	queryPath(carNumNow,dateBegin,dateEnd);
+})
 //生成车队的Tree begin
 var tree = {
 		init: function(){ 
@@ -96,22 +115,21 @@ function refreshMotorcade(nodeText){
 	nodeText = nodeText + "";
 	var carReg = /TEAM\d+/;
 	if(!carReg.test(nodeText)){
-		alert(nodeText);
 		var  regx = new RegExp("\\d+");
 		var num = nodeText.match(regx);
-		carNumNow = parseInt(num);	
-		queryPath(carNumNow);
+		carNumNow = parseInt(num);
 	}
 }
-function queryPath(carNum){
+function queryPath(carNum,dateBegin,dateEnd){
 	$.get("/GreenCarWeb/car/queryCarPathHistory.action",
 			{
-				carNum : carNum
+				carNum : carNum,
+				dateBegin:dateBegin,
+				dateEnd :dateEnd
 			},
 			function(result){
 				map.clearOverlays();
 				resultOBJ = eval('(' + result + ')');
-				alert(resultOBJ);
 				let points = new Array();
 				for(var idx = 0;idx < resultOBJ.length;idx++){
 					points[idx] = new BMap.Point(resultOBJ[idx].longtitude,resultOBJ[idx].latitude);
@@ -146,14 +164,5 @@ var navigationControl = new BMap.NavigationControl({
     enableGeolocation: true
   });
  map.addControl(navigationControl);
-    /*
-var polyline = new BMap.Polyline([
-    new BMap.Point(116.399, 39.910),
-    new BMap.Point(116.405, 39.920)
-    ],
-    {strokeColor:"blue", strokeWeight:6, strokeOpacity:0.5}
-  	);
-map.addOverlay(polyline);
-*/
 </script>
 </html>

@@ -203,7 +203,8 @@ CREATE TABLE `taskInfo`(
   `taskDes` varchar(1000),
   `driverNum` varchar(11) NOT NULL,
   `workMileage` double(5,2) default 0.00,
-  `moveDuration` double(5,2) default 0.00
+  `moveDuration` double(5,2) default 0.00,
+  `workDuration` double(5,2) default 0.00
 )DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `driverInfo`;
@@ -306,8 +307,7 @@ insert into carGuarantee values(6,'car006',6.00,'在合肥货车维修站06号�
 insert into carMile values(6,340.55,1,1,0,1,'2018-03-03','car006');
 
 
-insert into taskInfo values(1,'carTeam001','task001','2018-3-6 20:00:00','2018-3-13 20:00:00','2018-3-12 15:36:25',1,'为合肥工地大学运货');
-insert into taskInfo values(2,'carTeam002','task002','2018-3-7 00:00:00','2018-3-15 20:00:00','2018-3-13 07:25:16',1,'为合肥女子学院的运货');
+
 
 insert into carLocation values(1,'car001',116.364,39.993,'2018-3-10 12:50:05');
 insert into carLocation values(2,'car002',115.000,38.000,'2018-3-10 13:16:17');
@@ -325,10 +325,16 @@ insert into carOverLoad values(1,'car005',30.0,31.92,1,'2018-3-11 07:55:03');
 insert into carOverLoad values(2,'car006',30.0,35.58,1,'2018-3-13 09:10:48');
 
 
-insert into taskInfo values(1,'carTeam001','task001','2018-3-5 07:05:31','2018-3-7 08:00:00','2018-3-7 05:17:31',1,'为湖北省运苹果','1',545.95,11.25);
-insert into taskInfo values(2,'carTeam002','task002','2018-3-8 11:34:58','2018-3-9 12:00:00','2018-3-9 09:15:48',1,'为江西省运桃子','1',340.67,7.85);
-insert into taskInfo values(3,'carTeam003','task003','2018-3-10 13:55:03','2018-3-13 14:00:00','2018-3-13 08:50:17',1,'为北京市运香蕉','1',890.12,23.18);
+insert into taskInfo values(1,'carTeam001','task001','2018-3-5 07:05:31','2018-3-7 08:00:00','2018-3-7 05:17:31',1,'为湖北省运苹果','1',545.95,11.25,41.48);
+insert into taskInfo values(2,'carTeam002','task002','2018-3-8 11:34:58','2018-3-9 12:00:00','2018-3-9 09:15:48',1,'为江西省运桃子','1',340.67,7.85,22.19);
+insert into taskInfo values(3,'carTeam003','task003','2018-3-10 13:55:03','2018-3-13 14:00:00','2018-3-13 08:50:17',1,'为北京市运香蕉','1',890.12,23.18,65.05);
 
+
+insert into taskInfo values(1,'carTeam001','task001','2018-3-6 20:00:00','2018-3-13 20:00:00','2018-3-12 15:36:25',1,'为合肥工地大学运货');
+insert into taskInfo values(2,'carTeam002','task002','2018-3-7 00:00:00','2018-3-15 20:00:00','2018-3-13 07:25:16',1,'为合肥女子学院的运货');
+
+insert into carTeamInfo values(1,'carTeam001','3',3);
+insert into carTeamInfo values(2,'carTeam002','5',3);
 --hushuxiang test data
 show DATABASES ;
 SHOW  TABLES ;

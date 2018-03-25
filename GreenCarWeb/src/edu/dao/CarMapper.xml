@@ -18,7 +18,9 @@
 	</update>
 	
 	
-	<select id="getPathPointsByCarNum" parameterType="string" resultType="CarLocationBean">
-		select * from carPathHistory where carNum = #{0}
+	<select id="getPathPointsByCarNum" resultType="CarLocationBean">
+		select * from carPathHistory 
+		where carNum = #{0} and
+		times between #{1} and #{2}
 	</select>
 </mapper>

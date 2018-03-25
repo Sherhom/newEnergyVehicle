@@ -15,6 +15,8 @@ import edu.domain.DelOverLoadBean;
 import edu.domain.DelOverSpeedBean;
 import edu.domain.DriverBean;
 import edu.domain.SelectDriveEventBean;
+import edu.domain.SelectWorkRecordBean;
+import edu.domain.WorkRecordBean;
 
 @Service
 public class DriveManageService {
@@ -89,6 +91,11 @@ public class DriveManageService {
     
     public void delCollisionInfo(DelCollisionBean cb){
     	driveManageMapper.delCollisionInfo_mapper(cb);
+    }
+    
+    public List<WorkRecordBean> getWorkRecord_service(SelectWorkRecordBean wrb){
+    	List<WorkRecordBean> temp=driveManageMapper.getWorkRecord_mapper(wrb);
+    	return temp;
     }
     
 }
