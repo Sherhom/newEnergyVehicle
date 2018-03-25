@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
 import edu.dao.CarMapper;
 import edu.dao.DriverMapper;
 import edu.dao.TeamMapper;
@@ -15,11 +14,7 @@ import edu.domain.Car;
 import edu.domain.CarTeam;
 import edu.domain.Driver;
 import edu.model.TreeViewModel;
-=======
-import edu.dao.CarTeamInfoMapper;
-import edu.dao.TeamMapper;
-import edu.domain.CarTeamInfoBean;
->>>>>>> 4533745e9fb99627f138439d7a7c215c34be15fd
+
 
 @Service
 public class CarTeamService {
@@ -35,7 +30,6 @@ public class CarTeamService {
 		return teamMapper.getALLCarTeam();
 	}
 	
-<<<<<<< HEAD
 	public List<TreeViewModel> getCarTeamDetail() {
 		List<CarTeam> carTeams = teamMapper.getALLCarTeam();
 		List<TreeViewModel> result = new LinkedList<>();
@@ -54,7 +48,4 @@ public class CarTeamService {
 		}
 		return result;
 	}
-=======
-	
->>>>>>> 4533745e9fb99627f138439d7a7c215c34be15fd
 }
