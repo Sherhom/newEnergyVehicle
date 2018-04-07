@@ -62,7 +62,7 @@
 				<div class="col-md-8">
 					<div class="box-body center"></div> -->
 					<!-- BOX -->
-					<div class="box border blue" style="margin-bottom: 10px;width:1100px;height:500px">
+					<div class="box border blue" style="margin-bottom: 10px;width:100%;height:100%">
 						<div class="box-title">
 							<h4>
 								<i class="fa fa-table"></i>公司驾驶人员
@@ -75,12 +75,12 @@
 								<div class="form-group">
 									<label>车队号：</label> <select id="teamNum">
 										<option value="all">全部车队</option>
-										<option value="carTeam001">车队一</option>
-										<option value="carTeam002">车队二</option>
-										<option value="carTeam003">车队三</option>
-										<option value="carTeam004">车队四</option>
-										<option value="carTeam005">车队五</option>
-										<option value="carTeam006">车队六</option>
+										<option value="1">车队一</option>
+										<option value="2">车队二</option>
+										<option value="3">车队三</option>
+										<option value="4">车队四</option>
+										<option value="5">车队五</option>
+										<option value="6">车队六</option>
 									</select>
 								</div>
 								<div class="form-group">

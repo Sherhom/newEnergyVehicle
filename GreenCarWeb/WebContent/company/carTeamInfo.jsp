@@ -62,7 +62,7 @@
 				<div class="col-md-8">
 					<div class="box-body center"></div> -->
 					<!-- BOX -->
-					<div class="box border blue" style="margin-bottom: 10px;width:1100px;height:500px">
+					<div class="box border blue" style="margin-bottom: 10px;width:100%;height:100%">
 						<div class="box-title">
 							<h4>
 								<i class="fa fa-table"></i>车队信息管理

@@ -146,11 +146,6 @@ $(document).ready(function() {
 			title : '状态标识(超速)',
 			align : 'center'
 		}, {
-			field : 'statusIdent',
-			//width : '10%',
-			title : '状态标识(超速)',
-			align : 'center'
-		}, {
 			field : 'limitLoad',
 			//width : '10%',
 			title : '额定值(超载)',

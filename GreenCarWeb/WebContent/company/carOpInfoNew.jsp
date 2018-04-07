@@ -134,13 +134,15 @@ function getMotorcadeNum(){
 </script>
 </head>
 <body>
+<!-- 
 	<div class="box border purple" style="height: 100%">
 		<div class="box-title">
 			<h4>
 				<i class="fa fa-list-ul"></i>车辆运维信息
 			</h4>
 		</div>
-		<div class="box-body" style="height: 100%">
+ -->
+		<div class="box-body" style="height: 100%;width:100%">
 			<!-- ORDERS -->
 			<div class="row">
 				<!-- ORDER SCROLL -->
@@ -208,7 +210,7 @@ function getMotorcadeNum(){
 				</div> -->
 				<!-- /ORDER SCROLL -->
 				<!-- ORDER DETAILS -->
-				<div class="col-md-8">
+				<div class="col-md-12">
 					<div class="box-body center">
 
 
@@ -241,16 +243,16 @@ function getMotorcadeNum(){
 			<td>
 			        车队号:<input type="text" id="carTeamKeyword"  name="carTeamKeyword"/> 
 			</td>
-			<td><input type="submit" value="查询" onclick="getOpInfo()" /></td>
+			<td><input class="btn btn-primary btn-sm" type="submit" value="查询" onclick="getOpInfo()" /></td>
 			
 			<td>
-			<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+			<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
 	                        作业信息
 			</button>
 			</td>
 			 
 			<td>
-			<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">
+			<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal2">
 				保养信息
             </button>
             </td>
@@ -285,8 +287,9 @@ function getMotorcadeNum(){
 			</div>
 			<!-- ORDERS -->
 		</div>
+<!-- 		
 	</div>
-	
+-->
 	<!-- 模态框（Modal） -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">

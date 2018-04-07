@@ -69,6 +69,8 @@ public class CarTeamManageController {
 		String motorcadeNum=req.getParameter("motorcadeNum");
 		String captainNum=req.getParameter("captainNum");
 		int motorcadeMount=Integer.parseInt(req.getParameter("motorcadeMount"));
+		System.out.println("motorcade " + motorcadeNum);
+		System.out.println("captainNum " + captainNum);
 		/*int offset=Integer.parseInt(req.getParameter("offset"));
 		int limit=Integer.parseInt(req.getParameter("limit"));
 		

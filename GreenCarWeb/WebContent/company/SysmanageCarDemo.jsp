@@ -28,7 +28,7 @@
 <title>车辆信息管理</title>
 
 </head>
-<body class="gray-bg">
+<body>
 	<div class="modal fade" id="sysAddCar" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
 		<div class="modal-dialog"  role="document">
@@ -66,7 +66,6 @@
 						<span class="input-group-addon" id="basic-addon1">承载能力</span>
 						<input type="text" id="sys-carteam-mofify-carryingCapacity" class="form-control" placeholder="请输入车辆承载吨位数" aria-describedby="basic-addon1">
 					</div>
-					
 				</div>
 				<div class="modal-footer">
 					<button type="button"  class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -76,35 +75,54 @@
 		</div>
 	</div>
 	
-	<div class="wrapper wrapper-content animated fadeInRight" style="width:100%,height:100%">
-		<div class="col-sm-4">
-			<div id="tree" class="tree tree-unselectable"></div>
-		</div>
-		<div class="col-sm-8">
-			<div class="ibox float-e-margins">
-				<div class="ibox-title">
-					<h5>车队详细信息</h5>
-				</div>
-				<div class="ibox-content">
+	
+	
+	<div class="box border blue" style="margin-bottom: 10px;width:100%;height:100%">
+	   <div class="box-title">
+            <h4>
+               <i class="fa fa-table"></i>车队信息管理
+            </h4>
+      </div>
+      <div class="box-body" style="width:100%,height:100%">
+      <!-- 
+      <div class="wrapper wrapper-content animated fadeInRight" style="width:100%,height:100%">
+       -->
+       <div class="row">
+        <div class="col-sm-4">
+            <div id="tree" class="tree tree-unselectable"></div>
+        </div>
+        <div class="col-sm-8">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>车队详细信息</h5>
+                </div>
+                <div class="ibox-content">
 
-					<div class="row">
-						<div id="toolbar" class="btn-group">
-							<!-- 工具栏 -->
-							<button id="btn_add" type="button" class="btn btn-primary btn-sm"
-								data-toggle="modal" data-target="#sysAddCar">
-								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
-							</button>
-						</div>
-						<div class="col-sm-12">
-							<table class="table table-striped table-bordered table-hover"
-								id="demoTable">
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+                    <div class="row">
+                        <div id="toolbar" class="btn-group">
+                            <!-- 工具栏 -->
+                            <button id="btn_add" type="button" class="btn btn-primary btn-sm"
+                                data-toggle="modal" data-target="#sysAddCar">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                            </button>
+                        </div>
+                        <div class="col-sm-12">
+                            <table class="table table-striped table-bordered table-hover"
+                                id="demoTable">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      </div>
 	</div>
+	
+	
+	
+	
+	
 <script src="<%=root%>/company/js/sysmanagecar.js"></script>
 </body>
 

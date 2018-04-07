@@ -46,12 +46,14 @@
 </script>
 </head>
 <body>
+<!-- 
 	<div class="box border purple" style="height: 100%">
 		<div class="box-title">
 			<h4>
 				<i class="fa fa-list-ul"></i>驾驶事件管理
 			</h4>
 		</div>
+-->
 		<div class="box-body" >
 			<!-- ORDERS -->
 			<div class="row">
@@ -59,13 +61,13 @@
 
 				<!-- /ORDER SCROLL -->
 				<!-- ORDER DETAILS -->
-				<div class="col-md-8">
+				<div class="col-md-12">
 					<div class="box-body center"></div>
 					<!-- BOX -->
-					<div class="box border blue" style="margin-bottom: 10px;width:1100px;height:500px">
+					<div class="box border blue" style="margin-bottom: 10px;width:100%;height:100%">
 						<div class="box-title">
 							<h4>
-								<i class="fa fa-table"></i>驾驶时间管理
+								<i class="fa fa-table"></i>驾驶事件管理
 							</h4>
 
 						</div>
@@ -111,7 +113,9 @@
 			</div>
 			<!-- ORDERS -->
 		</div>
+		<!-- 
 	</div>
+	 -->
 
 	<!-- JQUERY UI-->
 	<!-- <script
