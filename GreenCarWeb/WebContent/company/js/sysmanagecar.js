@@ -23,6 +23,7 @@ $(document).ready(function() {
 							}
 						});
 					})
+					$('#demoTable').bootstrapTable('selectPage', 1);
 			}
 		};
 	tree.init();
@@ -76,6 +77,7 @@ $(document).ready(function() {
 					            });
 							}
 						);
+					$('#demoTable').bootstrapTable('selectPage', 1);
 				}
 			}
 		});
@@ -105,6 +107,7 @@ $(document).ready(function() {
 					            });
 							}
 						);
+					$('#demoTable').bootstrapTable('selectPage', 1);
 					
 				}
 			}
@@ -131,6 +134,7 @@ $(document).ready(function() {
 					            });
 							}
 						);
+					$('#demoTable').bootstrapTable('selectPage', 1);
 					
 				}
 			}

@@ -41,6 +41,7 @@ $(document).ready(function() {
 					            });
 							}
 						);
+	            	$('#batteryTable').bootstrapTable('selectPage', 1);
 	            }
 	        }
 	    });
@@ -50,7 +51,6 @@ $(document).ready(function() {
 	window.sysMatainBatteryOp = {
 			
 		    'click #batteryModify': function (e, value, row, index) {
-		    	alert("modify");
 		        modifyBattery(row);
 		    },
 			'click #batteryDel': function (e, value, row, index) {
@@ -92,6 +92,7 @@ $(document).ready(function() {
 					            });
 							}
 						);
+	            	$('#batteryTable').bootstrapTable('selectPage', 1);
 	            }
 	        }
 	    });
@@ -115,6 +116,7 @@ $(document).ready(function() {
 					            });
 							}
 						);
+					$('#batteryTable').bootstrapTable('selectPage', 1);
 				}
 			}
 		});
@@ -145,6 +147,7 @@ $(document).ready(function() {
 					            });
 							}
 						);
+	            	$('#batteryTable').bootstrapTable('selectPage', 1);
 	            }
 	        }
 	    });
@@ -167,6 +170,7 @@ $(document).ready(function() {
 					            });
 							}
 						);
+					$('#batteryTable').bootstrapTable('selectPage', 1);
 				}
 			}
 		});
