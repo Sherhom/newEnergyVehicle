@@ -9,6 +9,7 @@
 
     const contentFrame = document.querySelector('#myContent');
     const mangagecarLi = document.querySelector('#sysManagecar');
+    const myMainLi = document.querySelector('#mainPanel');
     const maintainBatteryLi = document.querySelector('#maintainBattery');
     const carPosInfoLi  = document.querySelector("#carPosInfo");
     const carPathInfoLi = document.querySelector("#carPathInfo");
@@ -18,6 +19,7 @@
     const carOpInfoLi = document.querySelector("#carOpInfo");
     const workRecordLi = document.querySelector("#workRecord");
     
+    myMainLi.addEventListener('click',()=>{changeContent('/GreenCarWeb/company/main.html.jsp','mangagecarLi')});
     mangagecarLi.addEventListener('click',()=>{changeContent('/GreenCarWeb/company/SysmanageCarDemo.jsp','mangagecarLi')});
     maintainBatteryLi.addEventListener('click',()=>{changeContent('/GreenCarWeb/company/BatteryMaintain.jsp','maintainBattery')});
     carPosInfoLi.addEventListener('click',()=>{changeContent('/GreenCarWeb/company/carPosInfo.jsp','maintainBattery')});

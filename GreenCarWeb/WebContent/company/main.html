@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Edmin</title>
+        <link type="text/css" href="/GreenCarWeb/company/css/bootstrap.min.css" rel="stylesheet">
+        <link type="text/css" href="/GreenCarWeb/company/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link type="text/css" href="/GreenCarWeb/company/css/theme.css" rel="stylesheet">
+        <link type="text/css" href="/GreenCarWeb/company/css/images/icons/css/font-awesome.css" rel="stylesheet">
+        <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
+            rel='stylesheet'>
+        <script src="/GreenCarWeb/company/js/Chart.bundle.js"></script>
+	<script src="/GreenCarWeb/company/js/utils.js"></script>
+	<style>
+	canvas {
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+	}
+	</style>	
+    </head>
+    <body>
+  
+        <!-- /navbar -->
+        <div class="wrapper">
+            <div class="container">
+                <div class="row">
+                  
+                    <!--/.span3-->
+                    <div class="span9">
+                        <div class="content">
+                            <div class="btn-controls">
+                                <div class="btn-box-row row-fluid">
+                                    <a href="#" class="btn-box big span4"><i class=" icon-remove-sign"></i><b>65%</b>
+                                        <p class="text-muted">
+                                                                                                     超载事故</p>
+                                    </a><a href="#" class="btn-box big span4"><i class="icon-user"></i><b>15</b>
+                                        <p class="text-muted">
+                                                                                                     司机人数</p>
+                                    </a><a href="#" class="btn-box big span4"><i class="icon-ban-circle"></i><b>15,152</b>
+                                        <p class="text-muted">
+                                           	超速事故</p>
+                                    </a>
+                                </div>
+                                <div class="btn-box-row row-fluid">
+                                    <div class="span8">
+                                        <div class="row-fluid">
+                                            <div class="span12">
+                                            <a href="#" class="btn-box small span4"><i class="icon-warning-sign"></i><b>最大行驶速度</b>
+                                                </a>
+                                              <a href="#" class="btn-box small span4"><i class="icon-wrench"></i><b>维修事件</b>
+                                                </a><a href="#" class="btn-box small span4"><i class="icon-fire"></i><b>电池温度异常</b>
+                                                </a>
+                                            </div>
+                                        </div>
+                                       <!--  <div class="row-fluid">
+                                            <div class="span12">
+                                               <a href="#" class="btn-box small span4"><i class="icon-exclamation-sign"></i><b>异常消息</b>
+                                                </a><a href="#" class="btn-box small span4"><i class="icon-bullhorn"></i><b>任务通知</b>
+                                                </a><a href="#" class="btn-box small span4"><i class="icon-bell"></i><b>消息通知</b> </a>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                    <ul class="widget widget-usage unstyled span4">
+                                        <li>
+                                            <p>
+                                                <strong>任务出车数量</strong> <span class="pull-right small muted">78%</span>
+                                            </p>
+                                            <div class="progress tight">
+                                                <div class="bar" style="width: 20%;">
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <strong>在线驾驶员</strong> <span class="pull-right small muted">56%</span>
+                                            </p>
+                                            <div class="progress tight">
+                                                <div class="bar bar-success" style="width: 56%;">
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!-- <li>
+                                            <p>
+                                                <strong>Linux</strong> <span class="pull-right small muted">44%</span>
+                                            </p>
+                                            <div class="progress tight">
+                                                <div class="bar bar-warning" style="width: 44%;">
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <strong>iPhone</strong> <span class="pull-right small muted">67%</span>
+                                            </p>
+                                            <div class="progress tight">
+                                                <div class="bar bar-danger" style="width: 67%;">
+                                                </div>
+                                            </div>
+                                        </li> -->
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--/#btn-controls-->
+                            <div class="module">
+                                <div class="module-head">
+                                    <h3>
+                                        	驾驶员&电池在线状态</h3>
+                                </div>
+							<div class="module-body">
+
+								<div id="container" style="width: 100%;">
+									<canvas id="canvas"></canvas>
+								</div>
+								<button id="randomizeData">随机数据</button>
+								<button id="addDataset">增加对象</button>
+								<button id="removeDataset">减少对象</button>
+								<button id="addData">增加数据</button>
+								<button id="removeData">减少数据</button>
+							</div>
+						</div>
+                            <!--/.module-->
+                         
+                         
+                           
+                            <!--/.module-->
+                        </div>
+                        <!--/.content-->
+                    </div>
+                    <!--/.span9-->
+                </div>
+            </div>
+            <!--/.container-->
+        </div>
+        <!--/.wrapper-->
+        
+        <script src="/GreenCarWeb/company/js/jquery/jquery-2.0.3.min.js" type="text/javascript"></script>
+        <script src="/GreenCarWeb/company/js/scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+        <script src="/GreenCarWeb/company/js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+        <script src="/GreenCarWeb/company/js/scripts/flot/jquery.flot.js" type="text/javascript"></script>
+        <script src="/GreenCarWeb/company/js/scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
+        <script src="/GreenCarWeb/company/js/scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
+        <script src="/GreenCarWeb/company/js/scripts/common.js" type="text/javascript"></script>
+      <script>
+		var MONTHS = ['0:00','1:00','2:00','3:00','4:00','5:00','6:00','7:00','8:00','9:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00','23:00'];
+		var color = Chart.helpers.color;
+		var barChartData = {
+			labels: ['0:00', '1:00', '2:00', '3:00', '4:00', '5:00', '6:00'],
+			datasets: [{
+				label: '在线司机',
+				backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+				borderColor: window.chartColors.red,
+				borderWidth: 1,
+				data: [
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor()
+				]
+			}, {
+				label: '在线电池',
+				backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+				borderColor: window.chartColors.blue,
+				borderWidth: 1,
+				data: [
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor()
+				]
+			}]
+
+		};
+
+		window.onload = function() {
+			var ctx = document.getElementById('canvas').getContext('2d');
+			window.myBar = new Chart(ctx, {
+				type: 'bar',
+				data: barChartData,
+				options: {
+					responsive: true,
+					legend: {
+						position: 'top',
+					},
+					title: {
+						display: true,
+						text: '在岗状态'
+					}
+				}
+			});
+
+		};
+
+		document.getElementById('randomizeData').addEventListener('click', function() {
+			var zero = Math.random() < 0.2 ? true : false;
+			barChartData.datasets.forEach(function(dataset) {
+				dataset.data = dataset.data.map(function() {
+					return zero ? 0.0 : randomScalingFactor();
+				});
+
+			});
+			window.myBar.update();
+		});
+
+		var colorNames = Object.keys(window.chartColors);
+		document.getElementById('addDataset').addEventListener('click', function() {
+			var colorName = colorNames[barChartData.datasets.length % colorNames.length];
+			var dsColor = window.chartColors[colorName];
+			var newDataset = {
+				label: 'Dataset ' + barChartData.datasets.length,
+				backgroundColor: color(dsColor).alpha(0.5).rgbString(),
+				borderColor: dsColor,
+				borderWidth: 1,
+				data: []
+			};
+
+			for (var index = 0; index < barChartData.labels.length; ++index) {
+				newDataset.data.push(randomScalingFactor());
+			}
+
+			barChartData.datasets.push(newDataset);
+			window.myBar.update();
+		});
+
+		document.getElementById('addData').addEventListener('click', function() {
+			if (barChartData.datasets.length > 0) {
+				var month = MONTHS[barChartData.labels.length % MONTHS.length];
+				barChartData.labels.push(month);
+
+				for (var index = 0; index < barChartData.datasets.length; ++index) {
+					// window.myBar.addData(randomScalingFactor(), index);
+					barChartData.datasets[index].data.push(randomScalingFactor());
+				}
+
+				window.myBar.update();
+			}
+		});
+
+		document.getElementById('removeDataset').addEventListener('click', function() {
+			barChartData.datasets.splice(0, 1);
+			window.myBar.update();
+		});
+
+		document.getElementById('removeData').addEventListener('click', function() {
+			barChartData.labels.splice(-1, 1); // remove the label first
+
+			barChartData.datasets.forEach(function(dataset) {
+				dataset.data.pop();
+			});
+
+			window.myBar.update();
+		});
+	</script>
+    </body>
