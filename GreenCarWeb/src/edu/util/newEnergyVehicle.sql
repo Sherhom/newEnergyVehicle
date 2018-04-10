@@ -299,6 +299,12 @@ insert into carMile values(6,340.55,1,1,0,1,'2018-03-03','6');
 
 insert into carLocation values(1,'1',116.364,39.993,'2018-3-10 12:50:05');
 insert into carLocation values(2,'2',115.000,38.000,'2018-3-10 13:16:17');
+insert into carLocation values(3,'3',110.006,38.993,'2018-3-10 11:50:05');
+insert into carLocation values(4,'4',114.020,39.006,'2018-3-10 13:16:17');
+insert into carLocation values(5,'5',118.264,39.563,'2018-3-10 2:50:05');
+insert into carLocation values(6,'6',113.500,37.800,'2018-3-10 1:16:17');
+
+
 
 
 insert into carCollision values(1,'1',5,63.7,76.5,37.5,'2018-3-12 14:40:12');

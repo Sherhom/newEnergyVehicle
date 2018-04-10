@@ -79,6 +79,7 @@ var tree_data_2 = {
 	//'pictures' : {name: 'Pictures', type: 'folder', 'icon-class':'red'}	,
 	'carTeam001' : {name: 'carTeam001', type: 'folder', 'icon-class':'orange'}	,
 	'carTeam002' : {name: 'carTeam002', type: 'folder', 'icon-class':'blue'}	,
+	'carTeam003' : {name: 'carTeam003', type: 'folder', 'icon-class':'blue'}	,
 	//'contacts' : {name: 'Contacts', type: 'folder'}	,
 	//'sample-txt' : {name: '<i class="fa fa-file-text"></i> Sample.txt', type: 'item'},
 	//'sample-zip' : {name: '<i class="fa fa-archive"></i> Sample.zip', type: 'item'},
@@ -122,7 +123,7 @@ tree_data_2['carTeam001']['additionalParameters'] = {
 	'children' : [
 		{name: '<i class="fa fa-file-text" onclick="getPosInfo(\'1\')"></i>car001', type: 'item'},
 		{name: '<i class="fa fa-file-text" onclick="getPosInfo(\'2\')"></i>car002', type: 'item'},
-		{name: '<i class="fa fa-file-text" onclick="getPosInfo(\'3\')"></i>car003', type: 'item'},
+		
 		/*{name: '<i class="fa fa-music"></i> song4.mp3', type: 'item'},
 		{name: '<i class="fa fa-music"></i> song5.mp3', type: 'item'},
 		{name: '<i class="fa fa-music"></i> song6.mp3', type: 'item'}*/
@@ -130,14 +131,22 @@ tree_data_2['carTeam001']['additionalParameters'] = {
 }
 tree_data_2['carTeam002']['additionalParameters'] = {
 	'children' : [
-		{name: '<i class="fa fa-file-text" onclick="getPosInfo(\'004\')\"></i>car004', type: 'item'},
-		{name: '<i class="fa fa-file-text" onclick="getPosInfo(\'005\')"></i>car005', type: 'item'},
+		{name: '<i class="fa fa-file-text" onclick="getPosInfo(\'3\')\"></i>car003', type: 'item'},
+		{name: '<i class="fa fa-file-text" onclick="getPosInfo(\'4\')"></i>car004', type: 'item'},
 		/*{name: '<i class="fa fa-film"></i> movie3.avi', type: 'item'},
 		{name: '<i class="fa fa-film"></i> movie4.mp4', type: 'item'},
 		{name: '<i class="fa fa-film"></i> movie5.avi', type: 'item'}*/
 	]
 }
-
+tree_data_2['carTeam003']['additionalParameters'] = {
+		'children' : [
+			{name: '<i class="fa fa-file-text" onclick="getPosInfo(\'5\')\"></i>car005', type: 'item'},
+			{name: '<i class="fa fa-file-text" onclick="getPosInfo(\'6\')"></i>car006', type: 'item'},
+			/*{name: '<i class="fa fa-film"></i> movie3.avi', type: 'item'},
+			{name: '<i class="fa fa-film"></i> movie4.mp4', type: 'item'},
+			{name: '<i class="fa fa-film"></i> movie5.avi', type: 'item'}*/
+		]
+	}
 /*tree_data_2['contacts']['additionalParameters'] = {
 	'children' : [
 		{name: '<i class="fa fa-book"></i> address.zip', type: 'item'},
